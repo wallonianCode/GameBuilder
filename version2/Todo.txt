@@ -1,2 +1,0 @@
-Develop a BigLand class with all of the necessary land tiles
-implement the BigLandName source file
