@@ -1,0 +1,38 @@
+#include "../Headers/RockRoad.hpp"
+
+
+RockRoad::RockRoad(const SDL_Point& pos, 
+									 const DeclinedTextureOrientation& orientation) :
+DeclinedTexture(pos) {
+	SDL_Rect tile; 
+	switch (orientation) {
+		case DeclinedTextureOrientation::North:
+			tile = {3*S+2, 6*S+2, S-3, S-3};
+			break;
+		case DeclinedTextureOrientation::West:
+			tile = {S+2, 6*S+2, S-3, S-3};
+			break;
+		case DeclinedTextureOrientation::East:
+			tile = {2*S+2, 6*S+2, S-3, S-3};
+			break;
+		case DeclinedTextureOrientation::South:
+			tile = {4*S+2, 6*S+2, S-3, S-3};
+			break;
+	  case DeclinedTextureOrientation::NorthWest:
+			tile = {3*S+2, 7*S+2, S-3, S-3};
+			break;
+	  case DeclinedTextureOrientation::NorthEast:
+			tile = {4*S+2, 7*S+2, S-3, S-3};
+			break;
+	  case DeclinedTextureOrientation::SouthWest:
+			tile = {S+2, 7*S+2, S-3, S-3};
+			break;
+	  case DeclinedTextureOrientation::SouthEast:
+			tile = {2*S+2, 7*S+2, S-3, S-3};
+			break;
+		default:
+			break;
+		this->set_pos_on_tileset(tile.x, tile.y);
+		this->set_dim_on_tileset(tile.w, tile.h);
+	}
+}
