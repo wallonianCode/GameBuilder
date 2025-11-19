@@ -1,45 +1,6 @@
 #include "../Headers/DeepWater.hpp"
 
 
-/*
-DeepWater::DeepWater(const SDL_Point& pos,
-										 const DeclinedTextureOrientation& orientation) :
-										 DeclinedTexture(pos, orientation) {
-	SDL_Rect tile;
-	switch (orientation) {
-		case DeclinedTextureOrientation::North {
-			break;
-		}
-		case DeclinedTextureOrientation::West {
-			break;
-		}
-		case DeclinedTextureOrientation::East {
-			break;
-		}
-		case DeclinedTextureOrientation::South {
-			break;
-		}
-		case DeclinedTextureOrientation::NorthWest {
-			break;
-		}
-		case DeclinedTextureOrientation::NorthEast {
-			break;
-		}
-		case DeclinedTextureOrientation::SouthWest {
-			break;
-		}
-		case DeclinedTextureOrientation::SouthEast {
-			break;
-		}
-		default: 
-			break;
-	}
-	this->set_pos_on_tileset(tile.x, tile.y);
-	this->set_dim_on_tileset(tile.x, tile.y, tile.w, tile.h);
-}
-*/
-
-
 DeepWater::DeepWater(const SDL_Point& pos,
 										 const DeclinedTextureOrientation& orientation) :
 										 DeclinedTexture(pos, orientation) {
