@@ -9,8 +9,6 @@
 #include "TextureCloneable.hpp"
 
 
-//TODO in order to develop composedTexture, make virtual the methods
-// 	   you will need to overload.
 const std::string leafGreenTextureFileName = "pkmnLeafGreenTileset2";
 const int TILE_WIDTH = TILE_DIM;
 const int TILE_HEIGHT = TILE_DIM;
