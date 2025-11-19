@@ -4,7 +4,7 @@
 
 #include "Road.hpp"
 
-
+/*
 class MoosRoad : public TextureCloneable<Road, MoosRoad> {
 public:
 	MoosRoad(const SDL_Point&);
@@ -21,5 +21,14 @@ private:
 		{S+2, 4*S+2, S-3, S-3}, {2*S+2, 4*S+2, S-3, S-3} };
 	Side side_ = Side(Side::Type::None);
 };
+*/
 
+/*{North, West, East, South,
+		NorthWest, NorthEast, SouthWest, SouthEast, None};*/
+
+class MoosRoad : public TextureCloneable<DeclinedTexture, MoosRoad> {
+public:
+	MoosRoad(const SDL_Point&,
+			 const DeclinedTextureOrientation& orientation);
+};
 #endif
