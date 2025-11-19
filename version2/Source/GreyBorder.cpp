@@ -45,12 +45,15 @@ GreyBorder::GreyBorder(const SDL_Point& pos,
 	SDL_Rect tile;
 	switch (orientation) {
 		case DeclinedTextureOrientation::SouthWest {
+			tile = {6*S+2, 8*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::South {
+			tile = {7*S+2, 8*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::SouthEast {
+			tile = {8*S+2, 8*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::SouthEastCorner {
