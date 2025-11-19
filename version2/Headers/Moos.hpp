@@ -4,7 +4,7 @@
 #include "SimpleTexture.hpp"
 
 
-class Moos : public TextureCloneable<LeafGreenTexture, Moos> {
+class Moos : public TextureCloneable<SimpleTexture, Moos> {
 public:
 	Moos(const SDL_Point&);
 };
