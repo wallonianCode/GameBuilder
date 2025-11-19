@@ -3,7 +3,7 @@
 
 #include "Road.hpp"
 
-
+/*
 class SandRoad : public TextureCloneable<Road, SandRoad> {
 public:
 	SandRoad(const SDL_Point&);
@@ -20,5 +20,10 @@ private:
 		{S+2, S+2, S-3, S-3}, {2*S+2, S+2, S-3, S-3} };
 	LeafGreenTexture::Side side_;
 };
+*/
 
+class SandRoad : public TextureCloneable<DeclinedTexture, SandRoad> {
+public:
+	SandRoad(const SDL_Point&, const DeclinedTextureOrientation&);
+};
 #endif
