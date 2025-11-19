@@ -1,44 +1,6 @@
 #include "../Headers/GreyBorder.hpp"
 
-/**
-GreyBorder::GreyBorder(const SDL_Point& posOnScreen) : 
-Border(posOnScreen) {
-	init_src();
-}
 
-
-GreyBorder::GreyBorder(const SDL_Point& posOnScreen, 
-const Border::Side& side) : 
-Border(posOnScreen), side_(side) {
-	init_src(side);
-}
-
-
-GreyBorder::GreyBorder(const SDL_Point& posOnScreen, 
-const std::string& side) : 
-GreyBorder(posOnScreen, Border::Side::to_side(side)) {}
-
-
-void GreyBorder::save(std::ostream& os) const {
-	os << "GreyBorder" << " ";
-	os << side_.to_str() << " ";
-	Texture::save(os);
-}
-
-
-void GreyBorder::init_src() {
-	set_pos_on_tileset({7*S+2, 8*S+2});
-	set_dim_on_tileset(S-3, S-3);
-}
-
-
-void GreyBorder::init_src(const Border::Side& side) {
-	SDL_Rect rect = arSrcRect[side.to_int()];
-	set_pos_on_tileset({rect.x, rect.y});
-	set_dim_on_tileset(rect.w, rect.h);
-}
-*/
-//TODO complete this blueprint
 GreyBorder::GreyBorder(const SDL_Point& pos,
 											 const DeclinedTextureOrientation& orientation) :
 											 DeclinedTexture(pos) {
@@ -57,24 +19,31 @@ GreyBorder::GreyBorder(const SDL_Point& pos,
 			break;
 		}
 		case DeclinedTextureOrientation::SouthEastCorner {
+			tile = {6*S+2, 9*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::East {
+			tile = {7*S+2, 9*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::NorthEast {
+			tile = {8*S+2, 9*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::SouthWestCorner {
+			tile = {7*S+2, 7*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::West {
-			break;
+			tile = {8*S+2, 7*S+2, S-3, S-3};
+			break;		
 		}
 		case DeclinedTextureOrientation::NorthEastCorner {
+			tile = {8*S+2, 6*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::Center {
+			tile = {6*S+2, 2, S-3, S-3};
 			break;
 		}
 		default: 
