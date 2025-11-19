@@ -14,6 +14,8 @@ enum class DeclinedTextureOrientation {
 	SouthWest,
 	SouthEast, 
 	Center,
+	NorthWestCorner,
+	NorthEastCorner,
 	SouthEastCorner,
 	SouthWestCorner
 };
