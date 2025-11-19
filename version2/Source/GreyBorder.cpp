@@ -2,8 +2,8 @@
 
 
 GreyBorder::GreyBorder(const SDL_Point& pos,
-											 const DeclinedTextureOrientation& orientation) :
-											 DeclinedTexture(pos) {
+					   const DeclinedTextureOrientation& orientation) :
+					   DeclinedTexture(pos) {
 	SDL_Rect tile;
 	switch (orientation) {
 		case DeclinedTextureOrientation::SouthWest {

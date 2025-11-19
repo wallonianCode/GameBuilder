@@ -1,33 +1,61 @@
 #include "../Headers/SandRoad.hpp"
 
 
-//------------------------ CONSTRUCTORS ------------------------------
-SandRoad::SandRoad(const SDL_Point& posOnScreen) :
-Road(posOnScreen) {
-	init_src();
-}
-
-
-SandRoad::SandRoad(const SDL_Point& posOnScreen, 
-const LeafGreenTexture::Side& side) : 
-Road(posOnScreen), side_(side) {
-	init_src(side);
-}
-
-
-SandRoad::SandRoad(const SDL_Point& posOnScreen, 
-const std::string& subType) :
-Road(posOnScreen), side_(Road::Side::to_side(subType)) {}
-//--------------------------------------------------------------------
-
-void SandRoad::init_src() {
-	set_pos_on_tileset({2, 2});
-	set_dim_on_tileset(S-2, S-2);
-}
-
-
-void SandRoad::init_src(const LeafGreenTexture::Side& side) {
-	SDL_Rect rect = arSrcRect[side.to_int()];	
-	set_pos_on_tileset({rect.x, rect.y});
-	set_dim_on_tileset(rect.w, rect.h);
+SandRoad::SandRoad(const SDL_Point& pos, const DeclinedTextureOrientation& orientation) :
+DeclinedTexture(pos) {
+	SDL_Rect tile;
+	switch (orientation) {
+		case DeclinedTextureOrientation::North: {
+			tile = {3*S+2, 2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::West: {
+			tile = {S+2, 2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::East: {
+			tile = {2*S+2, 2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::South: {
+			tile = {4*S+2, 2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::NorthWest: {
+			tile = {3*S+2, S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::NorthEast: {
+			tile = {4*S+2, S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::SouthWest: {
+			tile = {S+2, S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::SouthEast: {
+			tile = {2*S+2, S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::SouthEastCorner: {
+			tile = {S+2, 2*S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::SouthWestCorner: {
+			tile = {2*S+2, 2*S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::NorthEastCorner: {
+			tile = {3*S+2, 2*S+2, S-3, S-3};
+			break;
+		}
+		case DeclinedTextureOrientation::NorthWestCorner: {
+			tile = {4*S+2, 2*S+2, S-3, S-3};
+			break;
+		}
+		default:
+			break;
+	}
+	this->set_pos_on_tileset(tile.x, tile.y);
+	this->set_dim_on_tileset(tile.w, tile.h);
 }
