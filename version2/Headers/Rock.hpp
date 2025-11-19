@@ -1,10 +1,10 @@
 #ifndef ROCK_H
 #define ROCK_H
 
-#include "LeafGreenTexture.hpp"
+#include "SimpleTexture.hpp"
 
 
-class Rock : public TextureCloneable<LeafGreenTexture, Rock> {
+class Rock : public TextureCloneable<SimpleTexture, Rock> {
 public:
 	Rock(const SDL_Point&);
 };
