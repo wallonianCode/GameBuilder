@@ -31,9 +31,6 @@ public:
 	virtual void draw() = 0; 
 	virtual void update()	= 0;
 	virtual void save(std::ostream&) const = 0;
-	//virtual void save_dest(std::ostream&) const = 0;
-	//friend std::ostream& operator<<
-	//(std::ostream&, const Texture&) const = 0;	
 	virtual Texture* clone() const = 0;
 	virtual SDL_Point get_pos_on_screen() const = 0;
 	virtual void set_pos_on_screen(const SDL_Point&) = 0;
