@@ -12,16 +12,14 @@ public:
 	// to override in case of bigger tiles (iterate over the src vector)
 	virtual void draw(); 
 	// to override in case of bigger tiles (the src may be a vector)
-	void set_pos_on_screen(const SDL_Point&);
-	SDL_Point get_pos_on_screen() const;
+	void set_pos_on_screen(const SDL_Point&) override;
+	SDL_Point get_pos_on_screen() const override;
 	void set_dimensions_on_screen(const int& width, const int& height);
 	
-	virtual void update();	
-	virtual void save(std::ostream&) const;
+	virtual void update() override;	
+	virtual void save(std::ostream&) const override;
 
 	virtual void set_pos_on_tileset(const SDL_Point& pos);
-
-	virtual void set_x_pos_on_tileset(const int);
 	virtual void set_dim_on_tileset(const int, const int);
 	
 	virtual void save_dest(std::ostream&) const;
@@ -29,9 +27,6 @@ public:
 	
 	virtual SimpleTexture* clone() const = 0;
 
-protected:
-	virtual void init_dest(const SDL_Point&);
-	virtual std::string to_str() const;
 private:
 	//setting the init src rect. Specific to every subclass.
 	virtual void init_src() = 0;
