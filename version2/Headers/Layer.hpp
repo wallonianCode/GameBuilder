@@ -24,24 +24,16 @@
 #include "Flowers.hpp"
 #include "GreenBorder.hpp"
 #include "GreyBorder.hpp"
-/*
-TODO get_texture_at_mouse_pos function <-> then selectedTexture should
-     be in selector. This is logical, since the layer itself does not 
-		 care about selecting tiles. It only organizes them, presents them to 
-		 the viewer, and gives copies of the textures on user demand.
-		 A layer also should not hold any frame. The frame is part of the
-		 selecting process!
-*/
 
-// The layer should know nothing about any particular texture, not even
-// about the simple/composite distinction 
+
+/* 
 class Layer : public Drawable {
 public:
 	Layer(const int& width);
 	void draw();
 	virtual void handle_event(SDL_Event& e);
 	/* param: the upper left coord of a texture
-	*/
+	
 	Texture* get_texture_at_coord(const SDL_Point&);
 	//	Texture* get_selected_tile();
 	/* gives upper left coordinates of texture
@@ -52,19 +44,19 @@ public:
 	          in case of composite textures, upper left corner may differ
 						This function is used in selector for dimensioning the frame
 						dynamically.
-   */						
+   					
 	virtual SDL_Point get_texture_coordinates(const SDL_Point&) = 0;
 	
 	/**
 		* returns the width of the texture the mouse is currently hovering
 		* 		    over.
-		*/
+		
 	virtual int get_texture_width() = 0;
 	
 	/**
 		* returns the height of the texture the mouse is currently hovering
 		* over.
-		*/
+		
 	virtual int get_texture_height() = 0;
 
 //	virtual std::vector<Texture*> get_selected_textures();
@@ -84,6 +76,23 @@ private:
 	//std::vector<Texture*> selectedTextures_;
 	std::array<SDL_Point, 64> arPos_;
 	std::vector<Texture*> vTiles_;
+};
+*/
+
+class Layer : public Drawable {
+public:
+	Layer(const int width);
+	void handle_event(SDL_Event& event);
+private:
+	const SDL_Point get_current_texture_pos() const;
+	const int get_current_texture_width() const;
+	const int get_current_texture_height() const;
+	// every layer has to manage its own frame in order not to have to give back the
+	// dimension of the current texture at any moment.
+	Frame_* frame;
+	int width_;
+	std::vector<Texture*> vTextures_;
+
 };
 
 #endif
