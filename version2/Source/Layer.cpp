@@ -1,6 +1,6 @@
 #include "../Headers/Layer.hpp"
 
-
+/*
 Layer::Layer(const int& width): width_(width) {
 	std::cout << "Layer::Layer(): width: " << width_ << std::endl;
 	init_grid();
@@ -51,7 +51,7 @@ std::vector<Texture*> Layer::get_selected_textures() {
 }
  */
 
-
+/*
 void Layer::add_texture(Texture* texture) {
 	vTiles_.push_back(texture);
 }
@@ -126,4 +126,71 @@ void Layer::select_texture() {
 	// get mouse position 
 	SDL_Point tileCoord = MapUtils::get_tile_coord_at_mouse_pos();
 	selectedTile_ = get_texture_at_pos(tileCoord);	
+}
+	*/
+
+
+Layer::Layer(const int width) : width_(width) {}
+
+
+Texture* get_selected_texture_copy() {
+	Texture* selectedTextureCopy = nullptr;
+	if (frame_->is_frozen()) {
+		selectedTextureCopy = get_texture_at_current_mouse_pos() -> copy();
+	}
+	else {
+		//TODO error code
+	}
+	return selectedTextureCopy;
+
+}
+
+void Layer::handle_event(SDL_Event& event) {
+	switch (event.type) {
+		case SDL_MOUSEMOTION: {
+			frame_ -> update(this->get_current_texture_rectange());
+			break;
+		}
+		case SDL_MOUSEBUTTONEVENT: {
+			if (event.button.button == SDL_BUTTON_LEFT) {
+				frame_ -> immobilize();
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT) {
+				frame_ -> free();
+			}
+			break;
+		}
+		default:
+			break;
+		
+	}
+}
+
+
+//TODO TexturePosComparator must take texture size in consideration
+SDL_Rect Layer::get_current_texture_rectangle() const {
+	//int x, y;
+	SDL_Point gridCoord;
+	std::vector<Texture*>::iterator itTextureA gridCoord;
+	SDL_Rect foundTextureRectangle;
+
+	//SDL_GetMouseState(&x, &y);
+ 	gridCoord = MapUtils::get_coordinates_at_mouse_pos({x, y});	
+	itTextureA gridCoord = std::find(vTextures_.begin(), vTextures_.end(); 
+								     TexturePosComparator gridCoord));
+	if (itTextureA gridCoord != vTextures_.end()) {	
+		foundTextureRectangle.x = gridCoord.x;
+		foundTextureRectangle.y = gridCoord.y;
+		foundTextureRectangle.w = itTextureA gridCoord->get_width();
+		foundTextureRectangle.h = itTextureA gridCoord->get_height();
+	}
+	else { // no texture means default dimensions.
+		foundTextureRectangle =  gridCoord.x, gridCoord.y, TILE_DIM, TILE_DIM};
+	}
+	return foundTextureRectangle;
+}
+
+
+Texture* get_texture_at_current_mouse_pos() {
+
 }
