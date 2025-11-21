@@ -148,7 +148,7 @@ Texture* get_selected_texture_copy() {
 void Layer::handle_event(SDL_Event& event) {
 	switch (event.type) {
 		case SDL_MOUSEMOTION: {
-			frame_ -> update(this->get_current_texture_rectange());
+			frame_ -> update(this->get_current_texture_rectangle());
 			break;
 		}
 		case SDL_MOUSEBUTTONEVENT: {
@@ -177,7 +177,7 @@ SDL_Rect Layer::get_current_texture_rectangle() const {
 	//SDL_GetMouseState(&x, &y);
  	gridCoord = MapUtils::get_coordinates_at_mouse_pos({x, y});	
 	itTextureA gridCoord = std::find(vTextures_.begin(), vTextures_.end(); 
-								     TexturePosComparator gridCoord));
+								     TexturePosComparator(gridCoord));
 	if (itTextureA gridCoord != vTextures_.end()) {	
 		foundTextureRectangle.x = gridCoord.x;
 		foundTextureRectangle.y = gridCoord.y;
