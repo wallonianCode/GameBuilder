@@ -132,6 +132,8 @@ void Layer::select_texture() {
 
 Layer::Layer(const int width) : width_(width) {}
 
+//TODO remove the frame stuff and pass it back to the selector
+
 
 Texture* get_selected_texture_copy() {
 	Texture* selectedTextureCopy = nullptr;

@@ -12,19 +12,6 @@
 #include "MapUtils.hpp"
 
 
-#include "Sand.hpp"
-#include "Grass.hpp"
-#include "SandRoad.hpp"
-#include "MoosRoad.hpp"
-#include "RockRoad.hpp"
-#include "ShallowWater.hpp"
-#include "DeepWater.hpp"
-#include "TallGrass.hpp"
-#include "SmallTree.hpp"
-#include "Flowers.hpp"
-#include "GreenBorder.hpp"
-#include "GreyBorder.hpp"
-
 
 /* 
 class Layer : public Drawable {
@@ -83,13 +70,12 @@ class Layer : public Drawable {
 public:
 	Layer(const int width);
 	void handle_event(SDL_Event& event);
+	/*
+	 *@brief fetches the texture at coord. 
+	 */
+	Texture* get_texture_copy_at_coord(const SDL_Point& coord);
 private:
-	const SDL_Point get_current_texture_pos() const;
-	const int get_current_texture_width() const;
-	const int get_current_texture_height() const;
-	// every layer has to manage its own frame in order not to have to give back the
-	// dimension of the current texture at any moment.
-	Frame_* frame;
+		
 	int width_;
 	std::vector<Texture*> vTextures_;
 
