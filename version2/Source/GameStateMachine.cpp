@@ -10,16 +10,36 @@ GameStateMachine* GameStateMachine::get_instance() {
 
 
 bool GameStateMachine::handle_frame() {
-	Renderer* renderer = Renderer::get_instance();
-	bool stopGame = false, running = true;
-	GameState* currentState = states_.top();
-	GameState* nextState = currentState->process_events(running);
-//	std::cout << "Events processed for the next state" << std::endl;
+	Renderer* renderer;
+	GameState* currentState,
+			 * nextState;
+	bool stopGame, running;
+
+
+	renderer = Renderer::get_instance();
+	stopGame = false;
+    running = true;
+	currentState = states_.top();
+
+	nextState = currentState->process_events(running);
 	currentState->update();
-//	std::cout << "Current state updated" << std::endl;
 	currentState->draw();	
-//	std::cout << "Current state drawn" << std::endl;
+
 	renderer->print();
+
+	if (! running) {
+		states_.pop();
+	}
+
+	if (nextState != nullptr) {
+		states_.push(nextState);
+	}
+
+	if (states_.empty()) {
+		stopGame = true;
+	}
+
+	/*
 	if (nextState != nullptr && !running) {
 		states_.pop();
 		states_.push(nextState);
@@ -30,14 +50,12 @@ bool GameStateMachine::handle_frame() {
 	}
 	else if (nextState != nullptr && running) { 
 		states_.push(nextState);
-//		std::cout << "Pushing the next state" << std::endl;
 		nextState->update();
-//		std::cout << "Calling update() function on next state" <<
-//		std::endl;
 	}
 	else { //nextState==nullptr && running
-		//std::cout << "Keep the menu" << std::endl;	
+		//stay in the same state
 	}
+		*/
 	return stopGame;
 }
 
