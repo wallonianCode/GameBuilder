@@ -16,6 +16,7 @@ public:
 private:
     Texture* get_texture_at_current_mouse_pos();
     std::map<LayerFactory::LayerType, Layer*> mLayers;
+		LayerFactory::LayerType currentLayerType_;
     int width_;
 
 };
