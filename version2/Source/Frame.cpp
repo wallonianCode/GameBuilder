@@ -35,11 +35,6 @@ void Frame::free() {
 
 
 Frame::Frame(): Rectangle({0, 0, TILE_DIM, TILE_DIM}, Color::red) {
-/*
-	Window* window = Window::get_instance();
-	Rectangle({window->get_width()/2, window->get_height()/2,
-	STD_WIDTH, STD_HEIGHT}, Color::red);
-	*/
   	
 }
 
