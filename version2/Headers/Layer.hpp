@@ -13,72 +13,14 @@
 
 
 
-/* 
-class Layer : public Drawable {
-public:
-	Layer(const int& width);
-	void draw();
-	virtual void handle_event(SDL_Event& e);
-	/* param: the upper left coord of a texture
-	
-	Texture* get_texture_at_coord(const SDL_Point&);
-	//	Texture* get_selected_tile();
-	/* gives upper left coordinates of texture
-	 * param: some coord that belongs or not belongs to a texture
-	 * return: if does not belong, argument returned left unchanged.
-	           if param belong to a texture, return upper left coord of it
-	 * details: in case of simple textures, always return the param 
-	          in case of composite textures, upper left corner may differ
-						This function is used in selector for dimensioning the frame
-						dynamically.
-   					
-	virtual SDL_Point get_texture_coordinates(const SDL_Point&) = 0;
-	
-	/**
-		* returns the width of the texture the mouse is currently hovering
-		* 		    over.
-		
-	virtual int get_texture_width() = 0;
-	
-	/**
-		* returns the height of the texture the mouse is currently hovering
-		* over.
-		
-	virtual int get_texture_height() = 0;
-
-//	virtual std::vector<Texture*> get_selected_textures();
-	SDL_Point get_pos_on_grid(const int index);
-protected:
-	void add_texture(Texture*);
-//	void set_selected_tile(Texture*);
-//	void set_selected_textures(std::vector<Texture*>);
-	
-	Texture* get_texture_at_pos(const SDL_Point&);
-private:
-  
-	void select_texture();
-	void init_grid();
-	int width_;
-	Texture* selectedTexture_;
-	//std::vector<Texture*> selectedTextures_;
-	std::array<SDL_Point, 64> arPos_;
-	std::vector<Texture*> vTiles_;
-};
-*/
-
 class Layer : public Drawable {
 public:
 	Layer(const int width);
 	void handle_event(SDL_Event& event);
-	/*
-	 *@brief fetches the texture at coord. 
-	 */
 	Texture* get_texture_copy_at_coord(const SDL_Point& coord);
-private:
-		
+private:	
 	int width_;
 	std::vector<Texture*> vTextures_;
-
 };
 
 #endif
