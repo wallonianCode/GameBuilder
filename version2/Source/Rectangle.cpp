@@ -39,6 +39,13 @@ SDL_Point get_position() const {
 	return { areaOnScreen_->x, areaOnScreen_->y };
 }
 
+SDL_Point get_coord() const {
+	SDL_Point coord;
+	coord.x = areaOnScreen_.x - (areaOnScreen_.x % TILE_DIM);
+	coord.y = areaOnScreen_.y - (areaOnScreen_.y % TILE_DIM);
+	return coord;
+}
+
 
 void Rectangle::set_pos_on_screen(const SDL_Point& newPos) {
 	areaOnScreen_->x = newPos.x;

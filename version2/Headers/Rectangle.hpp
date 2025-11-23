@@ -3,7 +3,7 @@
 
 #include "Drawable.hpp"
 
-
+//TODO rewrite as coord concept
 class Rectangle : public Drawable  {
 public:
 	void draw();
@@ -18,6 +18,7 @@ public:
 	void set_height(const int);
 
 	SDL_Point get_position() const;
+	SDL_Point get_coord() const;
 
 	void set_pos_on_screen(const SDL_Point&);
 
