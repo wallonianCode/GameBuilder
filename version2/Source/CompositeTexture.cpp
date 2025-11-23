@@ -74,9 +74,25 @@ void CompositeTexture::save_dest(std::ostream& os) const {
 	}
 }
 
-
+/*
 SDL_Point CompositeTexture::get_pos_on_screen() const {
 	return { vSrcDest_[0].second.x, vSrcDest_[0].second.y };
+}
+*/
+
+SDL_Point CompositeTexture::get_upper_left_corner() const {
+	std::vector<std::pair<SDL_Rect, SDL_Rect>::iterator 
+	itSrcDest;
+	SDL_Rect upperLeftCornerRect = vSrcDest_[0].second;
+
+	for (itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end();
+			 ++itSrcDest) {
+		if ((itSrcDest->first.x <= upperLeftCornerRect.x) &&	
+				(itSrcDest->first.y <= upperLeftCornerRect.y)) {
+			upperLeftCornerRect = itSrcDest->second;
+		}
+	}
+	return {upperLeftCornerRect.x, upperLeftCornerRect.y};
 }
 
 
@@ -93,10 +109,4 @@ void CompositeTexture::set_pos_on_screen(
 		itSrcDest->second.x += xMove;
 		itSrcDest->second.y += yMove;
 	}
-}
-
-
-//TODO overload in child classes
-std::string CompositeTexture::to_str() const {
-	return "CompositeTexture";
 }

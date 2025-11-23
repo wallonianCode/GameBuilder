@@ -28,19 +28,11 @@ public:
   void draw() override;
   void update() override;
 	void save() override;
-	/*
-	void set_pos_on_tileset(
-	std::vector::iterator<SDL_Point> itPosSrcBegin,
-	std::vector::iterator<SDL_Point> itPosSrcEnd);
-	*/
-
+	
 	//TODO save in a database
 	void save_dest(std::ostream&) const override;
-	SDL_Point get_pos_on_screen() const override;
+	SDL_Point get_upper_left_corner() const override;
 	void set_pos_on_screen(const SDL_Point&) const override;
-
-	virtual std::string to_str() const override;
-
 private:
   std::vector<std::pair<SDL_Rect, SDL_Rect>> vSrcDest_;
 
