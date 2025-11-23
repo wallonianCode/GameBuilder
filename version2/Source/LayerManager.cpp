@@ -12,38 +12,40 @@ LayerManager::LayerManager(const int width) : width_(width) {
 		   ltIt != vLayerTypes.end(); ++ltIt) {
 		this->add_layer(*ltIt);	
 	}
-	currentLayer_ = mLayer_[LayerFactory::LayerType::Soil];
+	currentLayerType_ = vLayerTypes[0];
 }
 
 
 void LayerManager::add_layer(const LayerFactory::LayerType& layerType)  {
-    switch (LayerType) {
-        case LayerFactory::LayerType::Roads: {
-            mLayer_[layerType] = new RoadLayer(width_);
-            break;
-        }
-        case LayerFactory::LayerType::Trees: {
-            mLayer_[layerType] = new TreeLayer(width_);
-            break;
-        }
-        case LayerFactory::LayerType::Soil: {
-            mLayer_[layerType] = new SoilLayer(width_);
-            break;
-        }
-        case LayerFactory::LayerType::Buildings: {
-            mLayer_[layerType] = new BuildingLayer(width_);
-            break;
-        }
-        default:
-            break;
-    }
+	mLayers_[layerType] = LayerFactory::create_layer(layerType);
 }
 
 
 void LayerManager::operator++(int i) {
-	int layerNb;
+	currentLayerType_++;	
+}
 
-	layerNb = static_cast<int>(currentLayerType_);
-	layerNb++;
-	
+
+void LayerManager::operator++() {
+	++currentLayerType_;	
+}
+
+
+void LayerManager::operator--(int i) {
+	currentLayerType_--;	
+}
+
+
+void LayerManager::operator--(int i) {
+	--currentLayerType_;	
+}
+
+
+Texture* LayerManager::get_texture_copy_at_coord(const SDL_Point& coord) {
+	mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
+}
+
+
+void LayerManager::draw() {
+	mLayers_[currentLayerType_]->draw();	
 }
