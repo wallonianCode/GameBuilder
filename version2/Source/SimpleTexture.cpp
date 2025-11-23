@@ -31,7 +31,7 @@ void SimpleTexture::set_pos_on_screen(const SDL_Point& posOnScreen) {
 void SimpleTexture::update() {}
 
 
-SDL_Point SimpleTexture::get_pos_on_screen() const {
+SDL_Point SimpleTexture::get_upper_left_corner() const {
 	return { dest_.x, dest_.y };
 }
 

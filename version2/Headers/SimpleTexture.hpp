@@ -13,7 +13,7 @@ public:
 	virtual void draw(); 
 	// to override in case of bigger tiles (the src may be a vector)
 	void set_pos_on_screen(const SDL_Point&) override;
-	SDL_Point get_pos_on_screen() const override;
+	SDL_Point get_upper_left_corner() const override;
 	void set_dimensions_on_screen(const int& width, const int& height);
 	
 	virtual void update() override;	
