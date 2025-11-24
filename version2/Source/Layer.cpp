@@ -2,7 +2,8 @@
 
 
 
-Layer::Layer(const int width) : width_(width) {}
+Layer::Layer(const int width, const SDL_Point& upperLeftCorner) : 
+width_(width), upperLeftCorner_(upperLeftCorner) {}
 
 
 Texture* Layer::get_texture_copy_at_coord(const SDL_Point& coord) {
@@ -22,4 +23,15 @@ void Layer::draw() {
 			 ++itTextures) {
 		itTextures -> draw();
 	}
+}
+
+
+void Layer::add_texture(Texture* newTexture) {
+	//TODO
+	// check texture position, if there is not already one there!
+}
+
+
+SDL_Point get_upper_left_corner() const {
+	return upperLeftCorner_;
 }

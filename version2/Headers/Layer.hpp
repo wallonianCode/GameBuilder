@@ -14,11 +14,15 @@
 
 class Layer : public Drawable {
 public:
-	Layer(const int width);
+	Layer(const int width, const SDL_Point&);
 	Texture* get_texture_copy_at_coord(const SDL_Point& coord);
+	void add_texture(Texture*);
 	void draw() override;
+protected:
+	SDL_Point get_upper_left_corner() const;
 private:	
 	int width_;
+	SDL_Point upperLeftCorner_;
 	std::vector<Texture*> vTextures_;
 };
 
