@@ -6,7 +6,7 @@
 
 class LayerManager : public Drawable {
 public:
-    LayerManager(const int);
+    LayerManager(const int, const SDL_Point&);
     void add_layer(const LayerFactory::LayerType&);
     void operator++(int); //postfix
     void operator++();    //prefix
