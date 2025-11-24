@@ -1,7 +1,30 @@
+#ifndef TEXTUREFACTORY_H
+#define TEXTUREFACTORY_H
+
 #include "Texture.hpp"
-#include "CompositeTexture.hpp"
-#include "SimpleTexture.hpp"
-#include "DeclinedTexture.hpp"
+
+#include "Oak.hpp"
+#include "Pine.hpp"
+#include "Hornbeam.hpp"
+#include "Poplar.hpp"
+
+#include "Grass.hpp"
+#include "Sand.hpp"
+#include "Bush.hpp"
+#include "Flowers.hpp"
+#include "Moos.hpp"
+#include "Rock.hpp"
+#include "SmallTree.hpp"
+#include "TallGrass.hpp"
+
+#include "DeepWater.hpp"
+#include "ShallowWater.hpp"
+#include "GreenBorder.hpp"
+#include "GrayBorder.hpp"
+
+#include "MoosRoad.hpp"
+#include "RockRoad.hpp"
+#include "SandRoad.hpp"
 
 
 enum class SimpleTextureEnum {
@@ -17,7 +40,7 @@ enum class SimpleTextureEnum {
 
 enum class CompositeTextureEnum {
 	Oak,
-	Pin,
+	Pine,
 	Hornbeam,
 	Poplar
 };
@@ -43,6 +66,9 @@ public:
 	create_composite_texture(const SDL_Point& pos, 
 						   const CompositeTextureEnum& textEnum);
 
+	static SimpleTexture*
+	create_grass(const SDL_Point&, const SimpleTextureEnum&);
+
 	static void 
 	create_road(const SDL_Point&, 
 			   const SDL_Point&,
@@ -59,18 +85,17 @@ public:
 
 	static void
 	create_water(const SDL_Point&,
-	            const SDL_Point&,
 			    std::vector<DeclinedTexture*>,
 			    std::vector<DeclinedTexture*>,
 				const DeclinedTextureEnum&);
+
+		
 
 private:
 	static DeclinedTexture*
 	create_declined_texture(const SDL_Point& pos,
 						  const DeclinedTextureEnum& declTextEnum,
-						  const DeclinedTextureOrientation& orientation);
-
-
-
-	
+						  const DeclinedTextureOrientation& orientation);	
 };
+
+#endif
