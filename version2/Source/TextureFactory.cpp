@@ -145,7 +145,6 @@ static void create_border(const SDL_Point& posBegin,
 
 
 static void create_water(const SDL_Point& posBegin,
-					     const SDL_Point& posEnd,
 					     std::vector<DeclinedTexture*> itWaterBegin,
 					     std::vector<DeclinedTexture*> itWaterEnd,
 						 const DeclinedTextureEnum& water) {
