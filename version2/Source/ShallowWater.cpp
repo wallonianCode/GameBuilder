@@ -2,7 +2,8 @@
 
 
 ShallowWater::ShallowWater(const SDL_Point& pos,
-						   const DeclinedTextureOrientation& orientation) {
+						   const DeclinedTextureOrientation& orientation) : 
+						   SimpleTexture(pos) {
 	SDL_Rect tile;
 	switch (orientation) {
 		case DeclinedTextureOrientation::North {
