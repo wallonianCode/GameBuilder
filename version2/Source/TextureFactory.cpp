@@ -3,8 +3,7 @@
 
 SimpleTexture* 
 TextureFactory::createSimpleTexture(const SDL_Point& pos,
-																		const TextureEnum& textureKind)
-{
+									const TextureEnum& textureKind) {
 	SimpleTexture* newTexture = nullptr;
 
 	switch (textureKind) {
@@ -183,10 +182,6 @@ static void create_water(const SDL_Point& posBegin,
 	}
 	itWaterEnd = itWater + 1;
 }
-
-
-
-
 
 
 DeclinedTexture*
