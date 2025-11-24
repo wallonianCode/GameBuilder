@@ -3,7 +3,7 @@
 
 class LayerFactory {
 public:
-    enum class LayerType {Roads, Trees, Soil, Buildings};
+    enum class LayerType {Roads, Trees, Soil, Buildings, Water};
     static Layer* create_layer(const LayerFactory::LayerType&);
 		LayerType operator++(const LayerType&, int); //postfix
 		LayerType operator++(const LayerType&);

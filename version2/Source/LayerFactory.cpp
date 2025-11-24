@@ -6,20 +6,24 @@ LayerFactory::create_layer(const LayerFactory::LayerType& layerType) {
 	newLayer = nullptr;
 	switch (layerType) {
 			case LayerFactory::LayerType::Roads: {
-					newLayer = new RoadLayer(width_);
-					break;
+				newLayer = new RoadLayer(width_);
+				break;
 			}
 			case LayerFactory::LayerType::Trees: {
-					newLayer = new TreeLayer(width_);
-					break;
+				newLayer = new TreeLayer(width_);
+				break;
 			}
 			case LayerFactory::LayerType::Soil: {
-					newLayer = new SoilLayer(width_);
-					break;
+				newLayer = new SoilLayer(width_);
+				break;
 			}
 			case LayerFactory::LayerType::Buildings: {
-					newLayer = new BuildingLayer(width_);
-					break;
+				newLayer = new BuildingLayer(width_);
+				break;
+			}
+			case LayerFactory::LayerType::Water: {
+				newLayer = new Water(width_);
+				break;
 			}
 			default: {
 				throw 
@@ -27,7 +31,6 @@ LayerFactory::create_layer(const LayerFactory::LayerType& layerType) {
 				break;
 			}
     }
-	}
 	return newLayer;
 }
 
