@@ -2,7 +2,7 @@
 #include "CompositeTexture.hpp"
 #include "SimpleTexture.hpp"
 #include "DeclinedTexture.hpp"
-//TODO complete the blueprint of the class
+
 
 enum class SimpleTextureEnum {
 	Sand,
@@ -33,21 +33,44 @@ enum class DeclinedTextureEnum {
 	RockRoad
 };
 
-//TODO develop the declined texture types based on the blueprint
-//     necessary in this class. With an orientation static struct.
 
 class TextureFactory {
 public:
-	static SimpleTexture* createSimpleTexture(const SDL_Point&, 
-							 														  const SimpleTextureEnum&);
+	static SimpleTexture* create_simple_texture(const SDL_Point&, 
+							 				  const SimpleTextureEnum&);
 
 	static CompositeTexture* 
-	createCompositeTexture(const SDL_Point& pos, 
-												 const CompositeTextureEnum& textEnum);
+	create_composite_texture(const SDL_Point& pos, 
+						   const CompositeTextureEnum& textEnum);
 
+	static void 
+	create_road(const SDL_Point&, 
+			   const SDL_Point&,
+			   std::vector<DeclinedTexture*>,
+			   std::vector<DeclinedTexture*>,
+			   const DeclinedTextureEnum&);
 
+	static void
+	create_border(const SDL_Point&,
+				 const SDL_Point&
+				 std::vector<DeclinedTexture*>,
+			     std::vector<DeclinedTexture*>,
+				 const DeclinedTextureEnum&);
+
+	static void
+	create_water(const SDL_Point&,
+	            const SDL_Point&,
+			    std::vector<DeclinedTexture*>,
+			    std::vector<DeclinedTexture*>,
+				const DeclinedTextureEnum&);
+
+private:
 	static DeclinedTexture*
-	createDeclinedTexture(const SDL_Point& pos,
-												const DeclinedTextureEnum& declTextEnum,
-												const Orientation& orientation);
+	create_declined_texture(const SDL_Point& pos,
+						  const DeclinedTextureEnum& declTextEnum,
+						  const DeclinedTextureOrientation& orientation);
+
+
+
+	
 };
