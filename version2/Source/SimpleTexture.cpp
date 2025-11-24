@@ -7,6 +7,11 @@ SimpleTexture::SimpleTexture() : tileset_(leafGreenSimpleTextureFileName) {
 }
 
 
+SimpleTexture::SimpleTexture(const SDL_Point& pos) : tileset_(leafGreenSimpleTextureFileName) {
+	this->init_dest(pos);
+}
+
+
 SimpleTexture::SimpleTexture(const std::string& tileset, 
 const SDL_Point& posOnScreen) : tileset_(tileset) {
 	this->init_dest(posOnScreen);
@@ -90,14 +95,4 @@ void SimpleTexture::set_pos_on_tileset(const SDL_Point& pos) {
 void SimpleTexture::init_dest(const SDL_Point& posOnScreen) {
 	this->set_pos_on_screen(posOnScreen);
 	this->set_dimensions_on_screen(STD_WIDTH, STD_HEIGHT);
-}
-
-
-std::string SimpleTexture::to_str() const {
-	return "Grass";
-}
-
-
-void SimpleTexture::init_src() {
-	src_ = {6*S+2, 2, S-3, S-3};
 }

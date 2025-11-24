@@ -7,6 +7,8 @@
 class SimpleTexture : public Texture {
 public:
 	SimpleTexture();
+	//TODO implement
+	SimpleTexture(const SDL_Point& );
 	SimpleTexture(const std::string& tileset);
 	SimpleTexture(const std::string& tileset, const SDL_Point& posOnScreen);
 	// to override in case of bigger tiles (iterate over the src vector)
@@ -28,8 +30,6 @@ public:
 	virtual SimpleTexture* clone() const = 0;
 
 private:
-	//setting the init src rect. Specific to every subclass.
-	virtual void init_src() = 0;
 	std::string tileset_;		
 	SDL_Rect src_;
 	SDL_Rect dest_;
