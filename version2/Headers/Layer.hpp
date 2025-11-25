@@ -20,6 +20,7 @@ public:
 	void draw() override;
 protected:
 	SDL_Point get_upper_left_corner() const;
+	//int get_width() const;
 private:	
 	int width_;
 	SDL_Point upperLeftCorner_;

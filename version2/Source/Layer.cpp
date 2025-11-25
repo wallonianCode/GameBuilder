@@ -16,6 +16,12 @@ Texture* Layer::get_texture_copy_at_coord(const SDL_Point& coord) {
 }
 
 
+void Layer::add_texture(Texture* newTexture) {
+	//TODO
+	// check texture position, if there is not already one there!
+}
+
+
 void Layer::draw() {
 	std::vector<Texture*>::iterator itTextures;
 	for (itTexture = vTextures_.begin();
@@ -26,12 +32,13 @@ void Layer::draw() {
 }
 
 
-void Layer::add_texture(Texture* newTexture) {
-	//TODO
-	// check texture position, if there is not already one there!
-}
-
 
 SDL_Point get_upper_left_corner() const {
 	return upperLeftCorner_;
 }
+
+/*
+int Layer::get_width() const {
+	return width_;
+}
+	*/
