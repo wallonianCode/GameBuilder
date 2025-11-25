@@ -32,7 +32,7 @@ Layer(width, upperLeftCorner) {
     this->add_texture(
         TextureFactory::create_simple_texture({upperLeftCorner.x + SimpleTexture::get_width(), 
                                                upperLeftCorner.y + 2*SimpleTexture::get_height()},
-                                              SimpleTextureEnum::Rock));   
+                                               SimpleTextureEnum::Rock));   
 
 
 }
