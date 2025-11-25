@@ -1,11 +1,11 @@
 #ifndef  BUILDINGLAYER_H
 #define  BUILDINGLAYER_H
 
-#include "SimpleTexture.hpp"
+#include "Layer.hpp"
 
-class BuildingLayer : public TextureCloneable<SimpleTexture, BuildingLayer> {
+class BuildingLayer : public TextureCloneable<Layer, BuildingLayer> {
 public:
-    BuildingLayer(const SDL_Point&);
+    BuildingLayer(const int, const SDL_Point&);
 };
 
 #endif
