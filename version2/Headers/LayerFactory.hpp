@@ -13,11 +13,12 @@
 class LayerFactory {
 public:
     enum class LayerType {Road, Tree, Soil, Buildings, Water, Border};
-    static Layer* create_layer(const LayerFactory::LayerType&);
-		LayerType operator++(const LayerType&, int); //postfix
-		LayerType operator++(const LayerType&);
-		LayerType operator--(const LayerType&, int);
-		LayerType operator--(const LayerType&);
+    static Layer* create_layer(const int, const SDL_Point&,
+							   const LayerFactory::LayerType&);
+	LayerType operator++(const LayerType&, int); //postfix
+	LayerType operator++(const LayerType&);
+	LayerType operator--(const LayerType&, int);
+	LayerType operator--(const LayerType&);
 };
 
 #endif

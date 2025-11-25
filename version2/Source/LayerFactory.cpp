@@ -1,28 +1,30 @@
 #include "../Headers/LayerFactory.hpp"
 
 
-LayerFactory::create_layer(const LayerFactory::LayerType& layerType) {
+LayerFactory::create_layer(const int width,
+						   const SDL_Point& upperLeftCorner,
+						   const LayerFactory::LayerType& layerType) {
 	Layer* newLayer;
 	newLayer = nullptr;
 	switch (layerType) {
 			case LayerFactory::LayerType::Roads: {
-				newLayer = new RoadLayer(width_);
+				newLayer = new RoadLayer(width, upperLeftCorner);
 				break;
 			}
 			case LayerFactory::LayerType::Trees: {
-				newLayer = new TreeLayer(width_);
+				newLayer = new TreeLayer(width, upperLeftCorner);
 				break;
 			}
 			case LayerFactory::LayerType::Soil: {
-				newLayer = new SoilLayer(width_);
+				newLayer = new SoilLayer(width, upperLeftCorner);
 				break;
 			}
 			case LayerFactory::LayerType::Buildings: {
-				newLayer = new BuildingLayer(width_);
+				newLayer = new BuildingLayer(width, upperLeftCorner);
 				break;
 			}
 			case LayerFactory::LayerType::Water: {
-				newLayer = new Water(width_);
+				newLayer = new WaterLayer(width, upperLeftCorner);
 				break;
 			}
 			default: {
