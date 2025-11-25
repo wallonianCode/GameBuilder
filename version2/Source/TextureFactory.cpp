@@ -184,9 +184,6 @@ static void create_water(const SDL_Point& posBegin,
 }
 
 
-static SimpleTexture* create_grass(const SDL_Point& pos, const GrassType& grassType) {
-	//TODO 
-}
 
 
 DeclinedTexture*

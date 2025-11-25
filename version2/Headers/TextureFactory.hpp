@@ -70,8 +70,6 @@ public:
 	create_composite_texture(const SDL_Point& pos, 
 						   	 const CompositeTextureEnum& ;
 
-	static SimpleTexture*
-	create_grass(const SDL_Point&, const GrassType&);
 
 	static void 
 	create_road(const SDL_Point&, 
