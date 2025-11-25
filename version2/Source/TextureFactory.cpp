@@ -2,7 +2,7 @@
 
 
 SimpleTexture* 
-TextureFactory::createSimpleTexture(const SDL_Point& pos,
+TextureFactory::create_simple_texture(const SDL_Point& pos,
 									const TextureEnum& textureKind) {
 	SimpleTexture* newTexture = nullptr;
 
@@ -33,6 +33,7 @@ TextureFactory::createSimpleTexture(const SDL_Point& pos,
 		}
 		case SimpleTextureEnum::TallGrass: {
 			newTexture = new TallGrass(pos);
+			break;
 		}
 		default:
 			break;
@@ -42,8 +43,8 @@ TextureFactory::createSimpleTexture(const SDL_Point& pos,
 
 
 CompositeTexture*
-TextureFactory::createCompositeTexture(const SDL_Point& pos,
-									   const CompositeTextureEnum& compositeTextureKind) {
+TextureFactory::create_composite_texture(const SDL_Point& pos,
+									   	 const CompositeTextureEnum& compositeTextureKind) {
 	CompositeTexture* newTexture = nullptr;
 
 	switch (compositeTextureKind) {
@@ -75,10 +76,10 @@ TextureFactory::createCompositeTexture(const SDL_Point& pos,
 
 
 static void create_road(const SDL_Point& posBegin, 
-					   const SDL_Point& posEnd,
-					   std::vector<DeclinedTexture*> itRoadBegin,
-					   std::vector<DeclinedTexture*> itRoadEnd,
-					   const DeclinedTextureEnum& road) {
+					    const SDL_Point& posEnd,
+					    std::vector<DeclinedTexture*> itRoadBegin,
+					    std::vector<DeclinedTexture*> itRoadEnd,
+					    const DeclinedTextureEnum& road) {
 	std::vector<DeclinedTextureOrientation> roadOrientations =
 	{DeclinedTextureOrientation::East, DeclinedTextureOrientation::West, 
 	 DeclinedTextureOrientation::North, DeclinedTextureOrientation::South,
@@ -110,10 +111,10 @@ static void create_road(const SDL_Point& posBegin,
 
 
 static void create_border(const SDL_Point& posBegin, 
-					   	 const SDL_Point& posEnd,
-					   	 std::vector<DeclinedTexture*> itBorderBegin,
-					   	 std::vector<DeclinedTexture*> itBorderEnd,
-					   	 const DeclinedTextureEnum& border) {
+					   	  const SDL_Point& posEnd,
+					   	  std::vector<DeclinedTexture*> itBorderBegin,
+					   	  std::vector<DeclinedTexture*> itBorderEnd,
+					   	  const DeclinedTextureEnum& border) {
 	std::vector<DeclinedTextureOrientation> borderOrientations;
 	std::vector<DeclinedTextureOrientation>::iterator itBorderOrientations;
 	std::vector<DeclinedTexture*> itBorder;
@@ -183,10 +184,15 @@ static void create_water(const SDL_Point& posBegin,
 }
 
 
+static SimpleTexture* create_grass(const SDL_Point& pos, const GrassType& grassType) {
+	return new Grass(pos, grassType);
+}
+
+
 DeclinedTexture*
 TextureFactory::create_declined_texture(const SDL_Point& pos,
-									  const DeclinedTextureEnum& declinedTextureEnum,
-									  const DeclinedTextureOrientation& orientation) {
+									    const DeclinedTextureEnum& declinedTextureEnum,
+									  	const DeclinedTextureOrientation& orientation) {
 	DeclinedTexture* newTexture = nullptr;
 	switch (declinedTextureEnum) {
 		case DeclinedTextureEnum::RockRoad: {

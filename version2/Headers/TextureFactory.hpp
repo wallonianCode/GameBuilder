@@ -34,7 +34,11 @@ enum class SimpleTextureEnum {
 	Moos,
 	Rock,
 	SmallTree,
-	TallGrass
+	TallGrass,
+	GreenWhiteGrass,
+	GreenWhiteGreenGrass,
+	Green,
+	White
 };
 
 
@@ -60,14 +64,14 @@ enum class DeclinedTextureEnum {
 class TextureFactory {
 public:
 	static SimpleTexture* create_simple_texture(const SDL_Point&, 
-							 				  const SimpleTextureEnum&);
+							 				  	const SimpleTextureEnum&);
 
 	static CompositeTexture* 
 	create_composite_texture(const SDL_Point& pos, 
-						   const CompositeTextureEnum& textEnum);
+						   	 const CompositeTextureEnum& textEnum);
 
 	static SimpleTexture*
-	create_grass(const SDL_Point&, const SimpleTextureEnum&);
+	create_grass(const SDL_Point&, const GrassType&);
 
 	static void 
 	create_road(const SDL_Point&, 
