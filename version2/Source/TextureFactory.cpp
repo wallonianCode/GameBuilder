@@ -111,7 +111,7 @@ static void create_road(const SDL_Point& posBegin,
 
 
 static void create_border(const SDL_Point& posBegin, 
-					   	  const SDL_Point& posEnd,
+					   	  const int width,
 					   	  std::vector<DeclinedTexture*> itBorderBegin,
 					   	  std::vector<DeclinedTexture*> itBorderEnd,
 					   	  const DeclinedTextureEnum& border) {
@@ -185,7 +185,7 @@ static void create_water(const SDL_Point& posBegin,
 
 
 static SimpleTexture* create_grass(const SDL_Point& pos, const GrassType& grassType) {
-	return new Grass(pos, grassType);
+	//TODO 
 }
 
 

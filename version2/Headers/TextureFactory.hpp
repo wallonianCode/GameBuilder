@@ -37,8 +37,8 @@ enum class SimpleTextureEnum {
 	TallGrass,
 	GreenWhiteGrass,
 	GreenWhiteGreenGrass,
-	Green,
-	White
+	GreenGrass,
+	WhiteGrass
 };
 
 
@@ -68,7 +68,7 @@ public:
 
 	static CompositeTexture* 
 	create_composite_texture(const SDL_Point& pos, 
-						   	 const CompositeTextureEnum& textEnum);
+						   	 const CompositeTextureEnum& ;
 
 	static SimpleTexture*
 	create_grass(const SDL_Point&, const GrassType&);
@@ -98,8 +98,8 @@ public:
 private:
 	static DeclinedTexture*
 	create_declined_texture(const SDL_Point& pos,
-						  const DeclinedTextureEnum& declTextEnum,
-						  const DeclinedTextureOrientation& orientation);	
+						    const DeclinedTextureEnum& declTextEnum,
+						  	const DeclinedTextureOrientation& orientation);	
 };
 
 #endif
