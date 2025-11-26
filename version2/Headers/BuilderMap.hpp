@@ -2,6 +2,7 @@
 #define BUILDER_MAP_H
 
 #include <memory>
+
 #include "Map.hpp"
 #include "GreenBackground.hpp"
 #include "Selector.hpp"

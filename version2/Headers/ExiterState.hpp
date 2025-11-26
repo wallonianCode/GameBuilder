@@ -1,6 +1,6 @@
 #ifndef EXITERSTATE_H
 #define EXITERSTATE_H
-
+#include <memory>
 #include "GameState.hpp"
 #include "Background.hpp"
 #include "Color.hpp"

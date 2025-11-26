@@ -2,7 +2,7 @@
 #define MOOSROAD_H
 
 
-#include "Road.hpp"
+#include "DeclinedTexture.hpp"
 
 
 class MoosRoad : public TextureCloneable<DeclinedTexture, MoosRoad> {

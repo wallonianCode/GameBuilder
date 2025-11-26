@@ -1,7 +1,7 @@
 #ifndef GRAY_BORDER_H
 #define GRAY_BORDER_H
 
-#include "Border.hpp"
+#include "DeclinedTexture.hpp"
 
 class GreyBorder : public TextureCloneable<DeclinedTexture, GreyBorder> {
 public:

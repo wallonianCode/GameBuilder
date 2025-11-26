@@ -1,7 +1,7 @@
 #ifndef SANDROAD_H
 #define SANDROAD_H
 
-#include "Road.hpp"
+#include "DeclinedTexture.hpp"
 
 class SandRoad : public TextureCloneable<DeclinedTexture, SandRoad> {
 public:

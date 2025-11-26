@@ -4,6 +4,7 @@
 #include <vector>
 #include "TextureCloneable.hpp"
 
+/*
 enum class Direction {North, South, East, West};
 
 
@@ -86,7 +87,7 @@ public:
 	Character(const SDL_Point&, const std::string&);
 private:		
 	// for class compliance; functionality is overtaken by nested class
-	void init_src() override;
+
 	// set the front src tile
 	void init_src(const Character::Name::Type&);
 	// update the src rect as a function of the current side	
@@ -103,5 +104,5 @@ private:
 	unsigned patternIndex_ = 0;
 	std::vector<Direction> pattern_; 
 };
-
+*/
 #endif

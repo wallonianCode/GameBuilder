@@ -1,7 +1,7 @@
 #ifndef SHALLOWWATER_H
 #define SHALLOWWATER_H
 
-#include "Water.hpp"
+#include "DeclinedTexture.hpp"
 
 
 class ShallowWater : public TextureCloneable<DeclinedTexture, ShallowWater> {

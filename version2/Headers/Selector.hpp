@@ -3,9 +3,7 @@
 
 #include "Drawable.hpp"
 #include "Layer.hpp"
-#include "LandLayer.hpp"
-#include "BigLandLayer.hpp"
-#include "CharacterLayer.hpp"
+#include "LayerManager.hpp"
 #include "Window.hpp"
 #include "Texture.hpp"
 

@@ -7,7 +7,6 @@
 #include "SandRoad.hpp"
 #include "MoosRoad.hpp"
 #include "RockRoad.hpp"
-#include "Grass.hpp"
 #include "Sand.hpp"
 #include "Character.hpp"
 

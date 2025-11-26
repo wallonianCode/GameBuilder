@@ -1,8 +1,8 @@
 #ifndef GREENBACKGROUND_H
 #define GREENBACKGROUND_H
 
-#include "Grass.hpp"
 #include "Background.hpp"
+#include "SimpleTexture.hpp"
 #include "Window.hpp"
 #include <vector>
 
@@ -12,7 +12,7 @@ public:
 	GreenBackground();
 
 private:
-	std::vector<Grass> vGrass;
+	std::vector<SimpleTexture*> vGrass;
 };
 
 
