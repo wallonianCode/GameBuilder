@@ -26,9 +26,7 @@ void Renderer::reset(Background* background) {
 
 Renderer::Renderer() {
 	Window* window = Window::get_instance();
-	renderer_ = SDL_CreateRenderer(window->get_sdl_window(), -1, 
-	SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | 
-	SDL_RENDERER_TARGETTEXTURE);
+	renderer_ = SDL_CreateRenderer(window->get_sdl_window(), NULL);
 	if (! renderer_) {
 		std::cout << SDL_GetError() << std::endl;
 		throw std::runtime_error(std::string(__FUNCTION__) + 

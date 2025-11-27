@@ -61,29 +61,30 @@ int Window::get_height() {
 }
 
 Window::Window() {
-	int imgFlags = IMG_INIT_PNG;
+	//int imgFlags = IMG_INIT_PNG;
 	
 	// init SDL_Window	
 	window_ = SDL_CreateWindow(WINDOW_TITLE.c_str(), 
-	SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-	WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+	WINDOW_WIDTH, WINDOW_HEIGHT,
+	SDL_WINDOWPOS_CENTERED | SDL_WINDOWPOS_CENTERED);
 	if (! window_) {
 		std::printf("SDL_Window could not be created: %s\n", SDL_GetError());
 		throw std::runtime_error("Player::init(): failed window init");
 	}
 
 	// init SDL_Image
-  	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-
+	// instead of setHint
+	//SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST);
+/* 
 	if( !( IMG_Init(imgFlags) & imgFlags))
     {
 		std::printf( "SDL_image could not initialize! SDL_image\
 		Error: %s\n", IMG_GetError() );
 		throw std::runtime_error("Player::init(): failed sdl_image init");
 	}
-
+*/
 	// init TTF_Fonts
-	if (TTF_Init() < 0) {
-  		std::cout << __FUNCTION__ << TTF_GetError() << std::endl;
+	if (!TTF_Init()) {
+  		std::cout << __FUNCTION__ << SDL_GetError() << std::endl;
 	}
 }
