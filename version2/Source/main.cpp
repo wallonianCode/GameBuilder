@@ -1,5 +1,6 @@
 #include <iostream>
 #include <exception>
+#include <SDL3/SDL_main.h>
 #include "../Headers/GameManager.hpp"
 
 
