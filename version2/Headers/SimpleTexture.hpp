@@ -2,7 +2,7 @@
 #define SIMPLETEXTURE_H
 
 #include "Texture.hpp"
-
+#include "TextureCloneable.hpp"
 
 class SimpleTexture : public Texture {
 public:
@@ -12,7 +12,7 @@ public:
 	SimpleTexture(const std::string& tileset);
 	SimpleTexture(const std::string& tileset, const SDL_Point& posOnScreen);
 	// to override in case of bigger tiles (iterate over the src vector)
-	virtual void draw(); 
+	virtual void draw() override; 
 	// to override in case of bigger tiles (the src may be a vector)
 	void set_pos_on_screen(const SDL_Point&) override;
 	SDL_Point get_upper_left_corner() const override;

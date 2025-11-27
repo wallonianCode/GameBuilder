@@ -6,7 +6,6 @@
 
 #include "Drawable.hpp"
 #include "TextureLoader.hpp"
-#include "TextureCloneable.hpp"
 
 
 const std::string leafGreenTextureFileName = "pkmnLeafGreenTileset2";
