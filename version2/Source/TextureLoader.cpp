@@ -24,8 +24,8 @@ const std::string& filename) {
     std::printf("Color: %d, %d, %d\n", transparentColor.r,
 		transparentColor.g, transparentColor.b);
 	
-		SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(
-		image->format, transparentColor.r, transparentColor.g, 
+		SDL_SetSurfaceColorKey(image, true, SDL_MapSurfaceRGB(
+		image, transparentColor.r, transparentColor.g, 
 		transparentColor.b)); 
    
 		//SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_BLEND);
@@ -54,7 +54,7 @@ void TextureLoader::deallocate_textures() {
 	std::unordered_map<std::string, SDL_Surface*>::iterator surfacesIt = 
 	_surfaces.begin();
 	while (surfacesIt != _surfaces.end()) {
-		SDL_FreeSurface(surfacesIt->second);
+		SDL_DestroySurface(surfacesIt->second);
 		surfacesIt = _surfaces.erase(surfacesIt);
 	}
 }
@@ -62,43 +62,21 @@ void TextureLoader::deallocate_textures() {
 
 SDL_Color TextureLoader::get_pixel_color(SDL_Surface* surface, 
 int x, int y) {
-  uint32_t* targetPixel;
-	uint32_t temp, pixel;
-	uint8_t red, green, blue, alpha;
+    uint8_t* pixel;
+	uint8_t red, green, blue;
+    const SDL_PixelFormatDetails* pixelDetails = SDL_GetPixelFormatDetails(surface->format);
+	const Uint8 bpp = SDL_BYTESPERPIXEL(surface->format);
 
-	SDL_PixelFormat* fmt = surface->format;
-	SDL_LockSurface(surface);
-	targetPixel = (uint32_t*)((uint8_t*) surface->pixels 
-														+ y * surface->pitch
-														+ x * surface->format->BytesPerPixel);
-	pixel = *targetPixel;
-	SDL_UnlockSurface(surface);
- 
-  temp = pixel & fmt->Rmask;
-	temp = temp >> fmt->Rshift;
-	temp = temp << fmt->Rloss;
-	red = (uint8_t)temp;
+	pixel = static_cast<uint8_t*>(surface->pixels) + 
+									y * surface->pitch +
+									x * bpp;
 
-  temp = pixel & fmt->Gmask;
-	temp = temp >> fmt->Gshift;
-	temp = temp << fmt->Gloss;
-	green = (uint8_t)temp;
-
-	temp = pixel & fmt->Bmask;
-	temp = temp >> fmt->Bshift;
-	temp = temp << fmt->Bloss;
-	blue = (uint8_t)temp;
-
-	temp = pixel & fmt->Amask;
-	temp = temp >> fmt->Ashift;
-	temp = temp << fmt->Aloss;
-	alpha = (uint8_t)temp;
-
-	return { red, green, blue, alpha };
+	SDL_GetRGB(*reinterpret_cast<uint32_t*>(pixel), pixelDetails, NULL, &red, &green, &blue);
+	return { red, green, blue };
 }
 
 
-
+/*
 std::vector<SDL_Color> 
 TextureLoader::get_border_pixels(const std::string& sName, const SDL_Rect& src) {
 	std::vector<SDL_Color> pixels;
@@ -118,3 +96,4 @@ TextureLoader::get_border_pixels(const std::string& sName, const SDL_Rect& src) 
 	}
 	return pixels;
 }
+	*/

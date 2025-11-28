@@ -2,7 +2,7 @@
 
 
 
-Layer::Layer(const int width, const SDL_Point& upperLeftCorner) : 
+Layer::Layer(const int width, const SDL_FPoint& upperLeftCorner) : 
 width_(width), upperLeftCorner_(upperLeftCorner) {}
 
 
@@ -11,8 +11,9 @@ Texture* Layer::get_texture_copy_at_coord(const SDL_Point& coord) {
 
 	itTextureCopyAtCoord = 
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
-							 TextureComparator(coord));
-  return itTextureCopyAtCoord->copy();	
+				[coord](Texture* texture){return texture->get_upper_left_corner().x == coord.x &&
+											texture->get_upper_left_corner().y == coord.y;});
+  return (*itTextureCopyAtCoord)->clone();	
 }
 
 
@@ -23,16 +24,16 @@ void Layer::add_texture(Texture* newTexture) {
 
 void Layer::draw() {
 	std::vector<Texture*>::iterator itTextures;
-	for (itTexture = vTextures_.begin();
-			 itTexture != vTextures_.end();
+	for (itTextures = vTextures_.begin();
+			 itTextures != vTextures_.end();
 			 ++itTextures) {
-		itTextures -> draw();
+		(*itTextures) -> draw();
 	}
 }
 
 
 
-SDL_Point get_upper_left_corner() const {
+SDL_FPoint Layer::get_upper_left_corner() const {
 	return upperLeftCorner_;
 }
 

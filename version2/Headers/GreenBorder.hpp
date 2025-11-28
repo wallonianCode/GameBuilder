@@ -6,7 +6,7 @@
 
 class GreenBorder : public TextureCloneable<DeclinedTexture, GreenBorder> {
 public:
-	GreenBorder(const SDL_Point&, const DeclinedTextureOrientation&);
+	GreenBorder(const SDL_FPoint&, const DeclinedTextureOrientation&);
 };
 
 

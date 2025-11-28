@@ -3,7 +3,7 @@
 
 void PlayerMap::draw() {
 	Map::draw();
-	red_.draw();
+	//red_.draw();
 }
 
 

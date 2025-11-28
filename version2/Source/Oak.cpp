@@ -15,11 +15,11 @@ Oak::Oak(const SDL_Point& initPos) {
 }
 
 
-int Oak::get_width() {
+float Oak::get_width() {
 	return 3*TILE_WIDTH;
 }
 
 
-int Oak::get_height() {
+float Oak::get_height() {
 	return 4*TILE_HEIGHT;
 }

@@ -1,20 +1,20 @@
 #include "../Headers/SimpleTexture.hpp"
 
 
-SimpleTexture::SimpleTexture() : tileset_(leafGreenSimpleTextureFileName) {
-	// middle of the screen
-	this->init_dest({WINDOW_WIDTH/2, WINDOW_HEIGHT/2});	
+SimpleTexture::SimpleTexture() : tileset_(leafGreenTextureFileName) {
+	// default to the middle of the screen
+	this->set_upper_left_corner({WINDOW_WIDTH/2, WINDOW_HEIGHT/2});
 }
 
 
-SimpleTexture::SimpleTexture(const SDL_Point& pos) : tileset_(leafGreenSimpleTextureFileName) {
-	this->init_dest(pos);
+SimpleTexture::SimpleTexture(const SDL_FPoint& pos) : tileset_(leafGreenTextureFileName) {
+	this->set_upper_left_corner(pos);
 }
 
 
-SimpleTexture::SimpleTexture(const std::string& tileset, 
-const SDL_Point& posOnScreen) : tileset_(tileset) {
-	this->init_dest(posOnScreen);
+SimpleTexture::SimpleTexture(const std::string& tileset, const SDL_FPoint& pos) : 
+tileset_(tileset) {
+	this->set_upper_left_corner(pos);
 }
 
 
@@ -23,11 +23,11 @@ void SimpleTexture::draw() {
 	SDL_Texture* texture = 
 	TextureLoader::load_texture
 	(renderer->get_sdl_renderer(), tileset_);
-	SDL_RenderCopy(renderer->get_sdl_renderer(), texture, &src_, &dest_);
+	SDL_RenderTexture(renderer->get_sdl_renderer(), texture, &src_, &dest_);
 }
 
 
-void SimpleTexture::set_pos_on_screen(const SDL_Point& posOnScreen) {
+void SimpleTexture::set_upper_left_corner(const SDL_FPoint& posOnScreen) {
 	dest_.x = posOnScreen.x;
 	dest_.y = posOnScreen.y;
 }
@@ -36,14 +36,10 @@ void SimpleTexture::set_pos_on_screen(const SDL_Point& posOnScreen) {
 void SimpleTexture::update() {}
 
 
-SDL_Point SimpleTexture::get_upper_left_corner() const {
+SDL_FPoint SimpleTexture::get_upper_left_corner() const {
 	return { dest_.x, dest_.y };
 }
 
-
-void SimpleTexture::set_x_pos_on_tileset(const int x) {
-	src_.x = x;
-}
 
 
 void SimpleTexture::set_dim_on_tileset(const int width, const int height) {
@@ -59,40 +55,17 @@ const int& height) {
 }
 
 
-void SimpleTexture::save_dest(std::ostream& os) const {
-	os << dest_.x << "," << dest_.y << "," << 
-	dest_.w << "," << dest_.h << " ";
-}
-
-
-std::ostream& operator<<(std::ostream& os, const SimpleTexture& texture) {
-	texture.save(os);
-	return os;
-}
-
-
-/**
-SDL_Point SimpleTexture::get_next_pos() const {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-	return {x, y};
-}
-*/
-
-
-void SimpleTexture::save(std::ostream& os) const {
-	os << to_str() << " ";
-	this->save_dest(os);
-}
-
-
-void SimpleTexture::set_pos_on_tileset(const SDL_Point& pos) {
+void SimpleTexture::set_pos_on_tileset(const SDL_FPoint& pos) {
 	src_.x = pos.x;
 	src_.y = pos.y;	
 }
 
 
-void SimpleTexture::init_dest(const SDL_Point& posOnScreen) {
-	this->set_pos_on_screen(posOnScreen);
-	this->set_dimensions_on_screen(STD_WIDTH, STD_HEIGHT);
+float SimpleTexture::get_width() {
+	return TILE_DIM;
+}
+
+
+float SimpleTexture::get_height() {
+	return TILE_DIM;
 }

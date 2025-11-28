@@ -4,7 +4,7 @@
 #include "Layer.hpp"
 
 
-class WaterLayer {
+class WaterLayer : public Layer {
 public:
     WaterLayer(const int, const SDL_Point&);
 };

@@ -5,7 +5,7 @@
 
 class GreyBorder : public TextureCloneable<DeclinedTexture, GreyBorder> {
 public:
-	GreyBorder(const SDL_Point&, const DeclinedTextureOrientation&);
+	GreyBorder(const SDL_FPoint&, const DeclinedTextureOrientation&);
 };
 
 

@@ -4,11 +4,10 @@
 #include "Texture.hpp"
 
 #include "Oak.hpp"
-#include "Pine.hpp"
+#include "Pin.hpp"
 #include "Hornbeam.hpp"
 #include "Poplar.hpp"
 
-#include "Grass.hpp"
 #include "Sand.hpp"
 #include "Bush.hpp"
 #include "Flowers.hpp"
@@ -20,7 +19,7 @@
 #include "DeepWater.hpp"
 #include "ShallowWater.hpp"
 #include "GreenBorder.hpp"
-#include "GrayBorder.hpp"
+#include "GreyBorder.hpp"
 
 #include "MoosRoad.hpp"
 #include "RockRoad.hpp"
@@ -68,27 +67,27 @@ public:
 
 	static CompositeTexture* 
 	create_composite_texture(const SDL_Point& pos, 
-						   	 const CompositeTextureEnum& ;
+						   	 const CompositeTextureEnum&) ;
 
 
 	static void 
 	create_road(const SDL_Point&, 
 			   const SDL_Point&,
-			   std::vector<DeclinedTexture*>,
-			   std::vector<DeclinedTexture*>,
+			   std::vector<DeclinedTexture*>::iterator,
+			   std::vector<DeclinedTexture*>::iterator,
 			   const DeclinedTextureEnum&);
 
 	static void
 	create_border(const SDL_Point&,
-				 const SDL_Point&
-				 std::vector<DeclinedTexture*>,
-			     std::vector<DeclinedTexture*>,
+				 const SDL_Point&,
+				 std::vector<DeclinedTexture*>::iterator,
+			     std::vector<DeclinedTexture*>::iterator,
 				 const DeclinedTextureEnum&);
 
 	static void
 	create_water(const SDL_Point&,
-			    std::vector<DeclinedTexture*>,
-			    std::vector<DeclinedTexture*>,
+			    std::vector<DeclinedTexture*>::iterator,
+			    std::vector<DeclinedTexture*>::iterator,
 				const DeclinedTextureEnum&);
 
 		

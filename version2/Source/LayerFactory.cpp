@@ -1,17 +1,17 @@
 #include "../Headers/LayerFactory.hpp"
 
 
-LayerFactory::create_layer(const int width,
+Layer* LayerFactory::create_layer(const int width,
 						   const SDL_Point& upperLeftCorner,
 						   const LayerFactory::LayerType& layerType) {
 	Layer* newLayer;
 	newLayer = nullptr;
 	switch (layerType) {
-			case LayerFactory::LayerType::Roads: {
+			case LayerFactory::LayerType::Road: {
 				newLayer = new RoadLayer(width, upperLeftCorner);
 				break;
 			}
-			case LayerFactory::LayerType::Trees: {
+			case LayerFactory::LayerType::Tree: {
 				newLayer = new TreeLayer(width, upperLeftCorner);
 				break;
 			}
@@ -36,54 +36,32 @@ LayerFactory::create_layer(const int width,
 	return newLayer;
 }
 
+LayerFactory::LayerType LayerFactory::get_next_layer_type(const LayerFactory::LayerType& layerType) {
+	int nextLayerTypeNb;
+	LayerFactory::LayerType newLayerType;
 
-LayerType LayerFactory::operator++(
-LayerFactory::LayerType& layerType, int dummy) {
-	int layerTypeNb;
-	LayerType layerTypeInitCopy;
-
-	layerTypeInitCopy = layerType;
-	layerTypeNb = static_cast<int>(layerType);
-	++layerTypeNb;
-	layerType = static_cast<LayerFactory::LayerType>(layerTypeNb);
-
-	return layerTypeInitCopy;
+	if (layerType == LayerFactory::LayerType::Border) {
+		newLayerType = LayerFactory::LayerType::Road;
+	}
+	else {
+		nextLayerTypeNb = static_cast<int>(layerType) + 1;
+		newLayerType = static_cast<LayerFactory::LayerType>(nextLayerTypeNb);
+	}
+	return newLayerType;
+	
 }
 
 
-LayerType LayerFactory::operator++(
-LayerFactory::LayerType& layerType) {
-	int layerTypeNb;
+LayerFactory::LayerType LayerFactory::get_precedent_layer_type(const LayerFactory::LayerType& layerType) {
+	int precLayerTypeNb;
+	LayerFactory::LayerType newLayerType;
 
-	layerTypeNb = static_cast<int>(layerType);
-	++layerTypeNb;
-	layerType = static_cast<LayerFactory::LayerType>(layerTypeNb);
-
-	return layerType;
-}
-
-
-LayerType LayerFactory::operator--(
-LayerFactory::LayerType& layerType, int dummy) {
-	int layerTypeNb;
-	LayerType layerTypeInitCopy;
-
-	layerTypeInitCopy = layerType;
-	layerTypeNb = static_cast<int>(layerType);
-	--layerTypeNb;
-	layerType = static_cast<LayerFactory::LayerType>(layerTypeNb);
-
-	return layerTypeInitCopy;
-}
-
-
-LayerType LayerFactory::operator--(
-LayerFactory::LayerType& layerType) {
-	int layerTypeNb;
-
-	layerTypeNb = static_cast<int>(layerType);
-	--layerTypeNb;
-	layerType = static_cast<LayerFactory::LayerType>(layerTypeNb);
-
-	return layerType;
+	if (layerType == LayerFactory::LayerType::Road) {
+		newLayerType = LayerFactory::LayerType::Border;
+	}
+	else {
+		precLayerTypeNb = static_cast<int>(layerType) - 1;
+		newLayerType = static_cast<LayerFactory::LayerType>(precLayerTypeNb);
+	}
+		return newLayerType;
 }

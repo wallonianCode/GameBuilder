@@ -3,7 +3,11 @@
 
 #include <vector>
 #include "TextureCloneable.hpp"
+#include "DeclinedTexture.hpp"
 
+class Character : public TextureCloneable<DeclinedTexture, Character> {
+
+};
 /*
 enum class Direction {North, South, East, West};
 

@@ -3,7 +3,7 @@
 
 #include "Layer.hpp"
 
-class TreeLayer : public TreeLayer {
+class TreeLayer : public Layer {
 public:
     TreeLayer(const int, const SDL_Point&);
 

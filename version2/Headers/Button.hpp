@@ -15,8 +15,8 @@ public:
 	void deactivate();
 	virtual GameState* click();
 
-	Button(const SDL_Point& posOnScreen, const int& width, 
-	const int& height, const int& frameThickness, 
+	Button(const SDL_FPoint& posOnScreen, const float& width, 
+	const float& height, const float& frameThickness, 
 	const SDL_Color& frameColor, const SDL_Color& fillColor,
 	const SDL_Color& clickedFillColor);
 

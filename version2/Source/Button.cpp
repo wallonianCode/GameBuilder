@@ -10,7 +10,7 @@ void Button::draw() {
 GameState* Button::handle_event(SDL_Event& event) {
 	GameState* retour = nullptr;
 	switch(event.type) {
-		case SDL_MOUSEMOTION:
+		case SDL_EVENT_MOUSE_MOTION:
 			if (Collider::is_mouse_inside_frame(event.motion, outRect_)) {
 				activate();
 			}
@@ -18,7 +18,7 @@ GameState* Button::handle_event(SDL_Event& event) {
 				deactivate();
 			}
 			break;
-		case SDL_MOUSEBUTTONDOWN:
+		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			if (Collider::is_click_inside_frame(event.button, outRect_)) {
 				retour = click();
 			}
@@ -47,9 +47,9 @@ GameState* Button::click() {
 }
 
 
-Button::Button(const SDL_Point& posOnScreen,
-const int& width, const int& height, 
-const int& frameThickness, const SDL_Color& frameColor,
+Button::Button(const SDL_FPoint& posOnScreen,
+const float& width, const float& height, 
+const float& frameThickness, const SDL_Color& frameColor,
 const SDL_Color& fillColor,
 const SDL_Color& clickedFillColor) {
 	outRect_ = Rectangle(posOnScreen, width, height, frameColor);

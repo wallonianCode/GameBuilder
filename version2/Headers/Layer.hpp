@@ -1,6 +1,7 @@
 #ifndef LAYER_H
 #define LAYER_H
 
+#include <algorithm>
 #include <exception>
 #include <vector>
 #include <array>
@@ -14,16 +15,15 @@
 
 class Layer : public Drawable {
 public:
-	Layer(const int width, const SDL_Point&);
+	Layer(const int width, const SDL_FPoint&);
 	Texture* get_texture_copy_at_coord(const SDL_Point& coord);
 	void add_texture(Texture*);
 	void draw() override;
 protected:
-	SDL_Point get_upper_left_corner() const;
-	//int get_width() const;
+	SDL_FPoint get_upper_left_corner() const;
 private:	
 	int width_;
-	SDL_Point upperLeftCorner_;
+	SDL_FPoint upperLeftCorner_;
 	std::vector<Texture*> vTextures_;
 };
 

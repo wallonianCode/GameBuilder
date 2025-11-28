@@ -4,38 +4,24 @@
 #include <iostream>
 #include <string>
 
-#include "Drawable.hpp"
+#include "TextureBase.hpp"
+
 #include "TextureLoader.hpp"
+#include "TextureCloneable.hpp"
 
 
-const std::string leafGreenTextureFileName = "pkmnLeafGreenTileset2";
-const int TILE_WIDTH = TILE_DIM;
-const int TILE_HEIGHT = TILE_DIM;
-
-class Texture;
-
-// normally not necessary to overload
-struct TexturePosComparator {
-	bool operator()(const Texture& texture);
-	bool operator()(Texture*);
-	TexturePosComparator(const SDL_Point& pos);
-	SDL_Point posOnScreen_;
-};
-
-
-class Texture : public Drawable {
+// dummy class to make the CRTP work
+class Texture : public TextureBase {
 public:
-	virtual void draw() = 0; 
-	virtual void update()	= 0;
-	virtual void save(std::ostream&) const = 0;
-	virtual Texture* clone() const = 0;
-	virtual SDL_Point get_upper_left_corner() const = 0;
-	virtual void set_pos_on_screen(const SDL_Point&) = 0;
-	//TODO implement
-	virtual void get_width() const = 0;
-	virtual void get_height() const = 0;
+	virtual void draw() override; 
+	virtual void update() override;
+	virtual SDL_FPoint get_upper_left_corner() const override;
+	virtual void set_upper_left_corner(const SDL_FPoint&) override;
+	virtual void set_pos_on_tileset(const SDL_FPoint&) override;
+	virtual void set_dim_on_tileset(const int, const int) override;
+	virtual Texture* clone() const ;
 private:
 	std::string tileset_;		
 };
-
+	
 #endif

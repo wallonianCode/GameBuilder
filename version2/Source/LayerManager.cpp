@@ -1,14 +1,15 @@
 #include "../Headers/LayerManager.hpp"
 
 
-LayerManager::LayerManager(const int width) : width_(width) {
+LayerManager::LayerManager(const int width, const SDL_Point& upperLeftCorner) : 
+width_(width), upperLeftCorner_(upperLeftCorner) {
 	std::vector<LayerFactory::LayerType> vLayerTypes =
-	{ LayerFactory::LayerType::Roads,
-		LayerFactory::LayerType::Trees,
+	{ LayerFactory::LayerType::Road,
+		LayerFactory::LayerType::Tree,
 		LayerFactory::LayerType::Soil,
 		LayerFactory::LayerType::Buildings };
 
-	for (std::vector<LayerFactory::LayerType> ltIt = vLayerType.begin();
+	for (std::vector<LayerFactory::LayerType>::iterator ltIt = vLayerTypes.begin();
 		   ltIt != vLayerTypes.end(); ++ltIt) {
 		this->add_layer(*ltIt);	
 	}
@@ -17,27 +18,27 @@ LayerManager::LayerManager(const int width) : width_(width) {
 
 
 void LayerManager::add_layer(const LayerFactory::LayerType& layerType)  {
-	mLayers_[layerType] = LayerFactory::create_layer(layerType);
+	mLayers_[layerType] = LayerFactory::create_layer(width_, upperLeftCorner_, layerType);
 }
 
 
 void LayerManager::operator++(int i) {
-	currentLayerType_++;	
+	currentLayerType_ = LayerFactory::get_next_layer_type();
 }
 
 
 void LayerManager::operator++() {
-	++currentLayerType_;	
+	currentLayerType_ = LayerFactory::get_next_layer_type();
 }
 
 
 void LayerManager::operator--(int i) {
-	currentLayerType_--;	
+	currentLayerType_ = LayerFactory::get_precedent_layer_type();	
 }
 
 
 void LayerManager::operator--(int i) {
-	--currentLayerType_;	
+	currentLayerType_ = LayerFactory::get_precedent_layer_type();
 }
 
 

@@ -23,23 +23,13 @@ void BuilderMap::handle_event(SDL_Event& event) {
 	else {
 		this->handle_mouse_motion_events(event);
 		switch(event.type) {
-			case SDL_MOUSEBUTTONDOWN:
+			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				switch (event.button.button) {	
 					case SDL_BUTTON_LEFT:
-						/*
 						if (selector_->get_selected_texture() != nullptr) {
 							Map::add_texture_at_mouse_pos(
 							selector_->get_selected_texture());	
-						}
-						*/
-						if (selector_->get_selected_textures().size() != 0) {
-							Map::add_textures_at_mouse_pos(
-							selector_->get_selected_textures());
-						}
-						else {
-							std::cout << "No selected texture as for now" << 
-							std::endl;
-						}
+						}		
 						break;
 					case SDL_BUTTON_RIGHT:
 						Map::remove_texture_at_mouse_pos();
@@ -47,11 +37,14 @@ void BuilderMap::handle_event(SDL_Event& event) {
 					default:
 						break;
 				}
-			case SDL_KEYDOWN:
-				switch (event.key.keysym.sym) {
-					case SDLK_l:
+			case SDL_EVENT_KEY_DOWN:
+				switch (event.key.scancode) {
+					case SDL_SCANCODE_L:
 						std::cout << "L case pressed" << std::endl;
-						selector_->switch_layer();
+						selector_->switch_layer_forward();
+						break;
+					case SDL_SCANCODE_K:
+						selector_->switch_layer_backward();
 						break;
 					default:
 						break;
@@ -66,11 +59,11 @@ void BuilderMap::handle_event(SDL_Event& event) {
 
 void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
 	switch(event.type) {
-	  case SDL_MOUSEMOTION: {
-			int x, y, xTile, yTile;
+	  case SDL_EVENT_MOUSE_MOTION: {
+			float x, y, xTile, yTile;
 			SDL_GetMouseState(&x, &y);
-			xTile = x - (x % TILE_DIM);
-			yTile = y - (y % TILE_DIM);
+			xTile = x - ((int)x % TILE_DIM);
+			yTile = y - ((int)y % TILE_DIM);
 			this->set_frame_pos({xTile, yTile});	
 			break;	
 		}
