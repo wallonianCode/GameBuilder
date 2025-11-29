@@ -3,7 +3,7 @@
 
 #include "Window.hpp"
 #include "Map.hpp"
-#include "Red.hpp"
+
 
 class PlayerMap : public Map {
 public:
@@ -19,10 +19,5 @@ public:
 						std::vector<Character*>::iterator itCharEnd);
 
 	PlayerMap(const std::string& filename);
-private:
-/*
-	Red red_ = Red({Window::get_instance()->get_width()/2, 
-					  			Window::get_instance()->get_height()/2});
-								*/
 };
 #endif
