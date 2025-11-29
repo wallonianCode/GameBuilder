@@ -2,8 +2,8 @@ OBJS = Source/Window.cpp Source/Renderer.cpp Source/GameState.cpp Source/GameSta
 CC = g++
 COMPILER_FLAGS = -Wall -std=c++11
 LINKER_FLAGS = -lSDL3 -lSDL3_image -lSDL3_ttf
-INCLUDE = -IC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3_x64-windows/include -IC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-image_x64-windows/include -IC:\Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-ttf_x64-windows/include 
-SDL3_LIB = -LC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3_x64-windows/lib -LC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-image_x64-windows/lib -LC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-ttf_x64-windows/lib
+INCLUDE = -I/usr/local/include
+SDL3_LIB = -L/usr/local/lib
 OBJ_NAME = exe
 
 all : $(OBJS)
