@@ -14,9 +14,7 @@ public:
 	PlayerMap();
 	
 	PlayerMap(std::vector<Texture*>::iterator itLandBegin,
-						std::vector<Texture*>::iterator itLandEnd, 
-						std::vector<Character*>::iterator itCharBegin, 
-						std::vector<Character*>::iterator itCharEnd);
+						std::vector<Texture*>::iterator itLandEnd); 
 
 	PlayerMap(const std::string& filename);
 };

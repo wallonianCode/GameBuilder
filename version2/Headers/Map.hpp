@@ -46,14 +46,11 @@ public:
 	Map(const std::string& filename);
 
 	Map(std::vector<Texture*>::iterator itLandBegin,
-		std::vector<Texture*>::iterator itLandEnd,
-		std::vector<Character*>::iterator itCharacterBegin,
-		std::vector<Character*>::iterator itCharacterEnd);
+		  std::vector<Texture*>::iterator itLandEnd);
 	
 private:
 	std::vector<std::string> split(std::string, const std::string&);
 	std::vector<Texture*> vTextures_;
-	std::vector<Character*> vCharacters_;	
 	// shows the cursor, can be moved with keyboard keys
 	Frame frame_;	
 };

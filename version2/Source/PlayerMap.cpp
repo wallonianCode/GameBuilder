@@ -17,10 +17,8 @@ PlayerMap::PlayerMap() : Map() {}
 
 
 PlayerMap::PlayerMap(std::vector<Texture*>::iterator itLandBegin,
-std::vector<Texture*>::iterator itLandEnd, 
-std::vector<Character*>::iterator itCharBegin, 
-std::vector<Character*>::iterator itCharEnd) : 
-Map(itLandBegin, itLandEnd, itCharBegin, itCharEnd) {}
+std::vector<Texture*>::iterator itLandEnd) : 
+Map(itLandBegin, itLandEnd) {}
 
 
 PlayerMap::PlayerMap(const std::string& filename) : Map(filename) {}

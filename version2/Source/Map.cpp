@@ -19,7 +19,8 @@ void Map::add_texture_at_mouse_pos(Texture* texture) {
 	Texture* tCopy = texture->clone();
 
 	SDL_GetMouseState(&x, &y);
-    tCopy->set_upper_left_corner({x-((int)x % TILE_DIM), y-((int)y % TILE_DIM)});	
+  tCopy->set_upper_left_corner({x-((int)x % TILE_DIM), 
+	y-((int)y % TILE_DIM)});	
 	vTextures_.push_back(tCopy);
 }
 
@@ -63,11 +64,8 @@ Map::Map(const std::string& filename) {
 
 
 Map::Map(std::vector<Texture*>::iterator itLandBegin,
-				 std::vector<Texture*>::iterator itLandEnd,
-				 std::vector<Character*>::iterator itCharacterBegin,
-				 std::vector<Character*>::iterator itCharacterEnd) {
+				 std::vector<Texture*>::iterator itLandEnd) {
 	vTextures_ = std::vector<Texture*>(itLandBegin, itLandEnd);
-	vCharacters_ = std::vector<Character*>(itCharacterBegin, itCharacterEnd);
 }
 
 
