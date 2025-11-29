@@ -9,9 +9,7 @@
 
 #include "Rectangle.hpp"
 #include "Texture.hpp"
-#include "Character.hpp"
 #include "Frame.hpp"
-
 
 
 class Map : public Drawable {
