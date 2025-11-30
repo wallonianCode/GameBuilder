@@ -3,13 +3,13 @@
 
 CompositeTexture::CompositeTexture(
 	const std::string& tileset, 
-	std::vector::iterator<SDL_Rect> itSrcBegin,
-	std::vector::iterator<SDL_Rect> itSrcEnd,
-	std::vector::iterator<SDL_Rect> itDestBegin,
-	std::vector::iterator<SDL_Rect> itDestEnd) : 
+	std::vector::iterator<SDL_FRect> itSrcBegin,
+	std::vector::iterator<SDL_FRect> itSrcEnd,
+	std::vector::iterator<SDL_FRect> itDestBegin,
+	std::vector::iterator<SDL_FRect> itDestEnd) : 
 	Texture(tileset) 
 {
-	std::pair<SDL_Rect, SDL_Rect> newSrcDest;
+	std::pair<SDL_FRect, SDL_FRect> newSrcDest;
 
 	if ((itSrcEnd - itSrcBegin) != (itDestEnd-itDestBegin))
 	{
@@ -32,7 +32,7 @@ void CompositeTexture::draw() {
 	Renderer* renderer = Renderer::get_instance();
 	SDL_Texture* texture =
 	TextureLoader::load_texture(renderer->get_sdl_renderer(), tileset_);
-	for (std::vector<std::pair<SDL_Rect, SDL_Rect>>::iterator 
+	for (std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator 
 			 itSrcDest = vSrcDest_.begin();
 			 itSrcDest != vSrcDest_.end(); itSrcDest++)
 	{

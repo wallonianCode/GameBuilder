@@ -12,15 +12,15 @@ class CompositeTexture :
 public TextureCloneable<Texture, CompositeTexture> {
 public:
 	CompositeTexture(const std::string& tileset, 
-  								 std::vector<SDL_Rect>::iterator itSrcBegin,
-									 std::vector<SDL_Rect>::iterator itSrcEnd,
-									 std::vector<SDL_Rect>::iterator itDestBegin,
-									 std::vector<SDL_Rect> ::iterator itDestEnd);
+  								 std::vector<SDL_FRect>::iterator itSrcBegin,
+									 std::vector<SDL_FRect>::iterator itSrcEnd,
+									 std::vector<SDL_FRect>::iterator itDestBegin,
+									 std::vector<SDL_FRect> ::iterator itDestEnd);
 
 	void draw() override;
-  	void update() override;
+  void update() override;
 	
-	SDL_Point get_upper_left_corner() const override;
+	SDL_FPoint get_upper_left_corner() const override;
 private:
   	std::vector<std::pair<SDL_Rect, SDL_Rect>> vSrcDest_;
 

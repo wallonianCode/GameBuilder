@@ -2,7 +2,7 @@
 
 
 void BuilderMap::draw() {
-	greenBackground_->draw();
+	grassBackground_->draw();
 	Map::draw(); //draw textures
 	selector_->draw();
 	separator_->draw();
@@ -78,5 +78,5 @@ void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
 BuilderMap::BuilderMap() {
 	selector_ = std::make_shared<Selector>(SELECTOR_WIDTH);
 	separator_ = std::make_shared<Separator>();
-	greenBackground_ = std::make_shared<GreenBackground>();
+	grassBackground_ = std::make_shared<GrassBackground>();
 }
