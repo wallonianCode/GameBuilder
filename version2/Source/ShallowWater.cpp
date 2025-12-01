@@ -1,10 +1,10 @@
 #include "../Headers/ShallowWater.hpp"
 
 
-ShallowWater::ShallowWater(const SDL_Point& pos,
+ShallowWater::ShallowWater(const SDL_FPoint& pos,
 						   const DeclinedTextureOrientation& orientation) : 
 						   DeclinedTexture(pos) {
-	SDL_Rect tile;
+	SDL_FRect tile;
 	switch (orientation) {
 		case DeclinedTextureOrientation::North: {
 			tile = {11*S+2, 1, S-3, S-3}; 

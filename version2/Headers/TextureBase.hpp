@@ -25,11 +25,14 @@ struct TexturePosComparator {
 class TextureBase : public Drawable {
 public:
 	virtual void draw() = 0; 
+	virtual void draw_shadow() = 0;
 	virtual void update() = 0;
 	virtual SDL_FPoint get_upper_left_corner() const = 0;
 	virtual void set_upper_left_corner(const SDL_FPoint&) = 0;
 	virtual void set_pos_on_tileset(const SDL_FPoint&) = 0;
 	virtual void set_dim_on_tileset(const int, const int) = 0;
+	virtual float get_width() const = 0;
+	virtual float get_height() const = 0;
 };
 
 #endif

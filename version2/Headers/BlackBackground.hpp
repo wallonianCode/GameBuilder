@@ -8,6 +8,7 @@
 class BlackBackground : public Drawable {
 public:
 	BlackBackground(const float, const float);
+	BlackBackground();
 	void draw() override;
 private:
 	float width_, height_;

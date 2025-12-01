@@ -47,7 +47,7 @@ SDL_FPoint Rectangle::get_coord() const {
 }
 
 
-void Rectangle::set_pos_on_screen(const SDL_FPoint& newPos) {
+void Rectangle::set_upper_left_corner(const SDL_FPoint& newPos) {
 	areaOnScreen_->x = newPos.x;
 	areaOnScreen_->y = newPos.y;
 }
@@ -59,12 +59,24 @@ void Rectangle::set_color(const SDL_Color& newColor) {
 
 Rectangle::Rectangle() {
 	color_ = Color::black;
-	areaOnScreen_ = new SDL_FRect({100, 100, 100, 100});
+	areaOnScreen_ = new SDL_FRect({0, 0, TILE_DIM, TILE_DIM});
+}
+
+
+Rectangle::Rectangle(const SDL_Color& color) {
+	color_ = color;
+	areaOnScreen_ = new SDL_FRect({0, 0, TILE_DIM, TILE_DIM});
+}
+
+
+Rectangle::Rectangle(const SDL_Rect& area, const SDL_Color& color) {
+	areaOnScreen_ = new SDL_FRect({(float)area.x, (float)area.y, 
+								   (float)area.w, (float)area.h});
 }
 
 
 Rectangle::Rectangle(const SDL_FRect& areaOnScreen, 
-const SDL_Color& color) : color_(color) {
+					 const SDL_Color& color) : color_(color) {
 	areaOnScreen_ = new SDL_FRect(areaOnScreen);
 }
 

@@ -7,13 +7,13 @@
 
 class LayerManager : public Drawable {
 public:
-    LayerManager(const int, const SDL_Point&);
+    LayerManager(const int, const SDL_FPoint&);
     void add_layer(const LayerFactory::LayerType&);
     void operator++(int); //postfix
     void operator++();    //prefix
     void operator--(int);  //postfix
     void operator--();    //prefix
-    Texture* get_texture_copy_at_coord(const SDL_Point&);
+    Texture* get_texture_copy_at_coord(const SDL_FPoint&);
 		void draw() override;	
 
 private:

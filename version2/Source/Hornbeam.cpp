@@ -1,7 +1,7 @@
 #include "../Headers/Hornbeam.hpp"
 
 
-Hornbeam::Hornbeam(const SDL_Point& initPos) {
+Hornbeam::Hornbeam(const SDL_FPoint& initPos) {
 	std::vector<SDL_Rect> vSrc, vDest; 
 	for (int i = 0; i < 3; ++i) {
 		for (int j = 0; j < 4; ++j) {
@@ -14,13 +14,4 @@ Hornbeam::Hornbeam(const SDL_Point& initPos) {
 	CompositeTexture(leafGreenTextureFileName, 
 									 vSrc.begin(), vSrc.end(),
 									 vDest.begin(), vDest.end());
-}
-
-
-int Hornbeam::get_width() {
-	return 3*TILE_WIDTH;
-}
-
-int Hornbeam::get_height() {
-	return 4*TILE_HEIGHT;
 }

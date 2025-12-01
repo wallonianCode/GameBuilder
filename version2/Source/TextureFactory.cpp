@@ -3,7 +3,7 @@
 
 SimpleTexture* 
 TextureFactory::create_simple_texture(const SDL_Point& pos,
-									const TextureEnum& textureKind) {
+									  const SimpleTextureEnum& textureKind) {
 	SimpleTexture* newTexture = nullptr;
 
 	switch (textureKind) {

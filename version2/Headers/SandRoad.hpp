@@ -5,6 +5,6 @@
 
 class SandRoad : public TextureCloneable<DeclinedTexture, SandRoad> {
 public:
-	SandRoad(const SDL_Point&, const DeclinedTextureOrientation&);
+	SandRoad(const SDL_FPoint&, const DeclinedTextureOrientation&);
 };
 #endif

@@ -1,10 +1,10 @@
 #include "../Headers/MoosRoad.hpp"
 
 
-MoosRoad::MoosRoad( const SDL_Point& pos,
+MoosRoad::MoosRoad( const SDL_FPoint& pos,
 				    const DeclinedTextureOrientation& orientation) :
 					DeclinedTexture(pos)  {
-	SDL_Rect tile;
+	SDL_FRect tile;
 	switch (orientation) {
 		case DeclinedTextureOrientation::North: {
 			tile = {3*S+2, 3*S+2, S-3, S-3};
@@ -57,7 +57,7 @@ MoosRoad::MoosRoad( const SDL_Point& pos,
 		default:
 			break;
 	}
-	this->set_pos_on_tileset(tile.x, tile.y);
+	this->set_pos_on_tileset({tile.x, tile.y});
 	this->set_dim_on_tileset(tile.w, tile.h);
 					
 }

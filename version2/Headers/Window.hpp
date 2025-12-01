@@ -22,9 +22,9 @@ public:
 	// move window to given relative position
 	void move_rel(const SDL_Point&);
 	// reset window dimensions
-	void set_dimensions(const int width, const int height);
-	void set_width(const int&);
-	void set_height(const int&);
+	void set_dimensions(const int, const int);
+	void set_width(const int);
+	void set_height(const int);
 	
 	SDL_Window* get_sdl_window();	
 	int get_width();

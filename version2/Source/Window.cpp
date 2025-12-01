@@ -9,15 +9,15 @@ Window* Window::get_instance() {
 }
 
 
-void Window::move(const SDL_Point& posOnScreen) {
-	SDL_SetWindowPosition(window_, posOnScreen.x, posOnScreen.y);
+void Window::move(const SDL_Point& pos) {
+	SDL_SetWindowPosition(window_, pos.x, pos.y);
 }
 
 
-void Window::move_rel(const SDL_Point& posOnScreen) {
+void Window::move_rel(const SDL_Point& pos) {
 	int x, y;
 	SDL_GetWindowPosition(window_, &x, &y);
-	SDL_SetWindowPosition(window_, x+posOnScreen.x, y+posOnScreen.y);
+	SDL_SetWindowPosition(window_, x+pos.x, y+pos.y);
 }
 
 
@@ -28,7 +28,7 @@ void Window::set_dimensions(const int width, const int height) {
 }
 
 
-void Window::set_width(const int& width) {
+void Window::set_width(const int width) {
 	int w, h;
 	std::cout << "Window::set_width: " << width << std::endl;
 	SDL_GetWindowSize(window_, &w, &h);
@@ -36,7 +36,7 @@ void Window::set_width(const int& width) {
 }
 
 
-void Window::set_height(const int& height) {
+void Window::set_height(const int height) {
 	int w, h;
 	SDL_GetWindowSize(window_, &w, &h);
 	SDL_SetWindowSize(window_, w, height);

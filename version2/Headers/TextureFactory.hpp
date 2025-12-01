@@ -72,10 +72,10 @@ public:
 
 	static void 
 	create_road(const SDL_Point&, 
-			   const SDL_Point&,
-			   std::vector<DeclinedTexture*>::iterator,
-			   std::vector<DeclinedTexture*>::iterator,
-			   const DeclinedTextureEnum&);
+			    const SDL_Point&,
+			    std::vector<DeclinedTexture*>::iterator,
+			    std::vector<DeclinedTexture*>::iterator,
+			    const DeclinedTextureEnum&);
 
 	static void
 	create_border(const SDL_Point&,
@@ -86,9 +86,9 @@ public:
 
 	static void
 	create_water(const SDL_Point&,
-			    std::vector<DeclinedTexture*>::iterator,
-			    std::vector<DeclinedTexture*>::iterator,
-				const DeclinedTextureEnum&);
+			     std::vector<DeclinedTexture*>::iterator,
+			     std::vector<DeclinedTexture*>::iterator,
+				 const DeclinedTextureEnum&);
 
 		
 

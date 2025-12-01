@@ -1,25 +1,10 @@
 #include "../Headers/Texture.hpp"
 
-/*
-//--------------------- TEXTUREPOSCOMPARATOR -----------------------
-bool TexturePosComparator::operator()(const Texture& texture) {
-	SDL_Point pos = texture.get_upper_left_corner();
-	return ((pos.x == posOnScreen_.x) && (pos.y == posOnScreen_.y));
-}
-
-bool TexturePosComparator::operator()(Texture* texture) {
-	SDL_Point pos = texture->get_upper_left_corner();
-	return ((pos.x == posOnScreen_.x) && (pos.y == posOnScreen_.y));
-}
-
-TexturePosComparator::TexturePosComparator(const SDL_Point& pos) : 
-posOnScreen_(pos) {}
-
-
-//---------------------- TEXTURE ----------------------------------
-*/
 
 void Texture::draw() {}
+
+
+void Texture::draw_shadow() {}
 
 
 void Texture::update() {}
@@ -40,4 +25,14 @@ void Texture::set_dim_on_tileset(const int width, const int height) {}
 
 Texture* Texture::clone() const {
 	return nullptr;
+}
+
+
+float Texture::get_width() const {
+	return 0.0f;
+}
+
+
+float Texture::get_height() const {
+	return 0.0f;
 }

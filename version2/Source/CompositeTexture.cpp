@@ -96,16 +96,26 @@ SDL_Point CompositeTexture::get_upper_left_corner() const {
 }
 
 
-void CompositeTexture::set_pos_on_screen(
-	const SDL_Point& newUpperLeftCorner) {
- 	SDL_Point currentUpperLeftCorner = {vSrcDest_[0].second.x, 
-																			vSrcDest_[0].second.y};	
-	int xMove = newUpperLeftCorner.x - currentUpperLeftCorner.x;
-	int yMove = newUpperLeftCorner.y - currentUpperLeftCorner.y;
-	for (std::vector<std::pair<SDL_Rect, SDL_Rect>>::iterator 
-			 itSrcDest = vSrcDest_.begin();
-			 itSrcDest != vSrcDest_.end();
-			 itSrcDest++) {
+float CompositeTexture::get_width() const {
+	return vSrcDest_[0].second.w;
+}
+
+
+float CompositeTexture::get_height() const {
+	return vSrcDest_[0].second.h;
+}
+
+
+void CompositeTexture::move(const SDL_Point& newUpperLeftCorner) {
+	float xMove, yMove;
+	SDL_FPoint currentUpperLeftCorner;
+	std::vector<std::pair<SDL_Rect, SDL_Rect>>::iterator itSrcDest;
+
+ 	currentUpperLeftCorner = {vSrcDest_[0].second.x, 
+							  vSrcDest_[0].second.y};	
+	xMove = newUpperLeftCorner.x - currentUpperLeftCorner.x;
+	yMove = newUpperLeftCorner.y - currentUpperLeftCorner.y;
+	for ( itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); itSrcDest++) {
 		itSrcDest->second.x += xMove;
 		itSrcDest->second.y += yMove;
 	}

@@ -20,14 +20,16 @@ public:
 	SDL_FPoint get_position() const;
 	SDL_FPoint get_coord() const;
 
-	void set_pos_on_screen(const SDL_FPoint&);
+	void set_upper_left_corner(const SDL_FPoint&);
 
 	void set_color(const SDL_Color&);
 
 	Rectangle();
-	Rectangle(const SDL_FRect& areaOnScreen, const SDL_Color& color);
-	Rectangle(const SDL_FPoint& posOnScreen, const float& width, 
-	const float& height, const SDL_Color& color);
+	Rectangle(const SDL_Color&);
+	Rectangle(const SDL_Rect&, const SDL_Color&);
+	Rectangle(const SDL_FRect&, const SDL_Color&);
+	Rectangle(const SDL_FPoint&, const float&, 
+			  const float&, const SDL_Color&);
 protected:
 	SDL_Color color_;
 	SDL_FRect* areaOnScreen_;

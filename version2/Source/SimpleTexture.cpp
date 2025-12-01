@@ -61,11 +61,10 @@ void SimpleTexture::set_pos_on_tileset(const SDL_FPoint& pos) {
 }
 
 
-float SimpleTexture::get_width() {
-	return TILE_DIM;
+float SimpleTexture::get_width() const {
+	return dest_.w;
 }
 
-
-float SimpleTexture::get_height() {
-	return TILE_DIM;
+float SimpleTexture::get_height() const {
+	return dest_.h;
 }

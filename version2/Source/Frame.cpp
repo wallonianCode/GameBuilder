@@ -19,7 +19,7 @@ void Frame::follow_mouse_motion() {
 		SDL_GetMouseState(&x, &y);
 		xTile = x - ((int)x % TILE_DIM);
 		yTile = y - ((int)y % TILE_DIM);
-		this->set_pos_on_screen({xTile, yTile});
+		this->set_upper_left_corner({xTile, yTile});
 	}
 }
 
@@ -34,7 +34,7 @@ void Frame::free() {
 }
 
 
-Frame::Frame(): Rectangle({0, 0, TILE_DIM, TILE_DIM}, Color::red) {
+Frame::Frame(): Rectangle(Color::red) {
   	
 }
 
@@ -43,6 +43,6 @@ Frame::Frame(const SDL_FRect& areaOnScreen, const SDL_Color& color) :
 Rectangle(areaOnScreen, color) {}
 
 
-Frame::Frame(const SDL_FPoint& posOnScreen, const int& width, 
+Frame::Frame(const SDL_FPoint& pos, const int& width, 
 const int& height, const SDL_Color& color) : 
-Rectangle( posOnScreen, width, height, color) {}
+Rectangle( pos, width, height, color) {}

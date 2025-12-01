@@ -2,7 +2,6 @@
 
 
 void ThreeColumnsBackground::draw() {
-	Background::draw();
 	Window* window = Window::get_instance();
 	
 	SDL_Rect foregroundRect = {window->get_width()/3, 0, 
@@ -14,5 +13,5 @@ void ThreeColumnsBackground::draw() {
 
 
 ThreeColumnsBackground::ThreeColumnsBackground(const SDL_Color& backColor,
-const SDL_Color& foreColor) : Background(backColor), 
+const SDL_Color& foreColor) : 
 foregroundColor_(foreColor) {}

@@ -1,7 +1,7 @@
 #include "../Headers/Pin.hpp"
 
 
-Pin::Pin(const SDL_Point& initPos) {
+Pin::Pin(const SDL_FPoint& initPos) {
 	std::vector<SDL_Rect> vSrc, vDest;  
 
 	for (int i = 0; i < 2; ++i) {
@@ -13,16 +13,6 @@ Pin::Pin(const SDL_Point& initPos) {
 	}
 	
 	CompositeTexture(leafGreenTextureFileName, 
-									 vSrc.begin(), vSrc.end(),
-									 vDest.begin(), vDest.end());
-}
-
-
-int Pin::get_width() {
-	return 2*TILE_WIDTH;
-}
-
-
-int Pin::get_height() {
-	return 3*TILE_HEIGHT;
+					 vSrc.begin(), vSrc.end(),
+					 vDest.begin(), vDest.end());
 }

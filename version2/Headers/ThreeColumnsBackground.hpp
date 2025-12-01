@@ -6,8 +6,7 @@
 class ThreeColumnsBackground : public Drawable {
 public:
 	void draw() override;
-	ThreeColumnsBackground(const SDL_Color& backColor, 
-	const SDL_Color& foreColor);
+	ThreeColumnsBackground(const SDL_Color& backColor, const SDL_Color& foreColor);
 private:
 	SDL_Color foregroundColor_;
 };

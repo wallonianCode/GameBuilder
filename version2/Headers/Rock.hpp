@@ -6,7 +6,7 @@
 
 class Rock : public TextureCloneable<SimpleTexture, Rock> {
 public:
-	Rock(const SDL_Point&);
+	Rock(const SDL_FPoint&);
 };
 
 #endif

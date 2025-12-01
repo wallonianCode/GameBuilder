@@ -14,13 +14,3 @@ Poplar::Poplar(const SDL_Point& initPos) {
 									 vSrc.begin(), vSrc.end(),
 									 vDest.begin(), vDest.end());
 }
-
-
-int Poplar::get_width() {
-	return 2*TILE_WIDTH;
-}
-
-
-int Poplar::get_height() {
-	return 3*TILE_HEIGHT;
-}

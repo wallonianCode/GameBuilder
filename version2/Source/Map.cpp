@@ -46,7 +46,7 @@ void Map::update() {}
 
 
 void Map::set_frame_pos(const SDL_FPoint& newPos) {
-	frame_.set_pos_on_screen(newPos);
+	frame_.set_upper_left_corner(newPos);
 }
 
 
