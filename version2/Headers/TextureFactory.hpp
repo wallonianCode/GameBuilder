@@ -62,7 +62,7 @@ enum class DeclinedTextureEnum {
 
 class TextureFactory {
 public:
-	static SimpleTexture* create_simple_texture(const SDL_Point&, 
+	static SimpleTexture* create_simple_texture(const SDL_FPoint&, 
 							 				  	const SimpleTextureEnum&);
 
 	static CompositeTexture* 

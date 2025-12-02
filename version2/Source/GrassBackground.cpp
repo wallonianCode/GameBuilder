@@ -9,15 +9,14 @@ GrassBackground::GrassBackground(const float width, const float height) {
 	int x, y;
 
 	line1 = {SimpleTextureEnum::GreenWhiteGreenGrass,
-	 		 SimpleTextureEnum::GreenWhiteGrass,
+			 		 SimpleTextureEnum::GreenWhiteGrass,
 	         SimpleTextureEnum::GreenGrass,
 	         SimpleTextureEnum::WhiteGrass};
 
 	line2 = {SimpleTextureEnum::GreenGrass,
-			 SimpleTextureEnum::WhiteGrass,
-			 SimpleTextureEnum::GreenWhiteGreenGrass,
-			 SimpleTextureEnum::WhiteGrass};
-
+					 SimpleTextureEnum::WhiteGrass,
+					 SimpleTextureEnum::GreenWhiteGreenGrass,
+			 		 SimpleTextureEnum::GreenWhiteGrass};
 	
 	for (y = 0; y < height - TILE_DIM; ++y) {
 		lineItBegin = y % 2 == 0 ? line1.begin() : line2.begin();
@@ -25,7 +24,8 @@ GrassBackground::GrassBackground(const float width, const float height) {
 		lineIt = lineItBegin;
 		for (x = 0; x < width - TILE_DIM; ++x) {
 			 vGrass_.push_back(
-			 TextureFactory::create_simple_texture({x, y}, *lineIt++));
+			 TextureFactory::create_simple_texture({(float)x, (float)y}, 
+			 																				*lineIt++));
 			 if (lineIt == lineItEnd) {
 				 lineIt = lineItBegin;
 			 }

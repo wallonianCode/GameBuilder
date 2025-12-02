@@ -1,12 +1,12 @@
 #include "../Headers/BlackBackground.hpp"
 
 
-BlackBackground::Blackbackground(const float width, const float height) :
+BlackBackground::BlackBackground(const float width, const float height) :
 width_(width), height_(height) {}
 
 
 BlackBackground::BlackBackground() {
-	Window window* = Window::get_instance();
+	Window* window = Window::get_instance();
 	BlackBackground(window->get_width(), window->get_height());
 }
 
