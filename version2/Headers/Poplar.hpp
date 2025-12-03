@@ -5,7 +5,7 @@
 
 class Poplar : public TextureCloneable<CompositeTexture, Poplar> {
 public:
-	Poplar(const SDL_Point& initPos);
+	Poplar(const SDL_FPoint&);
 };
 
 #endif

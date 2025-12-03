@@ -6,6 +6,6 @@
 
 class Oak : public TextureCloneable<CompositeTexture, Oak> {
 public:
-	Oak (const SDL_Point& initPos);
+	Oak (const SDL_FPoint&);
 };
 #endif

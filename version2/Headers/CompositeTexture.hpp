@@ -11,6 +11,7 @@
 class CompositeTexture : 
 public TextureCloneable<Texture, CompositeTexture> {
 public:
+	CompositeTexture();
 	CompositeTexture(const std::string& tileset, 
 					 std::vector<SDL_FRect>::iterator itSrcBegin,
 					 std::vector<SDL_FRect>::iterator itSrcEnd,
@@ -26,7 +27,7 @@ public:
 	float get_height() const override;
 	void move(const SDL_FPoint&);
 private:
-  	std::vector<std::pair<SDL_Rect, SDL_Rect>> vSrcDest_;
+  	std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;
 
 };
 
