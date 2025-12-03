@@ -27,6 +27,10 @@ public:
 	float get_width() const override; 
 	float get_height() const override;
 
+	static float get_standard_width();
+	static float get_standard_height();
+	
+
 private:
 	std::string tileset_;		
 	SDL_FRect src_;

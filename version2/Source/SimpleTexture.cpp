@@ -12,6 +12,7 @@ SimpleTexture::SimpleTexture(const SDL_FPoint& pos) : tileset_(leafGreenTextureF
 }
 
 
+
 SimpleTexture::SimpleTexture(const std::string& tileset, const SDL_FPoint& pos) : 
 tileset_(tileset) {
 	this->set_upper_left_corner(pos);
@@ -67,4 +68,14 @@ float SimpleTexture::get_width() const {
 
 float SimpleTexture::get_height() const {
 	return dest_.h;
+}
+
+
+float SimpleTexture::get_standard_width() {
+	return TILE_DIM;
+}
+
+
+float SimpleTexture::get_standard_height() {
+	return TILE_DIM;
 }

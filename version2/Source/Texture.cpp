@@ -36,3 +36,8 @@ float Texture::get_width() const {
 float Texture::get_height() const {
 	return 0.0f;
 }
+
+
+Texture::Texture(const std::string& tileset) : tileset_(tileset) {}
+
+Texture::Texture() : tileset_(leafGreenTextureFileName) {}

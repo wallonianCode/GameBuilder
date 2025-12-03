@@ -1,6 +1,6 @@
 #include "../Headers/DeclinedTexture.hpp"
 
-DeclinedTexture::DeclinedTexture() : SimpleTexture(leafGreenTextureFileName) {}
+DeclinedTexture::DeclinedTexture() : SimpleTexture() {}
 
 DeclinedTexture::DeclinedTexture(const SDL_FPoint& pos):
-SimpleTexture(leafGreenTextureFileName, pos) {}
+SimpleTexture(pos) {}

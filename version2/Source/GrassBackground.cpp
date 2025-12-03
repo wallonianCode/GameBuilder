@@ -3,7 +3,7 @@
 
 GrassBackground::GrassBackground(const float width, const float height) {
 	std::vector<SimpleTextureEnum> line1, line2;
-	std::vector<SimpleTextureEnum>::iterator lineItBegin, 
+	std::vector<SimpleTextureEnum>::const_iterator lineItBegin, 
 											 lineItEnd, 
 											 lineIt;
 	int x, y;
@@ -24,8 +24,8 @@ GrassBackground::GrassBackground(const float width, const float height) {
 		lineIt = lineItBegin;
 		for (x = 0; x < width - TILE_DIM; ++x) {
 			 vGrass_.push_back(
-			 TextureFactory::create_simple_texture({(float)x, (float)y}, 
-			 																				*lineIt++));
+			 TextureFactory::create_simple_texture({(float)x, (float)y}, *lineIt));
+			 lineIt++;
 			 if (lineIt == lineItEnd) {
 				 lineIt = lineItBegin;
 			 }

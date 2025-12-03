@@ -23,7 +23,9 @@ public:
 	virtual Texture* clone() const ;
 	virtual float get_width() const;
 	virtual float get_height() const;
-private:
+	Texture(const std::string&);
+	Texture();
+protected:
 	std::string tileset_;		
 };
 	

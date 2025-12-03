@@ -13,7 +13,7 @@
 class LayerFactory {
 public:
     enum class LayerType {Road, Tree, Soil, Buildings, Water, Border};
-    static Layer* create_layer(const int, const SDL_Point&,
+    static Layer* create_layer(const int, const SDL_FPoint&,
 							   const LayerFactory::LayerType&);
 	static LayerFactory::LayerType get_next_layer_type(const LayerFactory::LayerType&);
 	static LayerFactory::LayerType get_precedent_layer_type(const LayerFactory::LayerType&);

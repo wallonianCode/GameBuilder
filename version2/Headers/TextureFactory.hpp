@@ -66,35 +66,32 @@ public:
 							 				  	const SimpleTextureEnum&);
 
 	static CompositeTexture* 
-	create_composite_texture(const SDL_Point& pos, 
+	create_composite_texture(const SDL_FPoint& pos, 
 						   	 const CompositeTextureEnum&) ;
 
 
 	static void 
-	create_road(const SDL_Point&, 
-			    const SDL_Point&,
+	create_road(const SDL_FPoint&, 
+			    const SDL_FPoint&,
 			    std::vector<DeclinedTexture*>::iterator,
 			    std::vector<DeclinedTexture*>::iterator,
 			    const DeclinedTextureEnum&);
 
 	static void
-	create_border(const SDL_Point&,
-				 const SDL_Point&,
+	create_border(const SDL_FPoint&,
+				 const SDL_FPoint&,
 				 std::vector<DeclinedTexture*>::iterator,
 			     std::vector<DeclinedTexture*>::iterator,
 				 const DeclinedTextureEnum&);
 
 	static void
-	create_water(const SDL_Point&,
+	create_water(const SDL_FPoint&,
 			     std::vector<DeclinedTexture*>::iterator,
 			     std::vector<DeclinedTexture*>::iterator,
 				 const DeclinedTextureEnum&);
 
-		
-
-private:
 	static DeclinedTexture*
-	create_declined_texture(const SDL_Point& pos,
+	create_declined_texture(const SDL_FPoint& pos,
 						    const DeclinedTextureEnum& declTextEnum,
 						  	const DeclinedTextureOrientation& orientation);	
 };

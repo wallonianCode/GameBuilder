@@ -2,7 +2,7 @@
 
 
 Layer* LayerFactory::create_layer(const int width,
-						   const SDL_Point& upperLeftCorner,
+						   const SDL_FPoint& upperLeftCorner,
 						   const LayerFactory::LayerType& layerType) {
 	Layer* newLayer;
 	newLayer = nullptr;
@@ -29,7 +29,7 @@ Layer* LayerFactory::create_layer(const int width,
 			}
 			default: {
 				throw 
-				std::runtime_error("Layer type not recognized: " + layerType);
+				std::runtime_error("Layer type not recognized");
 				break;
 			}
     }
