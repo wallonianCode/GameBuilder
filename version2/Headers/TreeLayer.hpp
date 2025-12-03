@@ -5,7 +5,7 @@
 
 class TreeLayer : public Layer {
 public:
-    TreeLayer(const int, const SDL_Point&);
+    TreeLayer(const int, const SDL_FPoint&);
 
 };
 #endif

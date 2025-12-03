@@ -1,30 +1,34 @@
 #include "../Headers/RoadLayer.hpp"
 
 
-RoadLayer::RoadLayer(const int width) : Layer(width) {
+RoadLayer::RoadLayer(const int width, const SDL_FPoint& upperLeftCorner) : Layer(width, upperLeftCorner) {
     std::vector<DeclinedTexture*> rockRoad, moosRoad, sandRoad;
-    td::vector<DeclinedTexture*>::iterator itLastTexture, itRockRoad, itMoosRoad, itSandRoad;
-    SDL_Point upperLeftCorner;
+    std::vector<DeclinedTexture*>::iterator itLastTexture, itRockRoad, itMoosRoad, itSandRoad;
+    SDL_FPoint upperLeftCornerFromCurrentRoad;
     
-    upperLeftCorner = this->get_upper_left_corner();
-    TextureFactory::createRoad(upperLeftCorner, 
-                               {upperLeftCorner.x + width, upperLeftCorner.y},
+    upperLeftCornerFromCurrentRoad = this->get_upper_left_corner();
+    TextureFactory::create_road(upperLeftCornerFromCurrentRoad, 
+                               {upperLeftCornerFromCurrentRoad.x + width, 
+                                upperLeftCornerFromCurrentRoad.y},
                                rockRoad.begin(), rockRoad.end(),
                                DeclinedTextureEnum::RockRoad);
 
     itLastTexture = rockRoad.end()-1;
-    upperLeftCorner = {upperLeftCorner.x,
-                       itLastTexture->get_upper_left_corner().y + itLastTexture->get_height()};
-    TextureFactory::createRoad(upperLeftCorner,
-                               {upperLeftCorner.x + width, upperLeftCorner.y},
+    upperLeftCornerFromCurrentRoad = {upperLeftCornerFromCurrentRoad.x,
+                       (*itLastTexture)->get_upper_left_corner().y + (*itLastTexture)->get_height()};
+    TextureFactory::create_road(upperLeftCornerFromCurrentRoad,
+                               {upperLeftCornerFromCurrentRoad.x + width, 
+                                upperLeftCornerFromCurrentRoad.y},
                                 moosRoad.begin(), moosRoad.end(),
-                                DeclinedTextureEnum::moosRoad);
+                                DeclinedTextureEnum::MoosRoad);
 
     itLastTexture = moosRoad.end()-1;
-    upperLeftCorner = {upperLeftCorner.x,
-                       itLastTexture->get_upper_left_corner().y + itLastTexture->get_height()};
-    TextureFactory::createRoad(upperLeftCorner,
-                               {upperLeftCorner.x + width, upperLeftCorner.y},
+    upperLeftCornerFromCurrentRoad = 
+    {upperLeftCornerFromCurrentRoad.x,
+    (*itLastTexture)->get_upper_left_corner().y + (*itLastTexture)->get_height()};
+    TextureFactory::create_road(upperLeftCornerFromCurrentRoad,
+                               {upperLeftCornerFromCurrentRoad.x + width, 
+                                upperLeftCornerFromCurrentRoad.y},
                                 sandRoad.begin(), sandRoad.end(),
                                 DeclinedTextureEnum::SandRoad);
 

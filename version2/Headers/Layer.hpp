@@ -10,6 +10,8 @@
 #include "Texture.hpp"
 #include "Renderer.hpp"
 #include "MapUtils.hpp"
+#include "DeclinedTexture.hpp"
+#include "TextureFactory.hpp"
 
 
 
