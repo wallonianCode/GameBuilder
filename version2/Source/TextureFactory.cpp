@@ -76,7 +76,7 @@ TextureFactory::create_composite_texture(const SDL_FPoint& pos,
 
 
 static void create_road(const SDL_FPoint& posBegin, 
-					    const SDL_FPoint& posEnd,
+					    const int width,
 					    std::vector<DeclinedTexture*>::iterator itRoadBegin,
 					    std::vector<DeclinedTexture*>::iterator itRoadEnd,
 					    const DeclinedTextureEnum& road) {
@@ -97,7 +97,7 @@ static void create_road(const SDL_FPoint& posBegin,
 	for (itOrientation = roadOrientations.begin();
 		 itOrientation != roadOrientations.end(); ++itOrientation) {
 		*itRoad = TextureFactory::create_declined_texture(pos, road, *itOrientation);
-		if (pos.x <= posEnd.x - (*itRoad)->get_width()) {
+		if (pos.x <= width - (*itRoad)->get_width()) {
 			pos.x += (*itRoad)->get_width();
 		}
 		else {
@@ -111,7 +111,7 @@ static void create_road(const SDL_FPoint& posBegin,
 
 
 static void create_border(const SDL_FPoint& posBegin, 
-					   	  const float width,
+					   	  const int width,
 					   	  std::vector<DeclinedTexture*>::iterator itBorderBegin,
 					   	  std::vector<DeclinedTexture*>::iterator itBorderEnd,
 					   	  const DeclinedTextureEnum& border) {

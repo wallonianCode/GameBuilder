@@ -72,14 +72,14 @@ public:
 
 	static void 
 	create_road(const SDL_FPoint&, 
-			    const SDL_FPoint&,
+			    const int width,
 			    std::vector<DeclinedTexture*>::iterator,
 			    std::vector<DeclinedTexture*>::iterator,
 			    const DeclinedTextureEnum&);
 
 	static void
 	create_border(const SDL_FPoint&,
-				 const SDL_FPoint&,
+				 const int width,
 				 std::vector<DeclinedTexture*>::iterator,
 			     std::vector<DeclinedTexture*>::iterator,
 				 const DeclinedTextureEnum&);
