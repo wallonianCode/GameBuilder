@@ -8,17 +8,15 @@ RoadLayer::RoadLayer(const int width, const SDL_FPoint& upperLeftCorner) : Layer
     
     upperLeftCornerFromCurrentRoad = this->get_upper_left_corner();
     TextureFactory::create_road(upperLeftCornerFromCurrentRoad, 
-                               {upperLeftCornerFromCurrentRoad.x + width, 
-                                upperLeftCornerFromCurrentRoad.y},
-                               rockRoad.begin(), rockRoad.end(),
-                               DeclinedTextureEnum::RockRoad);
+                                upperLeftCornerFromCurrentRoad.x + width, 
+                                rockRoad.begin(), rockRoad.end(),
+                                DeclinedTextureEnum::RockRoad);
 
     itLastTexture = rockRoad.end()-1;
     upperLeftCornerFromCurrentRoad = {upperLeftCornerFromCurrentRoad.x,
                        (*itLastTexture)->get_upper_left_corner().y + (*itLastTexture)->get_height()};
     TextureFactory::create_road(upperLeftCornerFromCurrentRoad,
-                               {upperLeftCornerFromCurrentRoad.x + width, 
-                                upperLeftCornerFromCurrentRoad.y},
+                                upperLeftCornerFromCurrentRoad.x + width, 
                                 moosRoad.begin(), moosRoad.end(),
                                 DeclinedTextureEnum::MoosRoad);
 
@@ -27,8 +25,7 @@ RoadLayer::RoadLayer(const int width, const SDL_FPoint& upperLeftCorner) : Layer
     {upperLeftCornerFromCurrentRoad.x,
     (*itLastTexture)->get_upper_left_corner().y + (*itLastTexture)->get_height()};
     TextureFactory::create_road(upperLeftCornerFromCurrentRoad,
-                               {upperLeftCornerFromCurrentRoad.x + width, 
-                                upperLeftCornerFromCurrentRoad.y},
+                                upperLeftCornerFromCurrentRoad.x + width, 
                                 sandRoad.begin(), sandRoad.end(),
                                 DeclinedTextureEnum::SandRoad);
 
