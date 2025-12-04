@@ -62,11 +62,10 @@ int Window::get_height() {
 
 Window::Window() {
 	//int imgFlags = IMG_INIT_PNG;
-	
+	SDL_Init(SDL_INIT_VIDEO);
 	// init SDL_Window	
 	window_ = SDL_CreateWindow(WINDOW_TITLE.c_str(), 
-	WINDOW_WIDTH, WINDOW_HEIGHT,
-	SDL_WINDOWPOS_CENTERED | SDL_WINDOWPOS_CENTERED);
+	WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE);
 	if (! window_) {
 		std::printf("SDL_Window could not be created: %s\n", SDL_GetError());
 		throw std::runtime_error("Player::init(): failed window init");

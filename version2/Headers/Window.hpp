@@ -4,6 +4,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3/SDL_video.h>
 
 #include <string>
 #include <iostream>
@@ -13,6 +14,7 @@ const int TILE_DIM = 4*S;
 const std::string WINDOW_TITLE = "Game Builder";
 const int WINDOW_WIDTH = 25*TILE_DIM;
 const int WINDOW_HEIGHT = 20*TILE_DIM;
+
 
 class Window {
 public:
