@@ -21,7 +21,7 @@ private:
     std::map<LayerFactory::LayerType, Layer*> mLayers_;
 		LayerFactory::LayerType currentLayerType_;
     int width_;
-    SDL_Point upperLeftCorner_;
+    SDL_FPoint upperLeftCorner_;
 
 };
 #endif

@@ -1,7 +1,8 @@
 #include "../Headers/LayerManager.hpp"
 
 
-LayerManager::LayerManager(const int width, const SDL_Point& upperLeftCorner) : 
+LayerManager::LayerManager(const int width, 
+const SDL_FPoint& upperLeftCorner) : 
 width_(width), upperLeftCorner_(upperLeftCorner) {
 	std::vector<LayerFactory::LayerType> vLayerTypes =
 	{ LayerFactory::LayerType::Road,
@@ -23,27 +24,31 @@ void LayerManager::add_layer(const LayerFactory::LayerType& layerType)  {
 
 
 void LayerManager::operator++(int i) {
-	currentLayerType_ = LayerFactory::get_next_layer_type();
+	currentLayerType_ = 
+	LayerFactory::get_next_layer_type(currentLayerType_);
 }
 
 
 void LayerManager::operator++() {
-	currentLayerType_ = LayerFactory::get_next_layer_type();
+	currentLayerType_ = 
+	LayerFactory::get_next_layer_type(currentLayerType_);
 }
 
 
 void LayerManager::operator--(int i) {
-	currentLayerType_ = LayerFactory::get_precedent_layer_type();	
+	currentLayerType_ = 
+	LayerFactory::get_precedent_layer_type(currentLayerType_);	
 }
 
 
-void LayerManager::operator--(int i) {
-	currentLayerType_ = LayerFactory::get_precedent_layer_type();
+void LayerManager::operator--() {
+	currentLayerType_ = 
+	LayerFactory::get_precedent_layer_type(currentLayerType_);
 }
 
 
 Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) {
-	mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
+	return mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
 }
 
 

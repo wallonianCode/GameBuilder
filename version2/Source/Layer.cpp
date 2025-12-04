@@ -6,7 +6,7 @@ Layer::Layer(const int width, const SDL_FPoint& upperLeftCorner) :
 width_(width), upperLeftCorner_(upperLeftCorner) {}
 
 
-Texture* Layer::get_texture_copy_at_coord(const SDL_Point& coord) {
+Texture* Layer::get_texture_copy_at_coord(const SDL_FPoint& coord) {
 	std::vector<Texture*>::iterator itTextureCopyAtCoord; 
 
 	itTextureCopyAtCoord = 

@@ -18,7 +18,7 @@
 class Layer : public Drawable {
 public:
 	Layer(const int width, const SDL_FPoint&);
-	Texture* get_texture_copy_at_coord(const SDL_Point& coord);
+	Texture* get_texture_copy_at_coord(const SDL_FPoint& coord);
 	void add_texture(Texture*);
 	void draw() override;
 protected:
