@@ -75,11 +75,12 @@ TextureFactory::create_composite_texture(const SDL_FPoint& pos,
 }
 
 
-static void create_road(const SDL_FPoint& posBegin, 
-					    const int width,
-					    std::vector<DeclinedTexture*>::iterator itRoadBegin,
-					    std::vector<DeclinedTexture*>::iterator itRoadEnd,
-					    const DeclinedTextureEnum& road) {
+void 
+TextureFactory::create_road(const SDL_FPoint& posBegin, 
+					    	const int width,
+					    	std::vector<DeclinedTexture*>::iterator itRoadBegin,
+					    	std::vector<DeclinedTexture*>::iterator itRoadEnd,
+					    	const DeclinedTextureEnum& road) {
 	std::vector<DeclinedTextureOrientation> roadOrientations =
 	{DeclinedTextureOrientation::East, DeclinedTextureOrientation::West, 
 	 DeclinedTextureOrientation::North, DeclinedTextureOrientation::South,
@@ -110,11 +111,12 @@ static void create_road(const SDL_FPoint& posBegin,
 }
 
 
-static void create_border(const SDL_FPoint& posBegin, 
-					   	  const int width,
-					   	  std::vector<DeclinedTexture*>::iterator itBorderBegin,
-					   	  std::vector<DeclinedTexture*>::iterator itBorderEnd,
-					   	  const DeclinedTextureEnum& border) {
+void 
+TextureFactory::create_border(const SDL_FPoint& posBegin, 
+					   	  	  const int width,
+					   	  	  std::vector<DeclinedTexture*>::iterator itBorderBegin,
+					   	  	  std::vector<DeclinedTexture*>::iterator itBorderEnd,
+					   	  	  const DeclinedTextureEnum& border) {
 	std::vector<DeclinedTextureOrientation> borderOrientations;
 	std::vector<DeclinedTextureOrientation>::iterator itBorderOrientations;
 	std::vector<DeclinedTexture*>::iterator itBorder;
@@ -145,10 +147,11 @@ static void create_border(const SDL_FPoint& posBegin,
 }
 
 
-static void create_water(const SDL_FPoint& posBegin,
-					     std::vector<DeclinedTexture*>::iterator itWaterBegin,
-					     std::vector<DeclinedTexture*>::iterator itWaterEnd,
-						 const DeclinedTextureEnum& water) {
+void 
+TextureFactory::create_water(const SDL_FPoint& posBegin,
+					     	 std::vector<DeclinedTexture*>::iterator itWaterBegin,
+					     	 std::vector<DeclinedTexture*>::iterator itWaterEnd,
+						 	 const DeclinedTextureEnum& water) {
 	std::vector<DeclinedTextureOrientation> waterOrientations;
 	std::vector<DeclinedTextureOrientation>::iterator itOrientation;
 	std::vector<DeclinedTexture*>::iterator itWater;
