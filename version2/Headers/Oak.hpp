@@ -7,5 +7,7 @@
 class Oak : public TextureCloneable<CompositeTexture, Oak> {
 public:
 	Oak (const SDL_FPoint&);
+	float get_width() const override;
+	float get_height() const override;
 };
 #endif

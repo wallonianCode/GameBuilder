@@ -4,21 +4,26 @@
 LayerManager::LayerManager(const int width, 
 const SDL_FPoint& upperLeftCorner) : 
 width_(width), upperLeftCorner_(upperLeftCorner) {
+	std::cout << "LayerManager::LayerManager" << std::endl;
 	std::vector<LayerFactory::LayerType> vLayerTypes =
 	{ LayerFactory::LayerType::Road,
 		LayerFactory::LayerType::Tree,
 		LayerFactory::LayerType::Soil,
-		LayerFactory::LayerType::Buildings };
+		LayerFactory::LayerType::Water,
+		LayerFactory::LayerType::Border
+	};
 
 	for (std::vector<LayerFactory::LayerType>::iterator ltIt = vLayerTypes.begin();
 		   ltIt != vLayerTypes.end(); ++ltIt) {
 		this->add_layer(*ltIt);	
 	}
 	currentLayerType_ = vLayerTypes[0];
+	std::cout << "LayerManager::LayerManager end" << std::endl;
 }
 
 
 void LayerManager::add_layer(const LayerFactory::LayerType& layerType)  {
+	std::cout << "LayerManager::add_layer" << std::endl;
 	mLayers_[layerType] = LayerFactory::create_layer(width_, upperLeftCorner_, layerType);
 }
 

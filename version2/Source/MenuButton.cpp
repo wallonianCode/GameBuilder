@@ -18,6 +18,7 @@ GameState* MenuButton::handle_event(SDL_Event& event) {
 				"MenuButton::handle_event(). Click is inside frame " << std::endl;
 				//nextState = Button::click();
 				nextState = this->get_next_state();
+				std::cout <<"MenuButton::handle_event " << (nextState == nullptr) << std::endl;
 			}
 			break;
 		default:

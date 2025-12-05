@@ -3,8 +3,8 @@
 
 WaterLayer::WaterLayer(const int width, const SDL_FPoint& upperLeftCorner) :
 Layer(width, upperLeftCorner) {
-    std::vector<DeclinedTexture*> deepWater, shallowWater;
-    std::vector<DeclinedTexture*>::iterator itDeepWater, itShallowWater, itLastTexture;
+    std::array<DeclinedTexture*, 9> deepWater, shallowWater;
+    std::array<DeclinedTexture*, 9>::iterator itDeepWater, itShallowWater, itLastTexture;
 
 
     TextureFactory::create_water(upperLeftCorner,

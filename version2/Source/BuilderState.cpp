@@ -36,5 +36,6 @@ void BuilderState::draw() {
 
 
 BuilderState::BuilderState() {
+	std::cout << "BuilderState::BuilderState" << std::endl;
 	map_ = new BuilderMap();
 }

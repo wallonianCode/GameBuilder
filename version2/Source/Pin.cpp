@@ -2,6 +2,7 @@
 
 
 Pin::Pin(const SDL_FPoint& initPos) {
+	std::cout << "Pin::Pin" << std::endl;
 	std::vector<SDL_FRect> vSrc, vDest;  
 
 	for (int i = 0; i < 2; ++i) {
@@ -15,4 +16,5 @@ Pin::Pin(const SDL_FPoint& initPos) {
 	CompositeTexture(leafGreenTextureFileName, 
 					 vSrc.begin(), vSrc.end(),
 					 vDest.begin(), vDest.end());
+	std::cout << "Pin::Pin end" << std::endl;
 }

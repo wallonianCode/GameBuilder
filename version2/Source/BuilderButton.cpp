@@ -2,7 +2,10 @@
 
 
 GameState* BuilderButton::get_next_state() {
-	return new BuilderState();
+	std::cout << "BuilderButton::get_next_state()" << std::endl;
+	BuilderState* builderState = new BuilderState();
+	std::cout << "Returning new builder state" << std::endl;
+	return builderState;
 }
 
 

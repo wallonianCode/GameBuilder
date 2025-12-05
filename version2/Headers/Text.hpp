@@ -16,7 +16,7 @@ public:
 	const float& textWidth, const float& textHeight,
 	const SDL_Color& defaultColor = Color::red, 
 	const SDL_Color& highlightColor = Color::white,
-	const char* fontPath = "../Fonts/open-sans.regular.ttf");
+	const char* fontPath = "Fonts/open-sans-regular.ttf");
 private:
 	std::string text_;
 	TTF_Font* font_;

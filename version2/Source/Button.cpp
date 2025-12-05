@@ -26,6 +26,7 @@ GameState* Button::handle_event(SDL_Event& event) {
 		default:
 			break;
 	}
+	std::cout << "Button::handle_event()" << std::endl;
 	return retour;
 }
 

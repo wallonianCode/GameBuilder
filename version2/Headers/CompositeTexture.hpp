@@ -22,9 +22,10 @@ public:
   	void update() override;
 	
 	SDL_FPoint get_upper_left_corner() const override;
-
+/*
 	float get_width() const override;
 	float get_height() const override;
+	*/
 	void move(const SDL_FPoint&);
 private:
   	std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;

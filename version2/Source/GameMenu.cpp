@@ -17,9 +17,10 @@ void GameMenu::update() {}
 // a 'blank' state with operator == overloaded
 // nextState == blankState and you would need a comparator
 GameState* GameMenu::handle_event(SDL_Event& event) {
-	GameState *nextState = nullptr, *retour = nullptr;
-	
+	GameState *nextState; //*retour;
+	//retour = nullptr;
 	nextState = builderBtn_.handle_event(event);
+	/*
 	if (nextState != nullptr) {
 		retour = nextState;
 	}
@@ -38,8 +39,10 @@ GameState* GameMenu::handle_event(SDL_Event& event) {
 	if (nextState != nullptr) {
 		retour = nextState;
 	}
-	
-	return retour;
+		*/
+	//nextState->update();
+	//std::cout << (nextState == nullptr) << std::endl;
+	return nextState;
 }
 
 

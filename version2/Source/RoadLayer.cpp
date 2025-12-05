@@ -1,9 +1,11 @@
 #include "../Headers/RoadLayer.hpp"
 
 
-RoadLayer::RoadLayer(const int width, const SDL_FPoint& upperLeftCorner) : Layer(width, upperLeftCorner) {
-    std::vector<DeclinedTexture*> rockRoad, moosRoad, sandRoad;
-    std::vector<DeclinedTexture*>::iterator itLastTexture, itRockRoad, itMoosRoad, itSandRoad;
+RoadLayer::RoadLayer(const int width, const SDL_FPoint& upperLeftCorner) : 
+Layer(width, upperLeftCorner) {
+    std::cout << "RoadLayer::RoadLayer" << std::endl;
+    std::array<DeclinedTexture*, 12> rockRoad, moosRoad, sandRoad;
+    std::array<DeclinedTexture*, 12>::iterator itLastTexture, itRockRoad, itMoosRoad, itSandRoad;
     SDL_FPoint upperLeftCornerFromCurrentRoad;
     
     upperLeftCornerFromCurrentRoad = this->get_upper_left_corner();
@@ -41,4 +43,6 @@ RoadLayer::RoadLayer(const int width, const SDL_FPoint& upperLeftCorner) : Layer
     for (itSandRoad = sandRoad.begin(); itSandRoad != sandRoad.end(); ++itSandRoad) {
         this->add_texture(*itSandRoad);
     }
+        
+    std::cout << "RoadLayer::RoadLayer end" << std::endl;
 }

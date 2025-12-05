@@ -4,10 +4,12 @@
 Layer* LayerFactory::create_layer(const int width,
 						   const SDL_FPoint& upperLeftCorner,
 						   const LayerFactory::LayerType& layerType) {
+	std::cout << "LayerFactory::create_layer " << std::endl;
 	Layer* newLayer;
 	newLayer = nullptr;
 	switch (layerType) {
 			case LayerFactory::LayerType::Road: {
+				
 				newLayer = new RoadLayer(width, upperLeftCorner);
 				break;
 			}
@@ -27,12 +29,17 @@ Layer* LayerFactory::create_layer(const int width,
 				newLayer = new WaterLayer(width, upperLeftCorner);
 				break;
 			}
+			case LayerFactory::LayerType::Border: {
+				newLayer = new BorderLayer(width, upperLeftCorner);
+				break;
+			}
 			default: {
 				throw 
 				std::runtime_error("Layer type not recognized");
 				break;
 			}
     }
+	std::cout << "LayerFactory::create_layer end" << std::endl;
 	return newLayer;
 }
 

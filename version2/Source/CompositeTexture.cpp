@@ -4,17 +4,16 @@ CompositeTexture::CompositeTexture() : Texture() {}
 
 CompositeTexture::CompositeTexture(
 	const std::string& tileset, 
-	std::vector<SDL_FRect> ::iterator itSrcBegin,
+	std::vector<SDL_FRect>::iterator itSrcBegin,
 	std::vector<SDL_FRect>::iterator itSrcEnd,
-	std::vector<SDL_FRect> ::iterator itDestBegin,
+	std::vector<SDL_FRect>::iterator itDestBegin,
 	std::vector<SDL_FRect>::iterator itDestEnd) : 
 	Texture(tileset) 
 {
 	std::pair<SDL_FRect, SDL_FRect> newSrcDest;
-
+	
 	if ((itSrcEnd - itSrcBegin) != (itDestEnd-itDestBegin))
 	{
-		//TODO error management throw exception
 		throw new std::runtime_error("Source and destination vectors\
 		of different lengths");
 	}
@@ -23,9 +22,11 @@ CompositeTexture::CompositeTexture(
 	{
 		newSrcDest.first = *itSrcBegin;
 		newSrcDest.second = *itDestBegin;
+		vSrcDest_.push_back(newSrcDest);
 		itSrcBegin++;
 		itDestBegin++;
 	}
+	std::cout << "CompositeTexture::CompositeTexture end " << vSrcDest_.size() << std::endl;
 }
 
 
@@ -98,15 +99,17 @@ SDL_FPoint CompositeTexture::get_upper_left_corner() const {
 	return {upperLeftCornerRect.x, upperLeftCornerRect.y};
 }
 
-
+/*
 float CompositeTexture::get_width() const {
-	return vSrcDest_[0].second.w;
+	std::cout << "CompositeTexture::get_width(): " << vSrcDest_[1].second.w << std::endl;
+	return vSrcDest_[1].second.w;
 }
 
 
 float CompositeTexture::get_height() const {
-	return vSrcDest_[0].second.h;
+	return vSrcDest_[1].second.h;
 }
+	*/
 
 
 void CompositeTexture::move(const SDL_FPoint& newUpperLeftCorner) {

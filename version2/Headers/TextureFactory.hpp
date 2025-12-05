@@ -1,6 +1,7 @@
 #ifndef TEXTUREFACTORY_H
 #define TEXTUREFACTORY_H
 
+#include <array>
 #include "Texture.hpp"
 
 #include "Oak.hpp"
@@ -73,21 +74,21 @@ public:
 	static void 
 	create_road(const SDL_FPoint&, 
 			    const int width,
-			    std::vector<DeclinedTexture*>::iterator,
-			    std::vector<DeclinedTexture*>::iterator,
+			    std::array<DeclinedTexture*, 12>::iterator,
+			    std::array<DeclinedTexture*, 12>::iterator,
 			    const DeclinedTextureEnum&);
 
 	static void
 	create_border(const SDL_FPoint&,
 				 const int width,
-				 std::vector<DeclinedTexture*>::iterator,
-			     std::vector<DeclinedTexture*>::iterator,
+				 std::array<DeclinedTexture*, 10>::iterator,
+			     std::array<DeclinedTexture*, 10>::iterator,
 				 const DeclinedTextureEnum&);
 
 	static void
 	create_water(const SDL_FPoint&,
-			     std::vector<DeclinedTexture*>::iterator,
-			     std::vector<DeclinedTexture*>::iterator,
+			     std::array<DeclinedTexture*, 9>::iterator,
+			     std::array<DeclinedTexture*, 9>::iterator,
 				 const DeclinedTextureEnum&);
 
 	static DeclinedTexture*

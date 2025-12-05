@@ -4,6 +4,7 @@
 RockRoad::RockRoad(const SDL_FPoint& pos, 
 				   const DeclinedTextureOrientation& orientation) :
 DeclinedTexture(pos) {
+	std::cout << "RockRoad::RockRoad" << std::endl;
 	SDL_FRect tile; 
 	switch (orientation) {
 		case DeclinedTextureOrientation::North: {
@@ -59,4 +60,5 @@ DeclinedTexture(pos) {
 		this->set_pos_on_tileset({tile.x, tile.y});
 		this->set_dim_on_tileset(tile.w, tile.h);
 	}
+	std::cout << "RockRoad::RockRoad end" << std::endl;
 }

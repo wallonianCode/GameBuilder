@@ -4,8 +4,8 @@
 BorderLayer::BorderLayer(const int width, const SDL_FPoint& upperLeftCorner) : 
 Layer(width, upperLeftCorner) {
     SDL_FPoint pos;
-    std::vector<DeclinedTexture*> greyBorders, greenBorders;
-    std::vector<DeclinedTexture*>::iterator itBorder;
+    std::array<DeclinedTexture*, 10> greyBorders, greenBorders;
+    std::array<DeclinedTexture*, 10>::iterator itBorder;
 
     pos = upperLeftCorner;
 
