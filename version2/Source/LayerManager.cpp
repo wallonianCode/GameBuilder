@@ -52,7 +52,10 @@ void LayerManager::operator--() {
 }
 
 
-Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) {
+Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) { 
+	std::cout << "LayerManager::get_texture_copy_at_coord()" << 
+	(currentLayerType_ == LayerFactory::LayerType::Road) << " " <<
+	(mLayers_.size()) << std::endl;
 	return mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
 }
 

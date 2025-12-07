@@ -19,11 +19,19 @@ bool GameStateMachine::handle_frame() {
 	renderer = Renderer::get_instance();
 	stopGame = false;
     running = true;
+	std::cout << "GameStateMachine::handle_frame(): taking up the top " <<
+	(states_.size()) << std::endl;
 	currentState = states_.top();
 
 	nextState = currentState->process_events(running);
+	std::cout << "GameStateMachine::handle_frame(): " << 
+	(nextState == nullptr) << std::endl; 
 	currentState->update();
 	currentState->draw();	
+	std::cout << "GameStateMachine::handle_frame() " <<
+	"After having drawn and updated the current state, stack size: " <<
+	(states_.size()) << std::endl;
+	
 
 	renderer->print();
 
@@ -32,12 +40,15 @@ bool GameStateMachine::handle_frame() {
 	}
 
 	if (nextState != nullptr) {
+		std::cout << "GameStateMachine::handle_frame(): new state has been\
+		pushed" << std::endl;
 		states_.push(nextState);
 	}
 
 	if (states_.empty()) {
 		stopGame = true;
 	}
+
 
 	/*
 	if (nextState != nullptr && !running) {
