@@ -1,17 +1,13 @@
 #include "../Headers/Selector.hpp"
 
 void Selector::draw() {
-  std::cout << "Selector::draw() " << std::endl;
 	Texture* selectedTextureCopy;
 	selectedTextureCopy = 
 	layerManager_->get_texture_copy_at_coord(frame_->get_coord());
-	std::cout << "Selector::draw(): got texture copy at coord" <<
-	std::endl;
 	if (selectedTextureCopy != nullptr) {
 		selectedTextureCopy -> draw_shadow();
 	}
 	layerManager_ -> draw();
-	std::cout << "Selector::draw() end" << std::endl;
 }
 
 

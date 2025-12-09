@@ -26,20 +26,15 @@ GameState* BuilderState::process_events(bool& running) {
 
 
 void BuilderState::update() {
-  std::cout << "BuilderState::update()" << std::endl;
 	map_->update();
-	std::cout << "BuilderState::update() end" << std::endl;
 }
 
 
 void BuilderState::draw() {
-	std::cout << "BuilderState::draw() " << std::endl;
 	map_->draw();
-	std::cout << "BuilderState::draw() end" << std::endl;
 }
 
 
 BuilderState::BuilderState() {
-	std::cout << "BuilderState::BuilderState" << std::endl;
 	map_ = new BuilderMap();
 }

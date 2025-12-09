@@ -2,24 +2,17 @@
 
 
 void BuilderMap::draw() {
-	std::cout << "BuilderMap::draw()" << std::endl;
 	grassBackground_->draw();
-	std::cout << "BuilderMap::draw(): grassBackground drawn" << std::endl;
 	Map::draw(); //draw textures
-	std::cout << "BuilderMap::draw(): textures drawn" << std::endl;
 	selector_->draw();
-	std::cout << "BuilderMap::draw(): selector drawn" << std::endl;
 	separator_->draw();
-	std::cout << "BuilderMap::draw(): separator drawn" << std::endl;
 	if (!separator_->is_mouse_in()) {
 		this->draw_frame();
 	}
-	std::cout << "BuilderMap::draw() end" << std::endl;
 }
 
 
 void BuilderMap::handle_event(SDL_Event& event) {
-	std::cout << "BuilderMap::handle_event: begin" << std::endl;
 	if (selector_->is_mouse_in()) {
 		selector_->handle_event(event);
 		//this->handle_mouse_motion_events(event);
@@ -61,7 +54,6 @@ void BuilderMap::handle_event(SDL_Event& event) {
 				break;
 		}
 	}
-	std::cout << "BuilderMap::handle_event end" << std::endl;
 }
 
 
