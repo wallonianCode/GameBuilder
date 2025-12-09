@@ -9,7 +9,7 @@ class GameState;
 
 class MenuButton : public TextButton {
 public:
-	GameState* handle_event(SDL_Event& event);	
+	GameState* handle_event(SDL_Event& event) override;	
 
 	
 	MenuButton(const SDL_FPoint& posOnScreen, const float& width, 
