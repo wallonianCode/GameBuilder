@@ -39,7 +39,6 @@ bool GameStateMachine::handle_frame() {
 		stopGame = true;
 	}
 
-
 	/*
 	if (nextState != nullptr && !running) {
 		states_.pop();
