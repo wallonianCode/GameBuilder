@@ -8,7 +8,6 @@ void Selector::draw() {
 		selectedTextureCopy -> draw_shadow();
 	}
 	layerManager_ -> draw();
-	std::cout << "Selecter::draw() end" << std::endl;
 }
 
 
