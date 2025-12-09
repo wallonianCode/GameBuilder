@@ -42,8 +42,6 @@ void Button::deactivate() {
 
 
 GameState* Button::click() {	
-	std::cout << "Button::click() : Calling the base method" <<
-	std::endl;
 	return nullptr;
 }
 
