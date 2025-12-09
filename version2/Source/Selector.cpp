@@ -8,6 +8,7 @@ void Selector::draw() {
 		selectedTextureCopy -> draw_shadow();
 	}
 	layerManager_ -> draw();
+	std::cout << "Selecter::draw() end" << std::endl;
 }
 
 
@@ -61,10 +62,8 @@ void Selector::switch_layer_backward() {
 }
 
 Selector::Selector(const int width) : width_(width) {
-	std::cout << "Selector::Selector" << std::endl;
 	layerManager_ = new LayerManager(width, {0.0f, 0.0f});
 	frame_ = new Frame({0.0f, 0.0f, TILE_DIM, TILE_DIM}, Color::red);
-	std::cout << "Selector::Selector end" << std::endl;
 }
 
 

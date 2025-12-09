@@ -24,7 +24,6 @@ bool GameStateMachine::handle_frame() {
 	nextState = currentState->process_events(running);
 	currentState->update();
 	currentState->draw();	
-	
 
 	renderer->print();
 

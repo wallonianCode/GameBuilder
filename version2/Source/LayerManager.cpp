@@ -50,7 +50,8 @@ void LayerManager::operator--() {
 
 
 Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) { 
-	return mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
+	Texture* ret =  mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
+	return ret;
 }
 
 

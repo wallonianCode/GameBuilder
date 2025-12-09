@@ -4,6 +4,7 @@
 void BuilderMap::draw() {
 	grassBackground_->draw();
 	Map::draw(); //draw textures
+	
 	selector_->draw();
 	separator_->draw();
 	if (!separator_->is_mouse_in()) {
@@ -76,9 +77,7 @@ void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
 
 
 BuilderMap::BuilderMap() {
-	std::cout << "BuilderMap::BuilderMap" << std::endl;
 	selector_ = std::make_shared<Selector>(SELECTOR_WIDTH);
 	separator_ = std::make_shared<Separator>();
 	grassBackground_ = std::make_shared<GrassBackground>();
-	std::cout << "BuilderMap::BuilderMap end" << std::endl;
 }

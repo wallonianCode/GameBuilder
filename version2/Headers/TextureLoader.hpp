@@ -11,8 +11,8 @@
 #include <string>
 #include <vector>
 
-const std::string tileSheetsPath = 
-"/home/bogenschuetze/GamesCPP/GameBuilder/TileSheets";
+const std::string tileSheetsPath = "C:/Users/z004ryjh/Desktop/GIT/Workspace_GIT_GameBuilder/GameBuilder/TileSheets";
+//"/home/bogenschuetze/GamesCPP/GameBuilder/TileSheets";
 
 const std::string landTileSet = "pkmnLeafGreenTileset2";
 const std::string LANDTILESET = "pkmnLeafGreenTileset2";
