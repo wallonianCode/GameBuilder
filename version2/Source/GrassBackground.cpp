@@ -18,11 +18,11 @@ GrassBackground::GrassBackground(const float width, const float height) {
 					 SimpleTextureEnum::GreenWhiteGreenGrass,
 			 		 SimpleTextureEnum::GreenWhiteGrass};
 	
-	for (y = 0; y < height - TILE_DIM; ++y) {
+	for (y = 0; y < height - TILE_DIM; y += TILE_DIM) {
 		lineItBegin = y % 2 == 0 ? line1.begin() : line2.begin();
 		lineItEnd = y % 2 == 0 ? line1.end() : line2.end();
 		lineIt = lineItBegin;
-		for (x = 0; x < width - TILE_DIM; ++x) {
+		for (x = 0; x < width - TILE_DIM; x += TILE_DIM) {
 			 vGrass_.push_back(
 			 TextureFactory::create_simple_texture({(float)x, (float)y}, *lineIt));
 			 lineIt++;
@@ -31,6 +31,7 @@ GrassBackground::GrassBackground(const float width, const float height) {
 			 }
 		}
 	}
+	std::cout << "GrassBackground::GrassBackground(): texture number: " << vGrass_.size() << std::endl;
 }
 
 
