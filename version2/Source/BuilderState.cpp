@@ -31,7 +31,10 @@ void BuilderState::update() {
 
 
 void BuilderState::draw() {
+	Renderer* renderer;
+	renderer = Renderer::get_instance();
 	map_->draw();
+	SDL_RenderPresent(renderer->get_sdl_renderer());
 }
 
 
