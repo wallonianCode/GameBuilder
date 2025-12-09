@@ -8,7 +8,9 @@ public:
 	void draw() override;
 	ThreeColumnsBackground(const SDL_Color& backColor, const SDL_Color& foreColor);
 private:
-	SDL_Color foregroundColor_;
+	SDL_Color backgroundColor_, foregroundColor_;
+
+	
 };
 
 #endif
