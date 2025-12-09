@@ -7,6 +7,7 @@ void GameMenu::draw() {
 	playerBtn_.draw();
 	saveBtn_.draw();
 	exitBtn_.draw();
+	
 }
 
 
