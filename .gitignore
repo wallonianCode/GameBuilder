@@ -7,3 +7,4 @@ test/
 *.exe
 exe
 *version2/Executables/
+*.png
