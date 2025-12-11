@@ -4,17 +4,15 @@
 void ThreeColumnsBackground::draw() {
 	Window* window;
 	Renderer* renderer;
-	SDL_Rect foregroundSDLRect, backgroundSDLRect;
-	Rectangle  foregroundRect, backgroundRect;
-
+	SDL_Rect foregroundSDLRect; 
+	
 	window = Window::get_instance();
 	renderer = Renderer::get_instance();
 
  	foregroundSDLRect = {window->get_width()/3, 0, 
 					  window->get_width()/3, window->get_height()};
-  	foregroundRect =  Rectangle(foregroundSDLRect, foregroundColor_);
+  foregroundRect =  Rectangle(foregroundSDLRect, foregroundColor_);
 	
-
 	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 
 	backgroundColor_.r, backgroundColor_.g, backgroundColor_.b,
 	backgroundColor_.a);
