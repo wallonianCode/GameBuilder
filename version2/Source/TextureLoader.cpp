@@ -5,6 +5,7 @@ std::unordered_map<std::string, SDL_Surface*> TextureLoader::_surfaces;
 
 SDL_Texture* TextureLoader::load_texture(SDL_Renderer* renderer, 
 const std::string& filename) {
+	std::cout << "TextureLoader::load_texture()" << std::endl;
 	SDL_Texture* texture;
 
 	if (! renderer) throw std::runtime_error("TL::load_texture:\
@@ -18,6 +19,8 @@ const std::string& filename) {
 	std::unordered_map<std::string, SDL_Texture*>::iterator found = 
 	_textures.find(filename);
 	if (found != _textures.end()) {
+		std::cout << "TextureLoader::load_texture(): found in map" <<
+		std::endl;
 		texture = found->second;
 	}
 	else {

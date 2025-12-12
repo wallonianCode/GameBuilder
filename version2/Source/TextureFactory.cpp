@@ -81,7 +81,6 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 					    	std::array<DeclinedTexture*, 12>::iterator itRoadBegin,
 					    	std::array<DeclinedTexture*, 12>::iterator itRoadEnd,
 					    	const DeclinedTextureEnum& road) {
-    std::cout << "TextureFactory::create_road" << std::endl;
 	std::array<DeclinedTextureOrientation, 12> roadOrientations =
 	{DeclinedTextureOrientation::East, DeclinedTextureOrientation::West, 
 	 DeclinedTextureOrientation::North, DeclinedTextureOrientation::South,
@@ -99,8 +98,6 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 	for (itOrientation = roadOrientations.begin();
 		 itOrientation != roadOrientations.end(); ++itOrientation) {
 		itRoad[0] = TextureFactory::create_declined_texture(pos, road, *itOrientation);
-		std::cout << "TextureFactory::create_road: " << 
-		(*itRoad)->get_width() << " : " << (*itRoad)->get_height() << std::endl;
 		if (pos.x <= width - (*itRoad)->get_width()) {
 			pos.x += (*itRoad)->get_width();
 		}
@@ -109,10 +106,8 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 			pos.y += (*itRoad)->get_height();
 		}
 		++itRoad;
-		std::cout << "TextureFactory::create_road: it road incremented" << std::endl;
 	}
 	itRoadEnd = itRoad + 1;	
-	std::cout << "TextureFactory::create_road end" << std::endl;				
 }
 
 
@@ -199,7 +194,6 @@ DeclinedTexture*
 TextureFactory::create_declined_texture(const SDL_FPoint& pos,
 									    const DeclinedTextureEnum& declinedTextureEnum,
 									  	const DeclinedTextureOrientation& orientation) {
-	std::cout << "TextureFactory::create_declined_texture" << std::endl;
 	DeclinedTexture* newTexture = nullptr;
 	switch (declinedTextureEnum) {
 		case DeclinedTextureEnum::RockRoad: {
@@ -233,6 +227,5 @@ TextureFactory::create_declined_texture(const SDL_FPoint& pos,
 		default:
 			break;
 	}
-	std::cout << "TextureFactory::create_declined_texture end " << (newTexture == nullptr) << std::endl;
 	return newTexture;
 }

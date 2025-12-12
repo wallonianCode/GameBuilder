@@ -34,7 +34,7 @@ void GameMenuState::update() {
 void GameMenuState::draw() {
 	Renderer* renderer;
 	renderer = Renderer::get_instance();
-	SDL_RenderClear(renderer->get_sdl_renderer());
+	SDL_RenderClear(renderer->get_sdl_renderer()); //prevent flickering
 	menu_->draw();
 	SDL_RenderPresent(renderer->get_sdl_renderer());
 }

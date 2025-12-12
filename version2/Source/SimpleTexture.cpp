@@ -20,11 +20,15 @@ tileset_(tileset) {
 
 
 void SimpleTexture::draw() {
+	std::cout << "SimpleTexture::draw()" << std::endl;
 	Renderer* renderer = Renderer::get_instance();
 	SDL_Texture* texture = 
 	TextureLoader::load_texture
 	(renderer->get_sdl_renderer(), tileset_);
-	SDL_RenderTexture(renderer->get_sdl_renderer(), texture, &src_, &dest_);
+	if (!SDL_RenderTexture(renderer->get_sdl_renderer(), 
+	texture, &src_, &dest_)) {
+		SDL_Log("SimpleTexture::draw(): Could not render texture");
+	}
 }
 
 
