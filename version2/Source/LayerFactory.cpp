@@ -4,7 +4,6 @@
 Layer* LayerFactory::create_layer(const int width,
 						   const SDL_FPoint& upperLeftCorner,
 						   const LayerFactory::LayerType& layerType) {
-	std::cout << "LayerFactory::create_layer " << std::endl;
 	Layer* newLayer;
 	newLayer = nullptr;
 	switch (layerType) {
@@ -39,7 +38,6 @@ Layer* LayerFactory::create_layer(const int width,
 				break;
 			}
     }
-	std::cout << "LayerFactory::create_layer end" << std::endl;
 	return newLayer;
 }
 

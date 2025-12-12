@@ -31,7 +31,6 @@ GrassBackground::GrassBackground(const float width, const float height) {
 			 }
 		}
 	}
-	std::cout << "GrassBackground::GrassBackground(): texture number: " << vGrass_.size() << std::endl;
 }
 
 
