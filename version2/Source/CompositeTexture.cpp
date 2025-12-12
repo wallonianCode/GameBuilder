@@ -26,6 +26,7 @@ CompositeTexture::CompositeTexture(
 		itSrcBegin++;
 		itDestBegin++;
 	}
+	std::cout << "CompositeTexture::CompositeTexture end " << vSrcDest_.size() << std::endl;
 }
 
 

@@ -33,8 +33,6 @@ void BuilderState::update() {
 void BuilderState::draw() {
 	Renderer* renderer;
 	renderer = Renderer::get_instance();
-	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 0, 0, 0, 255);
-	SDL_RenderClear(renderer->get_sdl_renderer());
 	map_->draw();
 	SDL_RenderPresent(renderer->get_sdl_renderer());
 }

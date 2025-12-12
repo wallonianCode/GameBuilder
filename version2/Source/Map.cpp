@@ -2,7 +2,6 @@
 
 
 void Map::draw() {
-	std::cout << "Map::draw()" << std::endl;
 	for (std::vector<Texture*>::iterator itTexture = vTextures_.begin() ;
 	itTexture != vTextures_.end(); itTexture++) {
 		(*itTexture)->draw();
