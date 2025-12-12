@@ -7,6 +7,7 @@ void BuilderMap::draw() {
 	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 0, 0, 0, 255);
 	SDL_RenderClear(renderer->get_sdl_renderer());
 	grassBackground_->draw();
+	/*
 	Map::draw(); //draw textures
 	
 	selector_->draw();
@@ -14,6 +15,7 @@ void BuilderMap::draw() {
 	if (!separator_->is_mouse_in()) {
 		this->draw_frame();
 	}
+		*/
 }
 
 
@@ -81,7 +83,10 @@ void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
 
 
 BuilderMap::BuilderMap() {
+	Window* window;
+
+	window = Window::get_instance();
 	selector_ = std::make_shared<Selector>(SELECTOR_WIDTH);
 	separator_ = std::make_shared<Separator>();
-	grassBackground_ = std::make_shared<GrassBackground>();
+	grassBackground_ = std::make_shared<GrassBackground>(window->get_width(), window->get_height());
 }
