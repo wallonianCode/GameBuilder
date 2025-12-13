@@ -26,6 +26,11 @@
 #include "RockRoad.hpp"
 #include "SandRoad.hpp"
 
+#include "GreenWhiteGreenGrass.hpp"
+#include "GreenWhiteGrass.hpp"
+#include "GreenGrass.hpp"
+#include "WhiteGrass.hpp"
+
 
 enum class SimpleTextureEnum {
 	Sand,

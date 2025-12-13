@@ -5,7 +5,7 @@
 
 class WhiteGrass : public TextureCloneable<SimpleTexture, WhiteGrass> {
 public:
-    WhiteGrass(const SDL_Point&);
+    WhiteGrass(const SDL_FPoint&);
 };
 
 #endif

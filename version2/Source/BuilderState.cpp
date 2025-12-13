@@ -35,6 +35,7 @@ void BuilderState::draw() {
 	renderer = Renderer::get_instance();
 	map_->draw();
 	SDL_RenderPresent(renderer->get_sdl_renderer());
+	std::cout << "BuilderState::draw()" << std::endl;
 }
 
 

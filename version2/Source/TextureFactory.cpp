@@ -35,6 +35,22 @@ TextureFactory::create_simple_texture(const SDL_FPoint& pos,
 			newTexture = new TallGrass(pos);
 			break;
 		}
+		case SimpleTextureEnum::GreenWhiteGreenGrass: {
+			newTexture = new GreenWhiteGreenGrass(pos);
+			break;
+		}
+		case SimpleTextureEnum::GreenWhiteGrass: {
+		  newTexture = new GreenWhiteGrass(pos);
+			break;
+		}
+		case SimpleTextureEnum::GreenGrass: {
+			newTexture = new GreenGrass(pos);
+			break;
+		}
+		case SimpleTextureEnum::WhiteGrass: {
+			newTexture = new WhiteGrass(pos);
+			break;
+		}
 		default:
 			break;
 	}

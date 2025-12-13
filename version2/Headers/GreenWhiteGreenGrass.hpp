@@ -5,6 +5,6 @@
 
 class GreenWhiteGreenGrass : public TextureCloneable<SimpleTexture, GreenWhiteGreenGrass> {
 public:
-    GreenWhiteGreenGrass(const SDL_Point&);
+    GreenWhiteGreenGrass(const SDL_FPoint&);
 };
 #endif

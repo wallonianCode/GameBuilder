@@ -6,7 +6,10 @@ void BuilderMap::draw() {
 	renderer = Renderer::get_instance();
 	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 0, 0, 0, 255);
 	SDL_RenderClear(renderer->get_sdl_renderer());
+	std::cout << "BuilderMap::draw(): just before drawing background" 
+	<< std::endl;
 	grassBackground_->draw();
+	std::cout << "BuilderMap::draw(): grassbackground drawn" << std::endl;
 	/*
 	Map::draw(); //draw textures
 	
