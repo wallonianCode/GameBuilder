@@ -24,7 +24,10 @@ GrassBackground::GrassBackground(const float width, const float height) {
 		lineIt = lineItBegin;
 		for (x = 0; x < width - TILE_DIM; x += TILE_DIM) {
 			 vGrass_.push_back(
-			 TextureFactory::create_simple_texture({(float)x, (float)y}, *lineIt));
+			 TextureFactory::create_simple_texture({(float)x, (float)y}, 
+			 *lineIt));
+				std::cout << "Background::Background(): (x, y): " <<
+			  "(" << x << "," << y <<  ")" << std::endl; 
 			 lineIt++;
 			 if (lineIt == lineItEnd) {
 				 lineIt = lineItBegin;
