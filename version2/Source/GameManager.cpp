@@ -9,10 +9,21 @@ GameManager* GameManager::get_instance() {
 }
 
 void GameManager::run() {
-	bool running = true;
-	GameStateMachine* stateMachine = GameStateMachine::get_instance();
+	bool running; 
+	uint64_t start, end;
+	float elapsedS, elapsedMS;
+	GameStateMachine* stateMachine; 
+	
+	running = true;
+	stateMachine = GameStateMachine::get_instance();
+
 	while (running) {
+		start = SDL_GetPerformanceCounter();
 		running = !(stateMachine->handle_frame());
+		end = SDL_GetPerformanceCounter();
+	  elapsedS = (end - start)/(float)SDL_GetPerformanceFrequency();
+		elapsedMS = elapsedS*1000.0f;
+		SDL_Delay(std::floor(16.666f - elapsedMS));
 	}
 }
 

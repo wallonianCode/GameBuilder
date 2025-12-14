@@ -2,7 +2,8 @@
 #define GAMEMANAGER_H
 
 #include <memory>
-
+#include <cmath>
+#include <SDL3/SDL_timer.h>
 #include "Renderer.hpp"
 #include "GameStateMachine.hpp"
 
