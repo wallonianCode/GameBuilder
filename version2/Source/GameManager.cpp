@@ -21,9 +21,12 @@ void GameManager::run() {
 		start = SDL_GetPerformanceCounter();
 		running = !(stateMachine->handle_frame());
 		end = SDL_GetPerformanceCounter();
+	
 	  elapsedS = (end - start)/(float)SDL_GetPerformanceFrequency();
 		elapsedMS = elapsedS*1000.0f;
-		SDL_Delay(std::floor(16.666f - elapsedMS));
+		if (elapsedMS < SCREEN_TICKS_PER_FRAME) {
+			SDL_Delay(std::floor(SCREEN_TICKS_PER_FRAME - elapsedMS));
+		}
 	}
 }
 
