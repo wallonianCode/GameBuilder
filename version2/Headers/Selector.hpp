@@ -25,8 +25,8 @@ public:
 		*/
 	void redimension_frame();
 private:	
-	LayerManager* layerManager_;
-	Frame* frame_;
+	std::shared_ptr<LayerManager> layerManager_;
+	std::shared_ptr<Frame> frame_;
 	int width_;
 };
 

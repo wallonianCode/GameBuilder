@@ -2,33 +2,37 @@
 
 
 void Map::draw() {
-	for (std::vector<Texture*>::iterator itTexture = vTextures_.begin() ;
-	itTexture != vTextures_.end(); itTexture++) {
+	std::vector<shared_ptr<Texture>>::iterator itTexture; 
+	for (itTexture = vTextures_.begin() ;
+			 itTexture != vTextures_.end(); 
+			 itTexture++) {
 		(*itTexture)->draw();
 	}
 }
 
 
-void Map::add_texture(Texture* texture) {
+void Map::add_texture(std::shared_ptr<Texture> texture) {
 	vTextures_.push_back(texture);
 }
 
 
 void Map::add_texture_at_mouse_pos(Texture* texture) {	
 	float x, y;
-	Texture* tCopy = texture->clone();
+	std::shared_ptr<Texture> tCopy = 
+	std::make_shared(*texture->clone());
 
 	SDL_GetMouseState(&x, &y);
   tCopy->set_upper_left_corner({x-((int)x % TILE_DIM), 
 	y-((int)y % TILE_DIM)});	
+
 	vTextures_.push_back(tCopy);
 }
 
 
 void Map::remove_texture(const SDL_FPoint& pos) {
-	std::vector<Texture*>::iterator found =
+	std::vector<std::shared_ptr<Texture>>::iterator found =
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
-	[pos](Texture* texture){return texture->get_upper_left_corner().x == pos.x &&
+	[pos](std::shared_ptr<Texture> texture){return texture->get_upper_left_corner().x == pos.x &&
 	texture->get_upper_left_corner().y == pos.y;});
 	if (found != vTextures_.end()) 
 		vTextures_.erase(found);	
@@ -63,9 +67,9 @@ Map::Map(const std::string& filename) {
 }
 
 
-Map::Map(std::vector<Texture*>::iterator itLandBegin,
-				 std::vector<Texture*>::iterator itLandEnd) {
-	vTextures_ = std::vector<Texture*>(itLandBegin, itLandEnd);
+Map::Map(std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
+				 std::vector<std::shared_ptr<Texture>>::iterator itLandEnd) {
+	vTextures_ = std::vector<std::shared_ptr<Texture>>(itLandBegin, itLandEnd);
 }
 
 

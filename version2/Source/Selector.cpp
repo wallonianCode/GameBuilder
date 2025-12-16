@@ -61,8 +61,9 @@ void Selector::switch_layer_backward() {
 }
 
 Selector::Selector(const int width) : width_(width) {
-	layerManager_ = new LayerManager(width, {0.0f, 0.0f});
-	frame_ = new Frame({0.0f, 0.0f, TILE_DIM, TILE_DIM}, Color::red);
+	layerManager_ = std::make_shared<LayerManager>(width, {0.0f, 0.0f});
+	frame_ = 
+	std::make_shared<Frame>({0.0f, 0.0f, TILE_DIM, TILE_DIM}, Color::red);
 }
 
 

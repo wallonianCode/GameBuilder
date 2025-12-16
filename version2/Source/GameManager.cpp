@@ -8,6 +8,8 @@ GameManager* GameManager::get_instance() {
 	return instance_;
 }
 
+//TODO try out with a lower fps. Look if more textures are printed
+// then. That may be an efficiency problem.
 void GameManager::run() {
 	bool running; 
 	uint64_t start, end;

@@ -38,24 +38,6 @@ bool GameStateMachine::handle_frame() {
 	if (states_.empty()) {
 		stopGame = true;
 	}
-
-	/*
-	if (nextState != nullptr && !running) {
-		states_.pop();
-		states_.push(nextState);
-	}
-	else if (nextState == nullptr && !running) { 
-		states_.pop();
-		if (states_.empty()) stopGame = true;
-	}
-	else if (nextState != nullptr && running) { 
-		states_.push(nextState);
-		nextState->update();
-	}
-	else { //nextState==nullptr && running
-		//stay in the same state
-	}
-		*/
 	return stopGame;
 }
 

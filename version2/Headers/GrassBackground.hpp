@@ -15,7 +15,7 @@ public:
 	GrassBackground();
 	void draw() override;
 private:
-	std::vector<SimpleTexture*> vGrass_;
+	std::vector<std::shared_ptr<SimpleTexture>> vGrass_;
 
 };
 
