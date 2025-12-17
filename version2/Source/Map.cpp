@@ -2,7 +2,7 @@
 
 
 void Map::draw() {
-	std::vector<shared_ptr<Texture>>::iterator itTexture; 
+	std::vector<std::shared_ptr<Texture>>::iterator itTexture; 
 	for (itTexture = vTextures_.begin() ;
 			 itTexture != vTextures_.end(); 
 			 itTexture++) {
@@ -11,15 +11,15 @@ void Map::draw() {
 }
 
 
-void Map::add_texture(std::shared_ptr<Texture> texture) {
-	vTextures_.push_back(texture);
+void Map::add_texture(Texture* texture) {
+	vTextures_.push_back(std::make_shared<Texture>(*texture));
 }
 
 
 void Map::add_texture_at_mouse_pos(Texture* texture) {	
 	float x, y;
 	std::shared_ptr<Texture> tCopy = 
-	std::make_shared(*texture->clone());
+	std::make_shared<Texture>(*texture->clone());
 
 	SDL_GetMouseState(&x, &y);
   tCopy->set_upper_left_corner({x-((int)x % TILE_DIM), 

@@ -16,8 +16,9 @@ void PlayerMap::handle_event(SDL_Event& event) {
 PlayerMap::PlayerMap() : Map() {}
 
 
-PlayerMap::PlayerMap(std::vector<Texture*>::iterator itLandBegin,
-std::vector<Texture*>::iterator itLandEnd) : 
+PlayerMap::PlayerMap(
+std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
+std::vector<std::shared_ptr<Texture>>::iterator itLandEnd) : 
 Map(itLandBegin, itLandEnd) {}
 
 

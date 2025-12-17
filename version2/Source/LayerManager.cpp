@@ -12,8 +12,8 @@ width_(width), upperLeftCorner_(upperLeftCorner) {
 		LayerFactory::LayerType::Border
 	};
 
-	for (std::vector<LayerFactory::LayerType>::iterator ltIt = vLayerTypes.begin();
-		   ltIt != vLayerTypes.end(); ++ltIt) {
+	for (std::vector<LayerFactory::LayerType>::iterator ltIt = 
+	vLayerTypes.begin(); ltIt != vLayerTypes.end(); ++ltIt) {
 		this->add_layer(*ltIt);	
 	}
 	currentLayerType_ = vLayerTypes[0];

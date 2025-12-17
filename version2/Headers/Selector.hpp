@@ -17,16 +17,17 @@ public:
 	Texture* get_selected_texture();
 	void switch_layer_forward();
 	void switch_layer_backward();
-	Selector(const int width);
-
 	/**
 		* @brief  adapt the dimensions of the frame to the texture
 		*				  the mouse is currently hovering over.
 		*/
 	void redimension_frame();
+
+	Selector(const int width);
+	~Selector();
 private:	
-	std::shared_ptr<LayerManager> layerManager_;
-	std::shared_ptr<Frame> frame_;
+	LayerManager* layerManager_;
+	Frame* frame_;
 	int width_;
 };
 

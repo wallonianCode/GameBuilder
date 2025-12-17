@@ -1,6 +1,6 @@
 #include "../Headers/ThreeColumnsBackground.hpp"
 
-//TODO try out without pointers, or with pointers as members?
+//TODO try out with three rectangles in order to get the right color
 void ThreeColumnsBackground::draw() {
 	Window* window;
 	Renderer* renderer;

@@ -24,9 +24,9 @@ public:
 	//void load(const std::string& fileName);
 	
 	// add a texture (tile or character) to map
-	void add_texture(std::shared_ptr<Texture>);
+	void add_texture(Texture*);
 
-	void add_texture_at_mouse_pos(std::shared_ptr<Texture>);
+	void add_texture_at_mouse_pos(Texture*);
 
 	// remove a texture (tile or character) from map
 	//TODO return a boolean

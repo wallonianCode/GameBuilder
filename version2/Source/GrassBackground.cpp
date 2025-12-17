@@ -23,7 +23,7 @@ GrassBackground::GrassBackground(const float width, const float height) {
 		lineItEnd = y % 2 == 0 ? line1.end() : line2.end();
 		lineIt = lineItBegin;
 		for (x = 0; x < width - TILE_DIM; x += TILE_DIM) {
-			 vGrass_.push_back(std::make_shared(
+			 vGrass_.push_back(std::make_shared<SimpleTexture>(
 			 *(TextureFactory::create_simple_texture({(float)x, (float)y}, 
 			 *lineIt))));
 				std::cout << "Background::Background(): (x, y): " <<
