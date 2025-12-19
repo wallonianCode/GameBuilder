@@ -9,7 +9,6 @@ public:
 	ThreeColumnsBackground(const SDL_Color& backColor, const SDL_Color& foreColor);
 private:
 	SDL_Color backgroundColor_, foregroundColor_;
-	Rectangle foregroundRect, backgroundRect;
 
 	
 };
