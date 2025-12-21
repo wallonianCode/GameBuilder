@@ -8,6 +8,19 @@ static SDL_Renderer *renderer = NULL;
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
+/*
+int SDL_main(int argc, char **argv) {
+	return SDL_EnterAppMainCallbacks(argc, argv, SDL_AppInit, SDL_AppIterate, SDL_AppEvent, SDL_AppQuit);
+}
+
+#undef main
+int main(int argc, char *argv[]) {
+	(void)argc;
+	(void)argv;
+	return SDL_RunApp(0, NULL, SDL_main, NULL);
+}
+*/
+
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {

@@ -1,10 +1,10 @@
 OBJS = test.cpp
 CC = g++
-COMPILER_FLAGS = -Wall -std=c++17
+COMPILER_FLAGS = -Wall -std=c++11
 LINKER_FLAGS = -lSDL3 -lSDL3_image -lSDL3_ttf
-INCLUDE = -IC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3_x64-windows/include -IC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-image_x64-windows/include -IC:\Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-ttf_x64-windows/include 
-SDL3_LIB = -LC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3_x64-windows/lib -LC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-image_x64-windows/lib -LC:/Users/z004ryjh/Desktop/GIT/vcpkg/packages/sdl3-ttf_x64-windows/lib
-OBJ_NAME = Executables\exe
+INCLUDE = -I/usr/local/include
+SDL3_LIB = -L/usr/local/lib
+OBJ_NAME = Executables/exe
 
 all : $(OBJS)
 	$(CC) $(OBJS) $(COMPILER_FLAGS) $(INCLUDE) $(SDL3_LIB) $(LINKER_FLAGS) -o $(OBJ_NAME)

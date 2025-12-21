@@ -7,3 +7,4 @@ TestFiles/
 exe
 *version2/Executables/
 *.png
+test/main.cpp
