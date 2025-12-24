@@ -9,9 +9,13 @@
 
 #include "../Headers/GameManager.hpp"
 
+
 SDL_AppResult SDL_AppInit(void **appState, int argc, char *argv[]) {
-	return SDL_APP_SUCCESS;
+	//TODO init windows & renderer
+	//TODO set render performance window stuff
+	return SDL_APP_CONTINUE;
 }
+
 
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event* event) {
 	return SDL_APP_SUCCESS;
@@ -19,6 +23,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event* event) {
 
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
+  //TODO get game manager and run
 	return SDL_APP_SUCCESS;
 }
 
