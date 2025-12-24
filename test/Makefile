@@ -1,4 +1,4 @@
-OBJS = test.cpp
+OBJS = TextureTest.cpp
 CC = g++
 COMPILER_FLAGS = -Wall -std=c++11
 LINKER_FLAGS = -lSDL3 -lSDL3_image -lSDL3_ttf
