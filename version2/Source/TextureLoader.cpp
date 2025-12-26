@@ -35,11 +35,12 @@ const std::string& filename) {
 		SDL_GetBasePath());	  
 		image = IMG_Load(imagePath);
 		if (!image) {
-			std::cerr << TextureLoader::load_texture() << SDL_GetError() << 
+			std::cerr << "TextureLoader::load_texture(): "<< SDL_GetError() << 
 			std::endl;
 			throw(
 			std::runtime_error(
-			"SDL_Surface was not successfully loaded at path: " + imagePath));
+			"SDL_Surface was not successfully loaded at path: " + 
+			std::string(imagePath)));
 		}
 		// make background transparent
 		transparentColor = filename == "npcLeafGreen" ?
@@ -71,19 +72,19 @@ const std::string& filename) {
 
 
 void TextureLoader::deallocate_textures() {
-	std::unordered_map<std::string, SDL_Texture*>::iterator texturesIt;
-  std::unordered_map<std::string, SDL_Surface*>::iterator surfacesIt;
+	std::unordered_map<std::string, SDL_Texture*>::iterator textureIt;
+  std::unordered_map<std::string, SDL_Surface*>::iterator surfaceIt;
 
 	textureIt = _textures.begin();
-	while (texturesIt != _textures.end()) {
-		SDL_DestroyTexture(texturesIt->second);
-		texturesIt = _textures.erase(texturesIt);
+	while (textureIt != _textures.end()) {
+		SDL_DestroyTexture(textureIt->second);
+		textureIt = _textures.erase(textureIt);
 	}
 
 	surfaceIt = _surfaces.begin();
-	while (surfacesIt != _surfaces.end()) {
-		SDL_DestroySurface(surfacesIt->second);
-		surfacesIt = _surfaces.erase(surfacesIt);
+	while (surfaceIt != _surfaces.end()) {
+		SDL_DestroySurface(surfaceIt->second);
+		surfaceIt = _surfaces.erase(surfaceIt);
 	}
 }
 

@@ -21,28 +21,27 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event* event) {
 	GameStateMachine* stateMachine;	
 	bool stopGame;
 	try {
-		stateMachine = stateMachine::get_instance();
-		stopGame = stateMachine->process_event();
+		stateMachine = GameStateMachine::get_instance();
+		stopGame = stateMachine->process_events();
 	}
 	catch (const std::runtime_error& err) {
 		std::cerr << "Runtime error catched. Msg: " << 
 		err.what() << " " << SDL_GetError() << std::endl;
 	}
+	std::cout << "main::SDL_AppEvent: " << stopGame << std::endl;
 	return stopGame ? SDL_APP_SUCCESS : SDL_APP_CONTINUE;
 }
 
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
 	GameStateMachine* stateMachine;
-	uint64_t start, end;
-	float elapsedS, elapsedMS;
+	//uint64_t start, end;
+	//float elapsedS, elapsedMS;
 
 	try {
 		stateMachine = GameStateMachine::get_instance();
 		stateMachine->update();
-		
-
-		gameManager->draw();
+		stateMachine->draw();
 	}
 	catch(const std::runtime_error& err) {
 		std::cout << "Runtime error catched. Msg: " << 

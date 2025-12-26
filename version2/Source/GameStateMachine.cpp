@@ -44,7 +44,7 @@ bool GameStateMachine::handle_frame() {
 
 
 bool GameStateMachine::process_events() {
-	GameState* currentState, nextState;
+	GameState *currentState, *nextState;
 	bool stopGame, running;
 
 	stopGame = false;
@@ -67,14 +67,20 @@ bool GameStateMachine::process_events() {
 
 
 void GameStateMachine::update() {
+	GameState* currentState;
+
 	currentState = states_.top();
 	currentState->update();
 }
 
 void GameStateMachine::draw() {
+	GameState* currentState;
+
 	currentState = states_.top();
 	currentState->draw();
 }
+
+
 GameStateMachine::GameStateMachine() {
 	states_.push(new GameMenuState());	
 }
