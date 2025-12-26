@@ -8,7 +8,7 @@ GameStateMachine* GameStateMachine::get_instance() {
 	return instance_;
 }
 
-
+/*
 bool GameStateMachine::handle_frame() {
 	Renderer* renderer;
 	GameState* currentState,
@@ -18,7 +18,7 @@ bool GameStateMachine::handle_frame() {
 
 	renderer = Renderer::get_instance();
 	stopGame = false;
-    running = true;
+  running = true;
 	currentState = states_.top();
 
 	nextState = currentState->process_events(running);
@@ -40,8 +40,41 @@ bool GameStateMachine::handle_frame() {
 	}
 	return stopGame;
 }
+*/
 
 
+bool GameStateMachine::process_events() {
+	GameState* currentState, nextState;
+	bool stopGame, running;
+
+	stopGame = false;
+	currentState = states_.top();
+	nextState = currentState->process_events(running);
+
+	if (! running) {
+		states_.pop();
+	}
+
+	if (nextState != nullptr) {
+		states_.push(nextState);
+	}
+
+	if (states_.empty()) {
+		stopGame = true;
+	}
+	return stopGame;
+}
+
+
+void GameStateMachine::update() {
+	currentState = states_.top();
+	currentState->update();
+}
+
+void GameStateMachine::draw() {
+	currentState = states_.top();
+	currentState->draw();
+}
 GameStateMachine::GameStateMachine() {
 	states_.push(new GameMenuState());	
 }

@@ -32,7 +32,8 @@ void Map::add_texture_at_mouse_pos(Texture* texture) {
 void Map::remove_texture(const SDL_FPoint& pos) {
 	std::vector<std::shared_ptr<Texture>>::iterator found =
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
-	[pos](std::shared_ptr<Texture> texture){return texture->get_upper_left_corner().x == pos.x &&
+	[pos](std::shared_ptr<Texture> texture)
+	{return texture->get_upper_left_corner().x == pos.x &&
 	texture->get_upper_left_corner().y == pos.y;});
 	if (found != vTextures_.end()) 
 		vTextures_.erase(found);	
