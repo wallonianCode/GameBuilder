@@ -13,7 +13,7 @@ public:
 	
 	// returns true if there is still a state running
 //	bool handle_frame();
- 	bool process_events();
+ 	bool process_event(SDL_Event* event);
 	void update();
 	void draw();
 

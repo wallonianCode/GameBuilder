@@ -43,13 +43,14 @@ bool GameStateMachine::handle_frame() {
 */
 
 
-bool GameStateMachine::process_events() {
+bool GameStateMachine::process_event(SDL_Event* event) {
 	GameState *currentState, *nextState;
 	bool stopGame, running;
 
 	stopGame = false;
+	running = true;
 	currentState = states_.top();
-	nextState = currentState->process_events(running);
+	nextState = currentState->process_event(running, event);
 
 	if (! running) {
 		states_.pop();

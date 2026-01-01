@@ -7,8 +7,7 @@ void PlayerMap::draw() {
 }
 
 
-void PlayerMap::handle_event(SDL_Event& event) {
-	//TODO
+void PlayerMap::handle_event(SDL_Event* event) {
 	std::cout << "PlayerMap::handle_event()" << std::endl;
 }
 

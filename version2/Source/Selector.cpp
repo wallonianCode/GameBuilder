@@ -11,21 +11,21 @@ void Selector::draw() {
 }
 
 
-void Selector::handle_event(SDL_Event& event) {
-	switch (event.type) {
+void Selector::handle_event(SDL_Event* event) {
+	switch (event->type) {
 		case SDL_EVENT_KEY_DOWN:
-			if (event.key.scancode == SDLK_I) {
+			if (event->key.scancode == SDLK_I) {
 				this->switch_layer_forward();
 			}
-			else if (event.key.scancode == SDLK_P) {
+			else if (event->key.scancode == SDLK_P) {
 				this->switch_layer_backward();
 			}
 			break;
 		case SDL_EVENT_MOUSE_BUTTON_DOWN: {
-			if (event.button.button == SDL_BUTTON_LEFT) {
+			if (event->button.button == SDL_BUTTON_LEFT) {
 				frame_ -> immobilize();
 			}
-			else if (event.button.button == SDL_BUTTON_RIGHT) {
+			else if (event->button.button == SDL_BUTTON_RIGHT) {
 				frame_ -> free();
 			}
 			break;

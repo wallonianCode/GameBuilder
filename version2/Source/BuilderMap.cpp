@@ -19,7 +19,7 @@ void BuilderMap::draw() {
 }
 
 
-void BuilderMap::handle_event(SDL_Event& event) {
+void BuilderMap::handle_event(SDL_Event* event) {
 	if (selector_->is_mouse_in()) {
 		selector_->handle_event(event);
 		//this->handle_mouse_motion_events(event);
@@ -29,9 +29,9 @@ void BuilderMap::handle_event(SDL_Event& event) {
 	}
 	else {
 		this->handle_mouse_motion_events(event);
-		switch(event.type) {
+		switch(event->type) {
 			case SDL_EVENT_MOUSE_BUTTON_DOWN:
-				switch (event.button.button) {	
+				switch (event->button.button) {	
 					case SDL_BUTTON_LEFT:
 						if (selector_->get_selected_texture() != nullptr) {
 							Map::add_texture_at_mouse_pos(
@@ -45,7 +45,7 @@ void BuilderMap::handle_event(SDL_Event& event) {
 						break;
 				}
 			case SDL_EVENT_KEY_DOWN:
-				switch (event.key.scancode) {
+				switch (event->key.scancode) {
 					case SDL_SCANCODE_L:
 						std::cout << "L case pressed" << std::endl;
 						selector_->switch_layer_forward();
@@ -64,8 +64,8 @@ void BuilderMap::handle_event(SDL_Event& event) {
 }
 
 
-void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
-	switch(event.type) {
+void BuilderMap::handle_mouse_motion_events(SDL_Event* event) {
+	switch(event->type) {
 	  case SDL_EVENT_MOUSE_MOTION: {
 			float x, y, xTile, yTile;
 			SDL_GetMouseState(&x, &y);

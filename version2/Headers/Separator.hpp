@@ -8,7 +8,7 @@
 class Separator : public Drawable {
 public:
 	void draw();
-	void handle_event(SDL_Event& event);
+	void handle_event(SDL_Event* event);
 	bool is_mouse_in();
 	Separator();
 private:

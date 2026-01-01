@@ -17,7 +17,7 @@ void GameMenu::update() {}
 // one possibility to avoid returning null ptr would be to implement
 // a 'blank' state with operator == overloaded
 // nextState == blankState and you would need a comparator
-GameState* GameMenu::handle_event(SDL_Event& event) {
+GameState* GameMenu::handle_event(SDL_Event* event) {
 	GameState *nextState; //*retour;
 	//retour = nullptr;
 	nextState = builderBtn_.handle_event(event);

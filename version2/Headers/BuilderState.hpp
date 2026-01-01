@@ -8,7 +8,7 @@
 
 class BuilderState : public GameState {
 public:
-	GameState* process_events(bool&) override;
+	GameState* process_event(bool&, SDL_Event*) override;
 	void update() override;
 	void draw() override;
 	BuilderState();

@@ -8,7 +8,7 @@
 class PlayerMap : public Map {
 public:
 	void draw() override;
-	void handle_event(SDL_Event& event) override;
+	void handle_event(SDL_Event* event) override;
 
 	// ------ CONSTRUCTORS ----------------------------
 	PlayerMap();

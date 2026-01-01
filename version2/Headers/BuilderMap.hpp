@@ -15,13 +15,13 @@ const int SELECTOR_WIDTH = 5*TILE_DIM;
 class BuilderMap : public Map {
 public:
 	void draw();
-	void handle_event(SDL_Event& event) override;
+	void handle_event(SDL_Event* event) override;
 	
 	// ------ Constructors ----------------------------
 	BuilderMap();
 
 private:
-	void handle_mouse_motion_events(SDL_Event& event);
+	void handle_mouse_motion_events(SDL_Event* event);
 	std::shared_ptr<Selector> selector_;
 	std::shared_ptr<Separator> separator_;
 	std::shared_ptr<GrassBackground> grassBackground_;

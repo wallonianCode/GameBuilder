@@ -16,7 +16,7 @@
 class Map : public Drawable {
 public:
 	virtual void draw() override;
-	virtual void handle_event(SDL_Event& event) = 0;
+	virtual void handle_event(SDL_Event* event) = 0;
 
 	// write textures and characters to a save file
 	//void save(const std::string& fileName);

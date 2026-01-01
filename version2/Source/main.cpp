@@ -22,7 +22,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event* event) {
 	bool stopGame;
 	try {
 		stateMachine = GameStateMachine::get_instance();
-		stopGame = stateMachine->process_events();
+		stopGame = stateMachine->process_event(event);
 	}
 	catch (const std::runtime_error& err) {
 		std::cerr << "Runtime error catched. Msg: " << 
