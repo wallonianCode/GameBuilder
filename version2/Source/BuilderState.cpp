@@ -17,8 +17,8 @@ SDL_Event* event) {
 				}
 			default:
 				break;
-		map_->handle_event(event);
 	}
+	map_->handle_event(event);
 	return nullptr;
 }
 
