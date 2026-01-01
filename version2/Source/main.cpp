@@ -28,7 +28,6 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event* event) {
 		std::cerr << "Runtime error catched. Msg: " << 
 		err.what() << " " << SDL_GetError() << std::endl;
 	}
-	std::cout << "main::SDL_AppEvent: " << stopGame << std::endl;
 	return stopGame ? SDL_APP_SUCCESS : SDL_APP_CONTINUE;
 }
 

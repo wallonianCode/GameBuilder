@@ -26,8 +26,10 @@ GrassBackground::GrassBackground(const float width, const float height) {
 			 vGrass_.push_back(std::make_shared<SimpleTexture>(
 			 *(TextureFactory::create_simple_texture({(float)x, (float)y}, 
 			 *lineIt))));
+			 /*
 				std::cout << "Background::Background(): (x, y): " <<
 			  "(" << x << "," << y <<  ")" << std::endl; 
+				*/
 			 lineIt++;
 			 if (lineIt == lineItEnd) {
 				 lineIt = lineItBegin;

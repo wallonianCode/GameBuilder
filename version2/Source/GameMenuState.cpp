@@ -18,8 +18,8 @@ GameMenuState::process_event(bool& running, SDL_Event* event) {
 			}
 		default:
 			break;
-		nextState = menu_->handle_event(event);
 	}
+	nextState = menu_->handle_event(event);
 	return nextState;
 }
 

@@ -14,11 +14,8 @@ GameState* MenuButton::handle_event(SDL_Event* event) {
 			break;
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			if (Collider::is_click_inside_frame(event->button, outRect_)) {
-				std::cout << 
-				"MenuButton::handle_event(). Click is inside frame " << std::endl;
 				//nextState = Button::click();
 				nextState = this->get_next_state();
-				std::cout <<"MenuButton::handle_event " << (nextState == nullptr) << std::endl;
 			}
 			break;
 		default:
