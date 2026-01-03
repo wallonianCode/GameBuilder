@@ -12,8 +12,8 @@
 const int S = 17;
 const int TILE_DIM = 4*S;
 const std::string WINDOW_TITLE = "Game Builder";
-const int WINDOW_WIDTH = 800; //25*TILE_DIM; 
-const int WINDOW_HEIGHT = 600; //20*TILE_DIM;
+const int WINDOW_WIDTH = 25*TILE_DIM; 
+const int WINDOW_HEIGHT = 20*TILE_DIM;
 
 
 class Window {
