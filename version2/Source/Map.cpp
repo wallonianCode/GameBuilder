@@ -3,8 +3,10 @@
 
 void Map::draw() {
 	std::vector<std::shared_ptr<Texture>>::iterator itTexture; 
+	/*
 	std::cout << "Map::draw(): " << 
 	vTextures_.end() - vTextures_.end() << std::endl;
+	*/
 	for (itTexture = vTextures_.begin() ;
 			 itTexture != vTextures_.end(); 
 			 itTexture++) {

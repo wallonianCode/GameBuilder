@@ -28,6 +28,10 @@ void Layer::add_texture(Texture* newTexture) {
 
 void Layer::draw() {
 	std::vector<Texture*>::iterator itTextures;
+	/*
+	std::cout << "Drawing layer: " << 
+	vTextures_.end() - vTextures_.begin() << std::endl;
+	*/
 	for (itTextures = vTextures_.begin();
 			 itTextures != vTextures_.end();
 			 ++itTextures) {

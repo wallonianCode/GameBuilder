@@ -6,11 +6,10 @@ void BuilderMap::draw() {
 	renderer = Renderer::get_instance();
 	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 0, 0, 0, 255);
 	SDL_RenderClear(renderer->get_sdl_renderer());
-	grassBackground_->draw();
-	/*
-	Map::draw(); //draw textures
-	
+//	grassBackground_->draw();
+//	Map::draw(); //draw textures
 	selector_->draw();
+	/*
 	separator_->draw();
 	if (!separator_->is_mouse_in()) {
 		this->draw_frame();
