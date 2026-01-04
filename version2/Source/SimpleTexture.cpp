@@ -27,10 +27,12 @@ void SimpleTexture::draw() {
 	SDL_Texture* texture = 
 	TextureLoader::load_texture
 	(renderer->get_sdl_renderer(), tileset_);
+	/*
 	std::cout << "SimpleTexture::draw() " << (texture == nullptr) << 
 	" " << src_.x << ":" << src_.y << ", " << src_.w << ":" << 
 	src_.h <<	", " << dest_.x << ":" << dest_.y << ", " << dest_.w <<
 	":" << dest_.h << std::endl;
+	*/
 	SDL_RenderTexture(renderer->get_sdl_renderer(), texture, &src_, &dest_);
 }
 

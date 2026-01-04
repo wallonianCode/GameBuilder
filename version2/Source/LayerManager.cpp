@@ -21,7 +21,8 @@ width_(width), upperLeftCorner_(upperLeftCorner) {
 
 
 void LayerManager::add_layer(const LayerFactory::LayerType& layerType)  {
-	mLayers_[layerType] = LayerFactory::create_layer(width_, upperLeftCorner_, layerType);
+	mLayers_[layerType] = 
+	LayerFactory::create_layer(width_, upperLeftCorner_, layerType);
 }
 
 
@@ -50,7 +51,8 @@ void LayerManager::operator--() {
 
 
 Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) { 
-	Texture* ret =  mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
+	Texture* ret =  
+	mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
 	return ret;
 }
 
