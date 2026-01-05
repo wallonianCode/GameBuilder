@@ -28,10 +28,6 @@ void Layer::add_texture(Texture* newTexture) {
 
 void Layer::draw() {
 	std::vector<Texture*>::iterator itTextures;
-	/*
-	std::cout << "Drawing layer: " << 
-	vTextures_.end() - vTextures_.begin() << std::endl;
-	*/
 	for (itTextures = vTextures_.begin();
 			 itTextures != vTextures_.end();
 			 ++itTextures) {
@@ -44,9 +40,3 @@ void Layer::draw() {
 SDL_FPoint Layer::get_upper_left_corner() const {
 	return upperLeftCorner_;
 }
-
-/*
-int Layer::get_width() const {
-	return width_;
-}
-	*/

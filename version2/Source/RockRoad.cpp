@@ -59,7 +59,4 @@ DeclinedTexture(pos) {
 	}
 	this->set_pos_on_tileset({tile.x, tile.y});
 	this->set_dim_on_tileset(tile.w, tile.h);
-	std::cout << "RockRoad::RockRoad: " <<
-	this->get_upper_left_corner().x << ":" <<
-	this->get_upper_left_corner().y << std::endl;
 }

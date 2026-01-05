@@ -5,7 +5,7 @@
 #include "TextureCloneable.hpp"
 
 
-class SimpleTexture : public Texture {
+class SimpleTexture : public TextureCloneable<Texture, SimpleTexture> {
 public:
 	SimpleTexture();
 	SimpleTexture(const SDL_FPoint&);

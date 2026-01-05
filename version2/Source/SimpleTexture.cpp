@@ -15,7 +15,8 @@ SimpleTexture::SimpleTexture(const SDL_FPoint& pos) : tileset_(leafGreenTextureF
 
 
 
-SimpleTexture::SimpleTexture(const std::string& tileset, const SDL_FPoint& pos) : 
+SimpleTexture::SimpleTexture(const std::string& tileset, 
+const SDL_FPoint& pos) : 
 tileset_(tileset) {
 	this->set_upper_left_corner(pos);
 	this->set_dimensions_on_screen(TILE_DIM, TILE_DIM);
@@ -27,12 +28,6 @@ void SimpleTexture::draw() {
 	SDL_Texture* texture = 
 	TextureLoader::load_texture
 	(renderer->get_sdl_renderer(), tileset_);
-	/*
-	std::cout << "SimpleTexture::draw() " << (texture == nullptr) << 
-	" " << src_.x << ":" << src_.y << ", " << src_.w << ":" << 
-	src_.h <<	", " << dest_.x << ":" << dest_.y << ", " << dest_.w <<
-	":" << dest_.h << std::endl;
-	*/
 	SDL_RenderTexture(renderer->get_sdl_renderer(), texture, &src_, &dest_);
 }
 

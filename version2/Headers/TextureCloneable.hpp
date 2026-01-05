@@ -1,6 +1,7 @@
 #ifndef TEXTURECLONEABLE
 #define TEXTURECLONEABLE
 
+#include <SDL3/SDL.h>
 
 template <typename Base, typename Derived>
 class TextureCloneable : virtual public Base {

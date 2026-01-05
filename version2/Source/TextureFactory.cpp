@@ -97,8 +97,6 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 					    	std::array<DeclinedTexture*, 12>::iterator itRoadBegin,
 					    	std::array<DeclinedTexture*, 12>::iterator itRoadEnd,
 					    	const DeclinedTextureEnum& road) {
-	std::cout << "TextureFactory::create_road(): " << 
-	itRoadEnd - itRoadBegin << std::endl;
 	std::array<DeclinedTextureOrientation, 12> roadOrientations =
 	{DeclinedTextureOrientation::East, DeclinedTextureOrientation::West, 
 	 DeclinedTextureOrientation::North, DeclinedTextureOrientation::South,
@@ -109,7 +107,7 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 	 DeclinedTextureOrientation::SouthEastCorner, 
 	 DeclinedTextureOrientation::SouthWestCorner,
 	 DeclinedTextureOrientation::NorthEastCorner, 
-	 DeclinedTextureOrientation::SouthEastCorner}; //TODO
+	 DeclinedTextureOrientation::SouthEastCorner}; 
 
 	SDL_FPoint pos; 
 	std::array<DeclinedTextureOrientation, 12>::iterator itOrientation;
@@ -119,8 +117,6 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 	itRoad = itRoadBegin;
 	for (itOrientation = roadOrientations.begin();
 		 itOrientation != roadOrientations.end(); ++itOrientation) {
-		std::cout << "TextureFactory::create_road(): " << pos.x << ":" <<
-		pos.y << std::endl;
 		*itRoad = 
 		TextureFactory::create_declined_texture(pos, road, *itOrientation);
 		if (pos.x <= width - (*itRoad)->get_width()) {
@@ -130,9 +126,6 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 			pos.x = posBegin.x;
 			pos.y += (*itRoad)->get_height();
 		}
-		std::cout << "TextureFactory::create_road(): " << 
-		(*itRoad)->get_upper_left_corner().x << ":" << 
-		(*itRoad)->get_upper_left_corner().y << std::endl;
 		++itRoad;
 	}
 	itRoadEnd = itRoad + 1;	
@@ -261,8 +254,5 @@ TextureFactory::create_declined_texture(const SDL_FPoint& pos,
 		default:
 			break;
 	}
-	std::cout << "TextureFactory::create_declined_texture(): " <<
-	newTexture->get_upper_left_corner().x << ":" << 
-	newTexture->get_upper_left_corner().y << std::endl;
 	return newTexture;
 }
