@@ -20,9 +20,10 @@ void BuilderMap::handle_event(SDL_Event* event) {
 	if (selector_->is_mouse_in()) {
 		selector_->handle_event(event);
 		switch(event->type) { //frame
-			case SDL_EVENT_MOUSE_BUTTON_DOWN:
-				break;
-			/*
+			case SDL_EVENT_MOUSE_BUTTON_DOWN: {
+			/* TODO ideally would restart moving once the frame goes back
+				into the selector
+				*/
 				if (event->button.button == SDL_BUTTON_LEFT) {
 					frame_ -> immobilize();
 				}
@@ -31,18 +32,21 @@ void BuilderMap::handle_event(SDL_Event* event) {
 				}
 				break;
 			}
-			*/
 			case SDL_EVENT_MOUSE_MOTION: {
-				frame_ -> follow_mouse_motion();
+				if (this->was_out_of_selector()) {
+					frame_ -> free();
+					frame_ -> follow_mouse_motion();
+					this->set_out_of_selector(false);
+				}
 				break;
 			}
 			default:
 				break;
 		}
-		//this->handle_mouse_motion_events(event);
 	}
 	else if (separator_->is_mouse_in()) {
 		separator_->handle_event(event);
+		this->set_out_of_selector(true);
 	}
 	else { //mouse in the map
 		switch(event->type) {
@@ -57,26 +61,35 @@ void BuilderMap::handle_event(SDL_Event* event) {
 					case SDL_BUTTON_RIGHT:
 						Map::remove_texture_at_mouse_pos();
 						break;
-					default:
-						break;
-				}
-			case SDL_EVENT_KEY_DOWN:
+			}
+			case SDL_EVENT_KEY_DOWN: {
 				switch (event->key.scancode) {
-					case SDL_SCANCODE_L:
+					case SDL_SCANCODE_L: {
 						std::cout << "L case pressed" << std::endl;
 						selector_->switch_layer_forward();
 						break;
+					}
 					case SDL_SCANCODE_K:
 						selector_->switch_layer_backward();
 						break;
 					default:
-						break;
-				}
-				break;
+						break;	
+			}
 			default: 
 				break;
 		}
 	}
+}
+}
+
+
+bool BuilderMap::was_out_of_selector() {
+	return this->outOfSelector_;
+}
+
+
+void BuilderMap::set_out_of_selector(const bool out) {
+	this->outOfSelector_ = out;
 }
 
 
@@ -105,5 +118,8 @@ BuilderMap::BuilderMap() {
 	SDL_WarpMouseInWindow(window->get_sdl_window(), 0.0f, 0.0f);
 	selector_ = std::make_shared<Selector>(SELECTOR_WIDTH);
 	separator_ = std::make_shared<Separator>();
-	grassBackground_ = std::make_shared<GrassBackground>(window->get_width(), window->get_height());
+	grassBackground_ = 
+	std::make_shared<GrassBackground>(window->get_width(), 
+	window->get_height());
+	outOfSelector_ = false;
 }

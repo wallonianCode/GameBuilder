@@ -20,11 +20,16 @@ public:
 	// ------ Constructors ----------------------------
 	BuilderMap();
 
+protected:
+	bool was_out_of_selector();
+	void set_out_of_selector(const bool);
 private:
 	void handle_mouse_motion_events(SDL_Event* event);
 	std::shared_ptr<Selector> selector_;
 	std::shared_ptr<Separator> separator_;
 	std::shared_ptr<GrassBackground> grassBackground_;
+	bool outOfSelector_;
+
 };
 
 #endif
