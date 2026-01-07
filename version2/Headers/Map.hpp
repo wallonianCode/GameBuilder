@@ -48,12 +48,12 @@ public:
 
 	Map(std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
 		  std::vector<std::shared_ptr<Texture>>::iterator itLandEnd);
-	
+protected:
+	Frame* frame_;
 private:
 	std::vector<std::string> split(std::string, const std::string&);
 	std::vector<std::shared_ptr<Texture>> vTextures_;
 	// shows the cursor, can be moved with keyboard keys
-	Frame frame_;	
 };
 
 #endif

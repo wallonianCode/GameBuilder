@@ -55,16 +55,18 @@ void Map::update() {}
 
 
 void Map::set_frame_pos(const SDL_FPoint& newPos) {
-	frame_.set_upper_left_corner(newPos);
+	frame_->set_upper_left_corner(newPos);
 }
 
 
 void Map::draw_frame() {
-	frame_.draw();
+	frame_->draw();
 }
 
 
-Map::Map() {}
+Map::Map() {
+	frame_ = new Frame({0.0f, 0.0f}, TILE_DIM, TILE_DIM, Color::red);
+}
 
 
 Map::Map(const std::string& filename) {

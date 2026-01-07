@@ -6,28 +6,45 @@ void BuilderMap::draw() {
 	renderer = Renderer::get_instance();
 	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 0, 0, 0, 255);
 	SDL_RenderClear(renderer->get_sdl_renderer());
-//	grassBackground_->draw();
-//	Map::draw(); //draw textures
+	grassBackground_->draw();
+	Map::draw(); //draw textures
 	selector_->draw();
-	/*
 	separator_->draw();
 	if (!separator_->is_mouse_in()) {
 		this->draw_frame();
 	}
-		*/
 }
 
 
 void BuilderMap::handle_event(SDL_Event* event) {
 	if (selector_->is_mouse_in()) {
 		selector_->handle_event(event);
+		switch(event->type) { //frame
+			case SDL_EVENT_MOUSE_BUTTON_DOWN:
+				break;
+			/*
+				if (event->button.button == SDL_BUTTON_LEFT) {
+					frame_ -> immobilize();
+				}
+				else if (event->button.button == SDL_BUTTON_RIGHT) {
+					frame_ -> free();
+				}
+				break;
+			}
+			*/
+			case SDL_EVENT_MOUSE_MOTION: {
+				frame_ -> follow_mouse_motion();
+				break;
+			}
+			default:
+				break;
+		}
 		//this->handle_mouse_motion_events(event);
 	}
 	else if (separator_->is_mouse_in()) {
 		separator_->handle_event(event);
 	}
-	else {
-		this->handle_mouse_motion_events(event);
+	else { //mouse in the map
 		switch(event->type) {
 			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				switch (event->button.button) {	
@@ -85,6 +102,7 @@ BuilderMap::BuilderMap() {
 	Window* window;
 
 	window = Window::get_instance();
+	SDL_WarpMouseInWindow(window->get_sdl_window(), 0.0f, 0.0f);
 	selector_ = std::make_shared<Selector>(SELECTOR_WIDTH);
 	separator_ = std::make_shared<Separator>();
 	grassBackground_ = std::make_shared<GrassBackground>(window->get_width(), window->get_height());

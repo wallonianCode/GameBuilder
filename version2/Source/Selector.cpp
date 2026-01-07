@@ -8,6 +8,7 @@ void Selector::draw() {
 		selectedTextureCopy -> draw_shadow();
 	}
 	layerManager_ -> draw();
+//	frame_ -> draw();
 }
 
 
@@ -21,20 +22,7 @@ void Selector::handle_event(SDL_Event* event) {
 				this->switch_layer_backward();
 			}
 			break;
-		case SDL_EVENT_MOUSE_BUTTON_DOWN: {
-			if (event->button.button == SDL_BUTTON_LEFT) {
-				frame_ -> immobilize();
-			}
-			else if (event->button.button == SDL_BUTTON_RIGHT) {
-				frame_ -> free();
-			}
-			break;
-		}
-		case SDL_EVENT_MOUSE_MOTION: {
-			frame_ -> follow_mouse_motion();
-			break;
-		}
-
+		
 		default:
 			break;
 	}

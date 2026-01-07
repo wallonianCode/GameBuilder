@@ -37,13 +37,8 @@ Layer(width, upperLeftCorner) {
                                 sandRoad.begin(), sandRoad.end(),
                                 DeclinedTextureEnum::SandRoad);
 
-		std::cout << "Layer::Layer(): " << rockRoad.end()-rockRoad.begin() 
-		<< std::endl;
     for (itRockRoad = rockRoad.begin(); 
 		itRockRoad != rockRoad.end(); ++itRockRoad) {
-				std::cout << "Layer::Layer(): adding texture at: " <<
-				(*itRockRoad)->get_upper_left_corner().x << ":" <<
-				(*itRockRoad)->get_upper_left_corner().y << std::endl;
         this->add_texture(*itRockRoad);
     }
 
