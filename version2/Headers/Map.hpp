@@ -12,6 +12,7 @@
 #include "Texture.hpp"
 #include "Frame.hpp"
 
+const SDL_FPoint MOUSE_STARTING_POSITION = {TILE_DIM/2.0f, TILE_DIM/2.0f};
 
 class Map : public Drawable {
 public:

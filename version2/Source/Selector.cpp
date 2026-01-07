@@ -8,7 +8,6 @@ void Selector::draw() {
 		selectedTextureCopy -> draw_shadow();
 	}
 	layerManager_ -> draw();
-//	frame_ -> draw();
 }
 
 
