@@ -33,8 +33,12 @@ void LayerManager::operator++(int i) {
 
 
 void LayerManager::operator++() {
+	std::cout << "LayerManager::operator++() : begin" << std::endl;
+	std::cout << static_cast<int>(currentLayerType_) << std::endl;
 	currentLayerType_ = 
 	LayerFactory::get_next_layer_type(currentLayerType_);
+	std::cout << "LayerManager::operator++() : end " << 
+	static_cast<int>(currentLayerType_) << std::endl;
 }
 
 
@@ -51,6 +55,7 @@ void LayerManager::operator--() {
 
 
 Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) { 
+	//TODO static casting
 	Texture* ret =  
 	mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
 	return ret;

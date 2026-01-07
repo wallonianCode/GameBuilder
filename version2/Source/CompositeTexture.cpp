@@ -26,6 +26,8 @@ CompositeTexture::CompositeTexture(
 		itSrcBegin++;
 		itDestBegin++;
 	}
+	std::cout << "CompositeTexture::CompositeTexture(): " << vSrcDest_.size() << std::endl;
+	
 }
 
 
@@ -85,6 +87,9 @@ SDL_Point CompositeTexture::get_pos_on_screen() const {
 
 SDL_FPoint CompositeTexture::get_upper_left_corner() const {
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
+	std::cout << "CompositeTexture::get_upper_left_corner(): " << 
+	vSrcDest_.size() << " " << (vSrcDest_[0].second.x)
+	<< std::endl;
 	SDL_FRect upperLeftCornerRect = vSrcDest_[0].second;
 
 	for (itSrcDest = vSrcDest_.begin(); 

@@ -12,6 +12,7 @@ Oak::Oak(const SDL_FPoint& initPos){
 	CompositeTexture(leafGreenTextureFileName, 
 									 vSrc.begin(), vSrc.end(),
 									 vDest.begin(), vDest.end());
+	std::cout << "Oak::Oak: " << (this->get_upper_left_corner().x) << std::endl;
 }
 
 

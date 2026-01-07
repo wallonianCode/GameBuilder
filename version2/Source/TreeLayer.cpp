@@ -28,10 +28,12 @@ Layer(width, upperLeftCorner) {
                                                        oak->get_height() + 
                                                        hornbeam->get_height()},
                                                       SimpleTextureEnum::SmallTree);
-
+    std::cout << "TreeLayer::TreeLayer(const int width, const SDL_FPoint& upperLeftCorner) " <<
+    (oak->get_upper_left_corner().x) << std::endl;
     this->add_texture(oak);
     this->add_texture(pine);
     this->add_texture(hornbeam);
     this->add_texture(poplar);
     this->add_texture(smallTree);
+
 }

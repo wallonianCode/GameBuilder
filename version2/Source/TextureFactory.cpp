@@ -87,6 +87,9 @@ TextureFactory::create_composite_texture(const SDL_FPoint& pos,
 		default:
 			break;
 	}	
+	std::cout << 
+	"TextureFactory::create_composite_texture() " << (newTexture->get_upper_left_corner().x)
+	<< std::endl;
 	return newTexture;
 }
 
