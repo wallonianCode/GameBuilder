@@ -8,3 +8,11 @@ Hornbeam::Hornbeam(std::vector<SDL_FRect>::iterator itSrcBegin,
 					 CompositeTexture(leafGreenTextureFileName, itSrcBegin, 
 						itSrcEnd, itDestBegin, itDestEnd) {}
 
+float Hornbeam::get_width() const {
+	return 3*TILE_DIM;
+}
+
+float Hornbeam::get_height() const {
+	return 4*TILE_DIM;
+}
+

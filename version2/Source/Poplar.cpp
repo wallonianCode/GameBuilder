@@ -8,3 +8,12 @@ Poplar::Poplar(std::vector<SDL_FRect>::iterator itSrcBegin,
 			   CompositeTexture(leafGreenTextureFileName, itSrcBegin, 
 				itSrcEnd, itDestBegin, itDestEnd) {}
 
+
+float Poplar::get_width() const {
+	return TILE_DIM;
+}
+
+
+float Poplar::get_height() const {
+	return 3*TILE_DIM;
+}

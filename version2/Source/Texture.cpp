@@ -29,12 +29,12 @@ Texture* Texture::clone() const {
 
 
 float Texture::get_width() const {
-	return 0.0f;
+	return TILE_DIM;
 }
 
 
 float Texture::get_height() const {
-	return 0.0f;
+	return TILE_DIM;
 }
 
 
