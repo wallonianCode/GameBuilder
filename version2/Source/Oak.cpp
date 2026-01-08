@@ -9,6 +9,8 @@ Oak::Oak(const SDL_FPoint& initPos){
 			TILE_DIM, TILE_DIM});
 		}
 	}
+	//TODO this call does not affect the object, only the 
+	// CompositeTexture() matters because of CRTP
 	CompositeTexture(leafGreenTextureFileName, 
 									 vSrc.begin(), vSrc.end(),
 									 vDest.begin(), vDest.end());

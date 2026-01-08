@@ -6,13 +6,13 @@ Layer(width, upperLeftCorner) {
     CompositeTexture *oak, *pine, *hornbeam, *poplar;
     SimpleTexture* smallTree;
     
-    oak = TextureFactory::create_composite_texture(this->get_upper_left_corner(),
-                                                   CompositeTextureEnum::Oak);
-    std::cout << oak->get_width() << " : " << this->get_upper_left_corner().x << std::endl;
-    pine = TextureFactory::create_composite_texture({this->get_upper_left_corner().x + 
-                                                     oak->get_width(),
-                                                    this->get_upper_left_corner().y},
-                                                    CompositeTextureEnum::Pine);
+    oak = TextureFactory::create_composite_texture(
+		this->get_upper_left_corner(), CompositeTextureEnum::Oak);
+    pine = 
+		TextureFactory::create_composite_texture(
+		{this->get_upper_left_corner().x + oak->get_width(),
+     this->get_upper_left_corner().y}, CompositeTextureEnum::Pine);
+
     hornbeam = TextureFactory::create_composite_texture({this->get_upper_left_corner().x,
                                                          this->get_upper_left_corner().y + 
                                                          oak->get_height()},
@@ -28,8 +28,6 @@ Layer(width, upperLeftCorner) {
                                                        oak->get_height() + 
                                                        hornbeam->get_height()},
                                                       SimpleTextureEnum::SmallTree);
-    std::cout << "TreeLayer::TreeLayer(const int width, const SDL_FPoint& upperLeftCorner) " <<
-    (oak->get_upper_left_corner().x) << std::endl;
     this->add_texture(oak);
     this->add_texture(pine);
     this->add_texture(hornbeam);
