@@ -18,18 +18,16 @@ Layer(width, upperLeftCorner) {
     poplar = 
     TextureFactory::create_poplar({this->get_upper_left_corner().x + hornbeam->get_width(),
                                    this->get_upper_left_corner().y + oak->get_height()});
-    /*
+    
     smallTree = TextureFactory::create_simple_texture({this->get_upper_left_corner().x,
                                                        this->get_upper_left_corner().y +
                                                        oak->get_height() + 
                                                        hornbeam->get_height()},
                                                       SimpleTextureEnum::SmallTree);
-    */                                                
+                                                  
     this->add_texture(oak);
     this->add_texture(pine);
     this->add_texture(hornbeam);
     this->add_texture(poplar);
-    /*
     this->add_texture(smallTree);
-    */
 }
