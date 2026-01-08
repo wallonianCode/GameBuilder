@@ -76,3 +76,14 @@ void Selector::redimension_frame(Frame* frame) {
 		frame->set_upper_left_corner(textureAtCoord->get_upper_left_corner());
 	}
 }
+
+
+void Selector::adjust_frame_position(Frame* frame) {
+	Texture* textureAtCoord;
+
+	textureAtCoord = 
+	layerManager_->get_texture_copy_at_coord(frame->get_coord());
+	if (textureAtCoord != nullptr) {
+		frame->set_upper_left_corner(textureAtCoord->get_upper_left_corner());
+	}
+}

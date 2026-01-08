@@ -49,14 +49,17 @@ void CompositeTexture::update() {}
 
 
 SDL_FPoint CompositeTexture::get_upper_left_corner() const {
+	SDL_FRect upperLeftCornerRect, temp;
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
-	SDL_FRect upperLeftCornerRect = vSrcDest_[0].second;
+	
+	itSrcDest = vSrcDest_.begin();
+	upperLeftCornerRect = itSrcDest->second;
 
 	for (itSrcDest = vSrcDest_.begin(); 
 		 itSrcDest != vSrcDest_.end();
 		 ++itSrcDest) {
-		if ((itSrcDest->first.x <= upperLeftCornerRect.x) &&	
-				(itSrcDest->first.y <= upperLeftCornerRect.y)) {
+		temp = itSrcDest->second;
+		if ((temp.x <= upperLeftCornerRect.x) && (temp.y <= upperLeftCornerRect.y)) {
 			upperLeftCornerRect = itSrcDest->second;
 		}
 	}

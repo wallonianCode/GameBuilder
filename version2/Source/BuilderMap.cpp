@@ -34,6 +34,7 @@ void BuilderMap::handle_event(SDL_Event* event) {
 					this->set_out_of_selector(false);
 				}
 				frame_ -> follow_mouse_motion();
+				selector_->adjust_frame_position(frame_);
 				break;
 			}
 			default:

@@ -22,7 +22,8 @@ public:
 		* @brief  adapt the dimensions of the frame to the texture
 		*				  the mouse is currently hovering over.
 		*/
-	void redimension_frame(Frame* frame);
+	void redimension_frame(Frame*);
+	void adjust_frame_position(Frame*);
 
 	Selector(const int width);
 	~Selector();
