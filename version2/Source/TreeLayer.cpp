@@ -10,10 +10,11 @@ Layer(width, upperLeftCorner) {
     pine = TextureFactory::create_pin(
 		{ this->get_upper_left_corner().x + oak->get_width(),
       this->get_upper_left_corner().y});
-/*
+
     hornbeam = TextureFactory::create_hornbeam({this->get_upper_left_corner().x,
                                                 this->get_upper_left_corner().y + 
                                                 oak->get_height()});
+    /*
     poplar = 
     TextureFactory::create_poplar({this->get_upper_left_corner().x + hornbeam->get_width(),
                                    this->get_upper_left_corner().y + oak->get_height()});
@@ -26,8 +27,8 @@ Layer(width, upperLeftCorner) {
     */                                                  
     this->add_texture(oak);
     this->add_texture(pine);
-    /*
     this->add_texture(hornbeam);
+    /*
     this->add_texture(poplar);
     this->add_texture(smallTree);
     */
