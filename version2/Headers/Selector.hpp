@@ -11,23 +11,23 @@
 
 class Selector : public Drawable {
 public:
-	void draw();
+	void draw() override;
+	void draw(Frame* frame);
 	void handle_event(SDL_Event* event);
 	bool is_mouse_in();
-	Texture* get_selected_texture();
+	Texture* get_selected_texture(Frame* frame);
 	void switch_layer_forward();
 	void switch_layer_backward();
 	/**
 		* @brief  adapt the dimensions of the frame to the texture
 		*				  the mouse is currently hovering over.
 		*/
-	void redimension_frame();
+	void redimension_frame(Frame* frame);
 
 	Selector(const int width);
 	~Selector();
 private:	
 	LayerManager* layerManager_;
-	Frame* frame_;
 	int width_;
 };
 

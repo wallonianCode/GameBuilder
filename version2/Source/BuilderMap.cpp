@@ -8,7 +8,7 @@ void BuilderMap::draw() {
 	SDL_RenderClear(renderer->get_sdl_renderer());
 	grassBackground_->draw();
 	Map::draw(); //draw textures
-	selector_->draw();
+	selector_->draw(frame_);
 	separator_->draw();
 	this->draw_frame();
 }
@@ -16,8 +16,8 @@ void BuilderMap::draw() {
 
 void BuilderMap::handle_event(SDL_Event* event) {
 	selector_->handle_event(event);
+	selector_->redimension_frame(frame_);
 	if (selector_->is_mouse_in()) {
-	
 		switch(event->type) { //frame
 			case SDL_EVENT_MOUSE_BUTTON_DOWN: {
 				if (event->button.button == SDL_BUTTON_LEFT) {
@@ -49,9 +49,9 @@ void BuilderMap::handle_event(SDL_Event* event) {
 			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				switch (event->button.button) {	
 					case SDL_BUTTON_LEFT:
-						if (selector_->get_selected_texture() != nullptr) {
+						if (selector_->get_selected_texture(frame_) != nullptr) {
 							Map::add_texture_at_mouse_pos(
-							selector_->get_selected_texture());	
+							selector_->get_selected_texture(frame_));	
 						}		
 						break;
 					case SDL_BUTTON_RIGHT:
