@@ -5,7 +5,10 @@
 
 class Hornbeam : public TextureCloneable<CompositeTexture, Hornbeam> {
 public:
-	Hornbeam(const SDL_FPoint& initPos);
+	Hornbeam(std::vector<SDL_FRect>::iterator itSrcBegin,
+			 std::vector<SDL_FRect>::iterator itSrcEnd,
+			 std::vector<SDL_FRect>::iterator itDestBegin,
+			 std::vector<SDL_FRect> ::iterator itDestEnd);
 };
 
 #endif

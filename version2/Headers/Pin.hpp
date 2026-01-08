@@ -5,7 +5,10 @@
 
 class Pin : public TextureCloneable<CompositeTexture, Pin> {
 public:
-	Pin(const SDL_FPoint& initPos);
+	Pin(std::vector<SDL_FRect>::iterator itSrcBegin,
+		std::vector<SDL_FRect>::iterator itSrcEnd,
+		std::vector<SDL_FRect>::iterator itDestBegin,
+		std::vector<SDL_FRect> ::iterator itDestEnd);
 };
 
 

@@ -7,8 +7,7 @@ Layer* LayerFactory::create_layer(const int width,
 	Layer* newLayer;
 	newLayer = nullptr;
 	switch (layerType) {
-			case LayerFactory::LayerType::Road: {
-				
+			case LayerFactory::LayerType::Road: {				
 				newLayer = new RoadLayer(width, upperLeftCorner);
 				break;
 			}

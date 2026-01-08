@@ -16,7 +16,8 @@ void BuilderMap::draw() {
 
 void BuilderMap::handle_event(SDL_Event* event) {
 	selector_->handle_event(event);
-	if (selector_->is_mouse_in()) {	
+	if (selector_->is_mouse_in()) {
+	
 		switch(event->type) { //frame
 			case SDL_EVENT_MOUSE_BUTTON_DOWN: {
 				if (event->button.button == SDL_BUTTON_LEFT) {
@@ -58,13 +59,27 @@ void BuilderMap::handle_event(SDL_Event* event) {
 						break;
 					default:
 						break;
-				}			
+				}
+				/*
+			case SDL_EVENT_KEY_DOWN: {
+				switch (event->key.scancode) {
+					case SDL_SCANCODE_L: {
+						selector_->switch_layer_forward();
+						break;
+					}
+					case SDL_SCANCODE_K:
+						selector_->switch_layer_backward();
+						break;
+					default:
+						break;	
+			}
+			*/			
 			default: 
 				break;
 		
 				
 	}
-  } 
+}
 }
 
 

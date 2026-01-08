@@ -1,8 +1,6 @@
 #include "../Headers/CompositeTexture.hpp"
 
-CompositeTexture::CompositeTexture() : Texture() {
-	std::cout << "CompositeTexture::CompositeTexture()" << std::endl;
-}
+CompositeTexture::CompositeTexture() : Texture() {}
 
 CompositeTexture::CompositeTexture(
 	const std::string& tileset, 
@@ -28,8 +26,6 @@ CompositeTexture::CompositeTexture(
 		itSrcBegin++;
 		itDestBegin++;
 	}
-	std::cout << "CompositeTexture::CompositeTexture(): " << vSrcDest_.size() << std::endl;
-	
 }
 
 
@@ -52,49 +48,8 @@ void CompositeTexture::draw() {
 void CompositeTexture::update() {}
 
 
-/* should be fixed once and for all in the constructors of derived classes
-void CompositeTexture::set_pos_on_tileset(
-std::vector::iterator<SDL_Point> itPosSrcBegin, 
-std::vector::iterator<SDL_Point> itPosSrcEnd)  {
-	int i = 0;
-	while (itPosSrcBegin != itPosSrcEnd)
-	{
-		vSrcDest_[i].first.x = itPosSrcBegin->x;
-		vSrcDest_[i].first.y = itPosSrcEnd->y;
-		i++;
-		itPosSrcBegin++;
-		itPosSrcEnd++;
-	}
-}
-*/
-
-
-/*	
-void CompositeTexture::save_dest(std::ostream& os) const {
-	for (std::vector<std::pair<SDL_Rect, SDL_Rect>>::iterator 
-			 itSrcDest = vSrcDest_.begin();
-			 itSrcDest != vSrcDest_.end();
-			 itSrcDest++) {
-		os << itSrcDest->second.x << "," << itSrcDest->second.y << ","
-			 << itSrcDest->second.w << "," << itSrcBegin->second.h << " ";
-	}
-}
-*/
-
-/*
-SDL_Point CompositeTexture::get_pos_on_screen() const {
-	return { vSrcDest_[0].second.x, vSrcDest_[0].second.y };
-}
-*/
-
 SDL_FPoint CompositeTexture::get_upper_left_corner() const {
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
-	std::cout << "CompositeTexture::get_upper_left_corner(): " << 
-	vSrcDest_.size() << std::endl;
-/*
-	" " << (vSrcDest_[0].second.x)
-	<< std::endl;
-	*/
 	SDL_FRect upperLeftCornerRect = vSrcDest_[0].second;
 
 	for (itSrcDest = vSrcDest_.begin(); 
@@ -107,18 +62,6 @@ SDL_FPoint CompositeTexture::get_upper_left_corner() const {
 	}
 	return {upperLeftCornerRect.x, upperLeftCornerRect.y};
 }
-
-/*
-float CompositeTexture::get_width() const {
-	std::cout << "CompositeTexture::get_width(): " << vSrcDest_[1].second.w << std::endl;
-	return vSrcDest_[1].second.w;
-}
-
-
-float CompositeTexture::get_height() const {
-	return vSrcDest_[1].second.h;
-}
-	*/
 
 
 void CompositeTexture::move(const SDL_FPoint& newUpperLeftCorner) {

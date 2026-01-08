@@ -15,9 +15,6 @@ Layer(width, upperLeftCorner) {
                                 DeclinedTextureEnum::RockRoad);
 
     itLastTexture = rockRoad.end()-1;
-		std::cout << "Layer::Layer(): " << 
-		(*itLastTexture)->get_upper_left_corner().x << ":" <<
-		(*itLastTexture)->get_upper_left_corner().y << std::endl;
     upperLeftCornerFromCurrentRoad = 
 		{upperLeftCornerFromCurrentRoad.x,
      (*itLastTexture)->get_upper_left_corner().y + 

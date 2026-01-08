@@ -5,7 +5,10 @@
 
 class Poplar : public TextureCloneable<CompositeTexture, Poplar> {
 public:
-	Poplar(const SDL_FPoint&);
+	Poplar(std::vector<SDL_FRect>::iterator itSrcBegin,
+		   std::vector<SDL_FRect>::iterator itSrcEnd,
+		   std::vector<SDL_FRect>::iterator itDestBegin,
+		   std::vector<SDL_FRect> ::iterator itDestEnd);
 };
 
 #endif
