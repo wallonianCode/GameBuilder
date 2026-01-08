@@ -78,3 +78,20 @@ void CompositeTexture::move(const SDL_FPoint& newUpperLeftCorner) {
 		itSrcDest->second.y += yMove;
 	}
 }
+
+
+bool CompositeTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
+	bool success;
+	SDL_FRect dest;
+	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
+
+	success = false;
+	for (itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); itSrcDest++) {
+		dest = itSrcDest->second;
+		if (dest.x == coord.x && dest.y == coord.y) {
+			success = true;
+			break;
+		}
+	}
+	return success;
+}

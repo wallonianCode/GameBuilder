@@ -23,7 +23,7 @@ Layer(width, upperLeftCorner) {
                                                        this->get_upper_left_corner().y +
                                                        oak->get_height() + 
                                                        hornbeam->get_height()},
-                                                      SimpleTextureEnum::SmallTree);
+                                                       SimpleTextureEnum::SmallTree);
                                                   
     this->add_texture(oak);
     this->add_texture(pine);

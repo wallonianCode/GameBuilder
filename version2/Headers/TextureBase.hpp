@@ -33,6 +33,7 @@ public:
 	virtual void set_dim_on_tileset(const int, const int) = 0;
 	virtual float get_width() const = 0;
 	virtual float get_height() const = 0;
+	virtual bool is_coord_in_texture(const SDL_FPoint&) const = 0;
 };
 
 #endif

@@ -41,6 +41,8 @@ public:
 	void set_frame_pos(const SDL_FPoint&);
 	void draw_frame();
 
+
+
 	//	------- CONSTRUCTORS -----------------------
 	
 	// create an empty map

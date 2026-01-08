@@ -66,8 +66,13 @@ void Selector::redimension_frame(Frame* frame) {
 
 	textureAtCoord = 
 	layerManager_->get_texture_copy_at_coord(frame->get_coord());
-
-	frame->set_width(textureAtCoord->get_width());
-	frame->set_height(textureAtCoord->get_height());
-	frame->set_upper_left_corner(textureAtCoord->get_upper_left_corner());
+	if (textureAtCoord == nullptr) {
+		frame->set_width(TILE_DIM);
+		frame->set_height(TILE_DIM);
+	}
+	else {
+		frame->set_width(textureAtCoord->get_width());
+		frame->set_height(textureAtCoord->get_height());
+		frame->set_upper_left_corner(textureAtCoord->get_upper_left_corner());
+	}
 }

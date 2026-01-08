@@ -38,6 +38,10 @@ float Texture::get_height() const {
 }
 
 
+bool Texture::is_coord_in_texture(const SDL_FPoint& coord) const {
+	return (get_upper_left_corner().x == coord.x && get_upper_left_corner().y == coord.y);
+}
+
 Texture::Texture(const std::string& tileset) : tileset_(tileset) {}
 
 Texture::Texture() : tileset_(leafGreenTextureFileName) {}

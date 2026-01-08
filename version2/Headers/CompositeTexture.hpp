@@ -27,6 +27,7 @@ public:
 	float get_height() const override;
 	*/
 	void move(const SDL_FPoint&);
+	virtual bool is_coord_in_texture(const SDL_FPoint&) const override;
 private:
   	std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;
 

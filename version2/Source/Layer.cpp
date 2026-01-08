@@ -12,8 +12,7 @@ Texture* Layer::get_texture_copy_at_coord(const SDL_FPoint& coord) {
 	itTextureCopyAtCoord = 
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
 				[coord](Texture* texture){
-				return texture->get_upper_left_corner().x == coord.x && 
-				texture->get_upper_left_corner().y == coord.y;});
+				return texture->is_coord_in_texture(coord);});
 	textureAtCoord = itTextureCopyAtCoord == vTextures_.end() ?
 	nullptr : (*itTextureCopyAtCoord)->clone();	
 	return textureAtCoord;

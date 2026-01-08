@@ -83,3 +83,7 @@ float SimpleTexture::get_standard_width() {
 float SimpleTexture::get_standard_height() {
 	return TILE_DIM;
 }
+
+bool SimpleTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
+	return (get_upper_left_corner().x == coord.x && get_upper_left_corner().y == coord.y);
+}

@@ -26,6 +26,7 @@ public:
 
 	float get_width() const override; 
 	float get_height() const override;
+	bool is_coord_in_texture(const SDL_FPoint& coord) const override;
 
 	static float get_standard_width();
 	static float get_standard_height();

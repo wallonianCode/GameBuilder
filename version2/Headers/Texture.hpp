@@ -23,6 +23,7 @@ public:
 	virtual Texture* clone() const ;
 	virtual float get_width() const;
 	virtual float get_height() const;
+	virtual	bool is_coord_in_texture(const SDL_FPoint&) const override;
 	Texture(const std::string&);
 	Texture();
 protected:
