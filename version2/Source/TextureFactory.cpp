@@ -122,7 +122,9 @@ TextureFactory::create_poplar(const SDL_FPoint& pos) {
 
 
 
-
+//TODO the declined textures creation always ever call the 
+//     default constructor of SimpleTexture(). Not the composite 
+//	   ones. Why?
 void 
 TextureFactory::create_road(const SDL_FPoint& posBegin, 
 					    	const int width,

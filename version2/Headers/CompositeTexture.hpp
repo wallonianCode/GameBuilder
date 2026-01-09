@@ -19,7 +19,7 @@ public:
 					 std::vector<SDL_FRect> ::iterator itDestEnd);
 
 	void draw() override;
-  	void update() override;
+  void update() override;
 	
 	SDL_FPoint get_upper_left_corner() const override;
 /*
@@ -29,7 +29,7 @@ public:
 	void move(const SDL_FPoint&);
 	virtual bool is_coord_in_texture(const SDL_FPoint&) const override;
 private:
-  	std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;
+  std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;
 
 };
 
