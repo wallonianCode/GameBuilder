@@ -221,10 +221,14 @@ TextureFactory::create_water(const SDL_FPoint& posBegin,
 	int itPos;
 
 	waterOrientations = 
-	{ DeclinedTextureOrientation::NorthWest, DeclinedTextureOrientation::North, 
-	  DeclinedTextureOrientation::NorthEast, DeclinedTextureOrientation::West,
-	  DeclinedTextureOrientation::Center, DeclinedTextureOrientation::East,
-	  DeclinedTextureOrientation::SouthWest, DeclinedTextureOrientation::South,
+	{ DeclinedTextureOrientation::NorthWest, 
+		DeclinedTextureOrientation::North, 
+	  DeclinedTextureOrientation::NorthEast, 
+		DeclinedTextureOrientation::West,
+	  DeclinedTextureOrientation::Center, 
+		DeclinedTextureOrientation::East,
+	  DeclinedTextureOrientation::SouthWest, 
+		DeclinedTextureOrientation::South,
 	  DeclinedTextureOrientation::SouthEast };
 	itWater = itWaterBegin;
 	pos = posBegin;
@@ -232,7 +236,9 @@ TextureFactory::create_water(const SDL_FPoint& posBegin,
 	for (itOrientation = waterOrientations.begin(); 
 		 itOrientation != waterOrientations.end();
 		 ++itOrientation) {
-		*itWater = TextureFactory::create_declined_texture(pos, water, *itOrientation);
+		std::cout << "TextureFactory::create_water(): loop" << std::endl;
+		*itWater = 
+		TextureFactory::create_declined_texture(pos, water, *itOrientation);
 
 		if (itPos < 3) {
 			pos.x += (*itWater)->get_width();
@@ -246,6 +252,7 @@ TextureFactory::create_water(const SDL_FPoint& posBegin,
 		++itWater;
 	}
 	itWaterEnd = itWater + 1;
+	std::cout << "TextureFactory::create_water(): end" << std::endl;
 }
 
 
