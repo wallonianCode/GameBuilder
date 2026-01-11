@@ -19,10 +19,6 @@ Layer* LayerFactory::create_layer(const int width,
 				newLayer = new SoilLayer(width, upperLeftCorner);
 				break;
 			}
-			case LayerFactory::LayerType::Buildings: {
-				newLayer = new BuildingLayer(width, upperLeftCorner);
-				break;
-			}
 			case LayerFactory::LayerType::Water: {
 				newLayer = new WaterLayer(width, upperLeftCorner);
 				break;

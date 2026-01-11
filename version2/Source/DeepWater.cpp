@@ -31,7 +31,7 @@ DeepWater::DeepWater(const SDL_FPoint& pos,
 			break;
 		}
 		case DeclinedTextureOrientation::SouthWest: {
-			tile = {10*S+1, 4*S+1, S-3, S-3};
+			tile = {10*S+1, 6*S+1, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::SouthEast: {

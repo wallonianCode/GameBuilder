@@ -48,11 +48,11 @@ TextureFactory::create_simple_texture(const SDL_FPoint& pos,
 			break;
 		}
 		case SimpleTextureEnum::WhiteGrass: {
-			newTexture = new WhiteGrass(pos);
-			break;
-		}
+																					newTexture = new WhiteGrass(pos);
+																					break;
+																				}
 		default:
-			break;
+																				break;
 	}
 	return newTexture;
 }
@@ -66,11 +66,11 @@ TextureFactory::create_oak(const SDL_FPoint& pos) {
 		for (int j = 0; j <= 3; ++j) {
 			vSrc.push_back({(float)(14+i)*S+2, (float)j*S+1, S-3, S-2});
 			vDest.push_back({pos.x + i*TILE_DIM, pos.y + j*TILE_DIM, 
-			TILE_DIM, TILE_DIM});
+					TILE_DIM, TILE_DIM});
 		}
 	}
 	return new Oak(vSrc.begin(), vSrc.end(),
-				   vDest.begin(), vDest.end());
+			vDest.begin(), vDest.end());
 }
 
 
@@ -82,12 +82,12 @@ TextureFactory::create_pin(const SDL_FPoint& pos) {
 		for (int j = 0; j < 3; ++j) {
 			vSrc.push_back({(float)(14+i)*S+2, (float)(17+j)*S, S-3, S-3});
 			vDest.push_back({pos.x + i*TILE_DIM, pos.y + j*TILE_DIM, 
-				TILE_DIM, TILE_DIM});
+					TILE_DIM, TILE_DIM});
 		}
 	}
-	
+
 	return new Pin(vSrc.begin(), vSrc.end(),
-				   vDest.begin(), vDest.end());
+			vDest.begin(), vDest.end());
 }
 
 
@@ -98,26 +98,26 @@ TextureFactory::create_hornbeam(const SDL_FPoint& pos) {
 		for (int j = 0; j < 4; ++j) {
 			vSrc.push_back({(float)2+i*S, (float)(34+j)*S+2, S-3, S-2});
 			vDest.push_back({pos.x + i*TILE_DIM, pos.y + j*TILE_DIM,
-			TILE_DIM, TILE_DIM});
+					TILE_DIM, TILE_DIM});
 		}
 	}
 
 	return new Hornbeam(vSrc.begin(), vSrc.end(),
-						vDest.begin(), vDest.end());
+			vDest.begin(), vDest.end());
 }
 
 
 Poplar*
 TextureFactory::create_poplar(const SDL_FPoint& pos) {
 	std::vector<SDL_FRect> vSrc, vDest; 
-	
+
 	for (int j = 0; j < 3; ++j) {
 		vSrc.push_back({(float)17*S+1, (float)(13+j)*S+2, S-1, S-3});
 		vDest.push_back({pos.x, pos.y + j*TILE_DIM, TILE_DIM, TILE_DIM});
 	}
 
 	return new Poplar(vSrc.begin(), vSrc.end(),
-					  vDest.begin(), vDest.end());
+			vDest.begin(), vDest.end());
 }
 
 
@@ -127,21 +127,21 @@ TextureFactory::create_poplar(const SDL_FPoint& pos) {
 //	   ones. Why?
 void 
 TextureFactory::create_road(const SDL_FPoint& posBegin, 
-					    	const int width,
-					    	std::array<DeclinedTexture*, 12>::iterator itRoadBegin,
-					    	std::array<DeclinedTexture*, 12>::iterator itRoadEnd,
-					    	const DeclinedTextureEnum& road) {
+		const int width,
+		std::array<DeclinedTexture*, 12>::iterator itRoadBegin,
+		std::array<DeclinedTexture*, 12>::iterator itRoadEnd,
+		const DeclinedTextureEnum& road) {
 	std::array<DeclinedTextureOrientation, 12> roadOrientations =
 	{DeclinedTextureOrientation::East, DeclinedTextureOrientation::West, 
-	 DeclinedTextureOrientation::North, DeclinedTextureOrientation::South,
-	 DeclinedTextureOrientation::SouthWest, 
-	 DeclinedTextureOrientation::SouthEast,
-	 DeclinedTextureOrientation::NorthWest, 
-	 DeclinedTextureOrientation::NorthEast,
-	 DeclinedTextureOrientation::SouthEastCorner, 
-	 DeclinedTextureOrientation::SouthWestCorner,
-	 DeclinedTextureOrientation::NorthEastCorner, 
-	 DeclinedTextureOrientation::SouthEastCorner}; 
+		DeclinedTextureOrientation::North, DeclinedTextureOrientation::South,
+		DeclinedTextureOrientation::SouthWest, 
+		DeclinedTextureOrientation::SouthEast,
+		DeclinedTextureOrientation::NorthWest, 
+		DeclinedTextureOrientation::NorthEast,
+		DeclinedTextureOrientation::SouthEastCorner, 
+		DeclinedTextureOrientation::SouthWestCorner,
+		DeclinedTextureOrientation::NorthEastCorner, 
+		DeclinedTextureOrientation::SouthEastCorner}; 
 
 	SDL_FPoint pos; 
 	std::array<DeclinedTextureOrientation, 12>::iterator itOrientation;
@@ -150,9 +150,9 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 	pos = posBegin;
 	itRoad = itRoadBegin;
 	for (itOrientation = roadOrientations.begin();
-		 itOrientation != roadOrientations.end(); ++itOrientation) {
+			itOrientation != roadOrientations.end(); ++itOrientation) {
 		*itRoad = 
-		TextureFactory::create_declined_texture(pos, road, *itOrientation);
+			TextureFactory::create_declined_texture(pos, road, *itOrientation);
 		if (pos.x <= width - (*itRoad)->get_width()) {
 			pos.x += (*itRoad)->get_width();
 		}
@@ -163,38 +163,39 @@ TextureFactory::create_road(const SDL_FPoint& posBegin,
 		++itRoad;
 	}
 	itRoadEnd = itRoad + 1;	
-	
+
 }
 
 
 void 
 TextureFactory::create_border(const SDL_FPoint& posBegin, 
-					   	  	  const int width,
-					   	  	  std::array<DeclinedTexture*, 10>::iterator itBorderBegin,
-					   	  	  std::array<DeclinedTexture*, 10>::iterator itBorderEnd,
-					   	  	  const DeclinedTextureEnum& border) {
+		const int width, 
+		std::array<DeclinedTexture*, 10>::iterator itBorderBegin,
+		std::array<DeclinedTexture*, 10>::iterator itBorderEnd, 
+		const DeclinedTextureEnum& border) {
 	std::array<DeclinedTextureOrientation, 10> borderOrientations;
-	std::array<DeclinedTextureOrientation, 10>::iterator itBorderOrientations;
+	std::array<DeclinedTextureOrientation, 10>::iterator 
+		itBorderOrientations;
 	std::array<DeclinedTexture*, 10>::iterator itBorder;
 	SDL_FPoint pos;
-	
+
 	borderOrientations =
 	{ DeclinedTextureOrientation::SouthWest , 
 		DeclinedTextureOrientation::South,
-	  DeclinedTextureOrientation::SouthEast, 
+		DeclinedTextureOrientation::SouthEast, 
 		DeclinedTextureOrientation::SouthEastCorner,
-	  DeclinedTextureOrientation::East, 
+		DeclinedTextureOrientation::East, 
 		DeclinedTextureOrientation::NorthEast,
-	  DeclinedTextureOrientation::SouthWestCorner, 
+		DeclinedTextureOrientation::SouthWestCorner, 
 		DeclinedTextureOrientation::West,
-	  DeclinedTextureOrientation::NorthEastCorner, 
+		DeclinedTextureOrientation::NorthEastCorner, 
 		DeclinedTextureOrientation::Center};
-	
+
 	pos = posBegin;
 	itBorder = itBorderBegin;
 
 	for (itBorderOrientations = borderOrientations.begin(); 
-		 itBorderOrientations != borderOrientations.end(); ++itBorderOrientations) {
+			itBorderOrientations != borderOrientations.end(); ++itBorderOrientations) {
 		(*itBorder) = TextureFactory::create_declined_texture(pos, border, *itBorderOrientations);
 		if (pos.x <= width - (*itBorder)->get_width()) { //TODO create border class with static get_height/get_width methods
 			pos.x += (*itBorder)->get_width();
@@ -211,9 +212,9 @@ TextureFactory::create_border(const SDL_FPoint& posBegin,
 
 void 
 TextureFactory::create_water(const SDL_FPoint& posBegin,
-					     	 std::array<DeclinedTexture*, 9>::iterator itWaterBegin,
-					     	 std::array<DeclinedTexture*, 9>::iterator itWaterEnd,
-						 	 const DeclinedTextureEnum& water) {
+		std::array<DeclinedTexture*, 9>::iterator itWaterBegin,
+		std::array<DeclinedTexture*, 9>::iterator itWaterEnd,
+		const DeclinedTextureEnum& water) {
 	std::array<DeclinedTextureOrientation, 9> waterOrientations;
 	std::array<DeclinedTextureOrientation, 9>::iterator itOrientation;
 	std::array<DeclinedTexture*, 9>::iterator itWater;
@@ -223,28 +224,28 @@ TextureFactory::create_water(const SDL_FPoint& posBegin,
 	waterOrientations = 
 	{ DeclinedTextureOrientation::NorthWest, 
 		DeclinedTextureOrientation::North, 
-	  DeclinedTextureOrientation::NorthEast, 
+		DeclinedTextureOrientation::NorthEast, 
 		DeclinedTextureOrientation::West,
-	  DeclinedTextureOrientation::Center, 
+		DeclinedTextureOrientation::Center, 
 		DeclinedTextureOrientation::East,
-	  DeclinedTextureOrientation::SouthWest, 
+		DeclinedTextureOrientation::SouthWest, 
 		DeclinedTextureOrientation::South,
-	  DeclinedTextureOrientation::SouthEast };
+		DeclinedTextureOrientation::SouthEast };
 	itWater = itWaterBegin;
 	pos = posBegin;
 	itPos = 1;
+
 	for (itOrientation = waterOrientations.begin(); 
-		 itOrientation != waterOrientations.end();
-		 ++itOrientation) {
-		std::cout << "TextureFactory::create_water(): loop" << std::endl;
+			itOrientation != waterOrientations.end();
+			++itOrientation) {
 		*itWater = 
-		TextureFactory::create_declined_texture(pos, water, *itOrientation);
+			TextureFactory::create_declined_texture(pos, water, *itOrientation);
 
 		if (itPos < 3) {
 			pos.x += (*itWater)->get_width();
 			itPos++;
 		}
-		else {
+		else { //itPos == 3
 			pos.x = posBegin.x;
 			pos.y += (*itWater)->get_height();
 			itPos = 1;
@@ -252,7 +253,6 @@ TextureFactory::create_water(const SDL_FPoint& posBegin,
 		++itWater;
 	}
 	itWaterEnd = itWater + 1;
-	std::cout << "TextureFactory::create_water(): end" << std::endl;
 }
 
 

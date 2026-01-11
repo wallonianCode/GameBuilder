@@ -63,11 +63,8 @@ Selector::~Selector() {
 
 void Selector::redimension_frame(Frame* frame) {
 	Texture* textureAtCoord;
-	std::cout << "Selector::redimension_frame(): begin" << std::endl;
 	textureAtCoord = 
 	layerManager_->get_texture_copy_at_coord(frame->get_coord());
-	std::cout << "Selector::redimension_frame(): textureAtCoord got: "
-	<< (textureAtCoord == nullptr) << std::endl;
 	if (textureAtCoord == nullptr) {
 		frame->set_width(TILE_DIM);
 		frame->set_height(TILE_DIM);
@@ -75,8 +72,6 @@ void Selector::redimension_frame(Frame* frame) {
 	else {
 		frame->set_width(textureAtCoord->get_width());
 		frame->set_height(textureAtCoord->get_height());
-		std::cout << "Selector::redimension_frame(): before setting ulc" <<
-		std::endl;
 		frame->set_upper_left_corner(textureAtCoord->get_upper_left_corner());
 	}
 }
