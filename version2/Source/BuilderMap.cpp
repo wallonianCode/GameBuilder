@@ -51,6 +51,9 @@ void BuilderMap::handle_event(SDL_Event* event) {
 			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				switch (event->button.button) {	
 					case SDL_BUTTON_LEFT:
+						std::cout << "BuilderMap::handle_event(): " <<
+						(selector_->get_selected_texture(frame_) == nullptr) <<
+						std::endl;
 						if (selector_->get_selected_texture(frame_) != nullptr) {
 							Map::add_texture_at_mouse_pos(
 							selector_->get_selected_texture(frame_));	

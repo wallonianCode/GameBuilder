@@ -11,7 +11,7 @@ void Texture::update() {}
 
 
 SDL_FPoint Texture::get_upper_left_corner() const {
-	return {0, 0};
+	return {1000, 400};
 }
 
 void Texture::set_upper_left_corner(const SDL_FPoint& upperLeftCorner) {}

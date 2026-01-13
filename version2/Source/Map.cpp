@@ -3,14 +3,13 @@
 
 void Map::draw() {
 	std::vector<std::shared_ptr<Texture>>::iterator itTexture; 
-	/*
-	std::cout << "Map::draw(): " << 
-	vTextures_.end() - vTextures_.end() << std::endl;
-	*/
 	for (itTexture = vTextures_.begin() ;
 			 itTexture != vTextures_.end(); 
 			 itTexture++) {
 		(*itTexture)->draw();
+		std::cout << "Map::draw(): " << 
+		((*itTexture)->get_upper_left_corner().x) << ":" 
+		((*itTexture)->get_upper_left_corner().y) << std::endl;
 	}
 }
 
@@ -22,14 +21,22 @@ void Map::add_texture(Texture* texture) {
 
 void Map::add_texture_at_mouse_pos(Texture* texture) {	
 	float x, y;
-	std::shared_ptr<Texture> tCopy = 
-	std::make_shared<Texture>(*texture->clone());
+	std::shared_ptr<Texture> newTexture;
 
+	newTexture = std::make_shared<Texture>(*texture);
 	SDL_GetMouseState(&x, &y);
-  tCopy->set_upper_left_corner({x-((int)x % TILE_DIM), 
+	std::cout << "Map::add_texture_at_mouse_pos(): " << x << ":" << y << 
+	" " << (x - ((int)x % TILE_DIM)) << ":" << 
+	(y - ((int)y % TILE_DIM)) <<
+	std::endl;
+
+  newTexture->set_upper_left_corner({x-((int)x % TILE_DIM), 
 	y-((int)y % TILE_DIM)});	
 
-	vTextures_.push_back(tCopy);
+	vTextures_.push_back(newTexture);
+	std::cout << "Map::add_texture_at_mouse_pos(): " <<
+	vTextures_.size() << " " << newTexture->get_upper_left_corner().x << 
+	":" << newTexture->get_upper_left_corner().y << std::endl;
 }
 
 
