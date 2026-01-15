@@ -7,9 +7,6 @@ void Map::draw() {
 			 itTexture != vTextures_.end(); 
 			 itTexture++) {
 		(*itTexture)->draw();
-		std::cout << "Map::draw(): " << 
-		((*itTexture)->get_upper_left_corner().x) << ":" 
-		((*itTexture)->get_upper_left_corner().y) << std::endl;
 	}
 }
 

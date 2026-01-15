@@ -29,13 +29,21 @@ CompositeTexture::CompositeTexture(
 }
 
 
+CompositeTexture::CompositeTexture(const CompositeTexture& other) : 
+Texture(other) {
+	vSrcDest_ = other.vSrcDest_;
+}
+
+
 void CompositeTexture::draw() {
 	Renderer* renderer;
 	SDL_Texture* texture;
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator itSrcDest;
 
 	renderer = Renderer::get_instance();
-    texture = TextureLoader::load_texture(renderer->get_sdl_renderer(), tileset_);
+  texture = 
+	TextureLoader::load_texture(renderer->get_sdl_renderer(), 
+	this->get_tileset());
 	for (itSrcDest = vSrcDest_.begin();
 			 itSrcDest != vSrcDest_.end(); itSrcDest++)
 	{

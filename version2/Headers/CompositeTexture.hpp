@@ -17,6 +17,7 @@ public:
 					 std::vector<SDL_FRect>::iterator itSrcEnd,
 					 std::vector<SDL_FRect>::iterator itDestBegin,
 					 std::vector<SDL_FRect> ::iterator itDestEnd);
+	CompositeTexture(const CompositeTexture&);
 
 	void draw() override;
   void update() override;

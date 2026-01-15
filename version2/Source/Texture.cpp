@@ -11,7 +11,7 @@ void Texture::update() {}
 
 
 SDL_FPoint Texture::get_upper_left_corner() const {
-	return {1000, 400};
+	return {0, 0};
 }
 
 void Texture::set_upper_left_corner(const SDL_FPoint& upperLeftCorner) {}
@@ -39,9 +39,15 @@ float Texture::get_height() const {
 
 
 bool Texture::is_coord_in_texture(const SDL_FPoint& coord) const {
-	return (get_upper_left_corner().x == coord.x && get_upper_left_corner().y == coord.y);
+	return (get_upper_left_corner().x == coord.x && 
+					get_upper_left_corner().y == coord.y);
 }
 
+std::string Texture::get_tileset() {
+	return this->tileset_;
+}
+
+Texture::Texture(const Texture& other) : tileset_(other.tileset_) {}
 Texture::Texture(const std::string& tileset) : tileset_(tileset) {}
 
 Texture::Texture() : tileset_(leafGreenTextureFileName) {}

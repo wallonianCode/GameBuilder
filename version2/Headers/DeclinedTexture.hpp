@@ -26,6 +26,7 @@ DeclinedTexture> {
 public:
 	DeclinedTexture();
 	DeclinedTexture(const SDL_FPoint&);
+	DeclinedTexture(const DeclinedTexture&);
 };
 
 #endif

@@ -60,3 +60,6 @@ DeclinedTexture(pos) {
 	this->set_pos_on_tileset({tile.x, tile.y});
 	this->set_dim_on_tileset(tile.w, tile.h);
 }
+
+
+RockRoad::RockRoad(const RockRoad& other) : DeclinedTexture(other) {}
