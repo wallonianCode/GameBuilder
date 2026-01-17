@@ -1,7 +1,9 @@
 #include "../Headers/DeclinedTexture.hpp"
 
 DeclinedTexture::DeclinedTexture() : SimpleTexture() {
+	std::cout << "DeclinedTexture()" << std::endl;
 }
+
 
 DeclinedTexture::DeclinedTexture(const SDL_FPoint& pos):
 SimpleTexture(pos) {
@@ -12,4 +14,7 @@ SimpleTexture(pos) {
 
 
 DeclinedTexture::DeclinedTexture(const DeclinedTexture& other) :
-SimpleTexture(other) {}
+SimpleTexture(other) {
+	std::cout << "DeclinedTexture::DeclinedTexture(other)" << 
+	std::endl;
+}

@@ -62,4 +62,6 @@ DeclinedTexture(pos) {
 }
 
 
-RockRoad::RockRoad(const RockRoad& other) : DeclinedTexture(other) {}
+RockRoad::RockRoad(const RockRoad& other) : DeclinedTexture(other) {
+	std::cout << "RockRoad::RockRoad(other)" << std::endl;
+}
