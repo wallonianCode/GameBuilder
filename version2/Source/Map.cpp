@@ -2,7 +2,7 @@
 
 
 void Map::draw() {
-	std::vector<std::shared_ptr<Texture>>::iterator itTexture; 
+	std::vector<Texture*>::iterator itTexture; 
 	for (itTexture = vTextures_.begin() ;
 			 itTexture != vTextures_.end(); 
 			 itTexture++) {
@@ -12,35 +12,33 @@ void Map::draw() {
 
 
 void Map::add_texture(Texture* texture) {
-	vTextures_.push_back(std::make_shared<Texture>(*texture));
+	vTextures_.push_back(texture);
 }
 
 
 void Map::add_texture_at_mouse_pos(Texture* texture) {	
 	float x, y;
-	std::shared_ptr<Texture> newTexture;
 
-	newTexture = std::make_shared<Texture>(*texture);
 	SDL_GetMouseState(&x, &y);
 	std::cout << "Map::add_texture_at_mouse_pos(): " << x << ":" << y << 
 	" " << (x - ((int)x % TILE_DIM)) << ":" << 
 	(y - ((int)y % TILE_DIM)) <<
 	std::endl;
 
-  newTexture->set_upper_left_corner({x-((int)x % TILE_DIM), 
+  texture->set_upper_left_corner({x-((int)x % TILE_DIM), 
 	y-((int)y % TILE_DIM)});	
 
-	vTextures_.push_back(newTexture);
+	vTextures_.push_back(texture);
 	std::cout << "Map::add_texture_at_mouse_pos(): " <<
-	vTextures_.size() << " " << newTexture->get_upper_left_corner().x << 
-	":" << newTexture->get_upper_left_corner().y << std::endl;
+	vTextures_.size() << " " << texture->get_upper_left_corner().x << 
+	":" << texture->get_upper_left_corner().y << std::endl;
 }
 
 
 void Map::remove_texture(const SDL_FPoint& pos) {
-	std::vector<std::shared_ptr<Texture>>::iterator found =
+	std::vector<Texture*>::iterator found =
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
-	[pos](std::shared_ptr<Texture> texture)
+	[pos](Texture* texture)
 	{return texture->get_upper_left_corner().x == pos.x &&
 	texture->get_upper_left_corner().y == pos.y;});
 	if (found != vTextures_.end()) 
@@ -78,9 +76,9 @@ Map::Map(const std::string& filename) {
 }
 
 
-Map::Map(std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
-				 std::vector<std::shared_ptr<Texture>>::iterator itLandEnd) {
-	vTextures_ = std::vector<std::shared_ptr<Texture>>(itLandBegin, itLandEnd);
+Map::Map(std::vector<Texture*>::iterator itLandBegin,
+				 std::vector<Texture*>::iterator itLandEnd) {
+	vTextures_ = std::vector<Texture*>(itLandBegin, itLandEnd);
 }
 
 

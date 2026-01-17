@@ -14,7 +14,9 @@ SDL_FPoint Texture::get_upper_left_corner() const {
 	return {0, 0};
 }
 
-void Texture::set_upper_left_corner(const SDL_FPoint& upperLeftCorner) {}
+void Texture::set_upper_left_corner(const SDL_FPoint& upperLeftCorner) {
+	std::cout << "Texture::set_upper_left_corner()" << std::endl;
+}
  
 
 void Texture::set_pos_on_tileset(const SDL_FPoint& pos) {}

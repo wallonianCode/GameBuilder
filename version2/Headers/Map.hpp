@@ -49,13 +49,13 @@ public:
 	Map();	
 	Map(const std::string& filename);
 
-	Map(std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
-		  std::vector<std::shared_ptr<Texture>>::iterator itLandEnd);
+	Map(std::vector<Texture*>::iterator itLandBegin,
+		  std::vector<Texture*>::iterator itLandEnd);
 protected:
 	Frame* frame_;
 private:
 	std::vector<std::string> split(std::string, const std::string&);
-	std::vector<std::shared_ptr<Texture>> vTextures_;
+	std::vector<Texture*> vTextures_;
 	// shows the cursor, can be moved with keyboard keys
 };
 

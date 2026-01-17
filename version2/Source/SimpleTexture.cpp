@@ -3,7 +3,6 @@
 
 SimpleTexture::SimpleTexture() : Texture(leafGreenTextureFileName) {
 	// default to the middle of the screen
-	std::cout << "SimpleTexture::SimpleTexture()" << std::endl;
 	this->set_upper_left_corner({WINDOW_WIDTH/2, WINDOW_HEIGHT/2});
 	this->set_dimensions_on_screen(TILE_DIM, TILE_DIM);
 }
@@ -28,9 +27,9 @@ Texture(tileset) {
 
 SimpleTexture::SimpleTexture(const SimpleTexture& other) :
 Texture(other) {
-	std::cout << "SimpleTexture::SimpleTexture(other)" << std::endl;
 	src_ = other.src_;
 	dest_ = other.dest_;
+
 }
 
 

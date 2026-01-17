@@ -4,11 +4,13 @@ void Selector::draw() {}
 
 void Selector::draw(Frame* frame) {
 	Texture* selectedTextureCopy;
+	/*
 	selectedTextureCopy = 
 	layerManager_->get_texture_copy_at_coord(frame->get_coord());
 	if (selectedTextureCopy != nullptr) {
 		selectedTextureCopy -> draw_shadow();
 	}
+	*/
 	layerManager_ -> draw();
 }
 
@@ -82,10 +84,6 @@ void Selector::adjust_frame_position(Frame* frame) {
 
 	textureAtCoord = 
 	layerManager_->get_texture_copy_at_coord(frame->get_coord());
-	std::cout << "Selector::adjust_frame_position(frame): frame " <<
-	frame->get_coord().x << " : " << frame->get_coord().y << 
-	" texture: " << textureAtCoord->get_upper_left_corner().x << 
-	" : " << textureAtCoord->get_upper_left_corner().y << std::endl;
 	if (textureAtCoord != nullptr) {
 		frame->set_upper_left_corner(textureAtCoord->get_upper_left_corner());
 	}
