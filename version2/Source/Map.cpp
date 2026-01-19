@@ -20,14 +20,10 @@ void Map::add_texture_at_mouse_pos(Texture* texture) {
 	float x, y;
 
 	SDL_GetMouseState(&x, &y);
-	std::cout << "Map::add_texture_at_mouse_pos(): " << x << ":" << y << 
-	" " << (x - ((int)x % TILE_DIM)) << ":" << 
-	(y - ((int)y % TILE_DIM)) <<
-	std::endl;
 
-  texture->set_upper_left_corner({x-((int)x % TILE_DIM), 
-	y-((int)y % TILE_DIM)});	
-
+  texture->set_upper_left_corner_to_tile_coord({x, y});
+	// remove ev. texture at pos {x, y}
+	this->remove_texture(Texture::get_tile_coord({x, y}));
 	vTextures_.push_back(texture);
 	std::cout << "Map::add_texture_at_mouse_pos(): " <<
 	vTextures_.size() << " " << texture->get_upper_left_corner().x << 
@@ -49,7 +45,7 @@ void Map::remove_texture(const SDL_FPoint& pos) {
 void Map::remove_texture_at_mouse_pos() {
 	float x, y;
 	SDL_GetMouseState(&x, &y);
-	this->remove_texture({x, y});
+	this->remove_texture(Texture::get_tile_coord({x, y}));
 }
 
 

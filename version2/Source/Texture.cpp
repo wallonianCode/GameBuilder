@@ -49,6 +49,19 @@ std::string Texture::get_tileset() {
 	return this->tileset_;
 }
 
+
+SDL_FPoint Texture::get_tile_coord(const SDL_FPoint& pos) {
+	return {pos.x - ((int)pos.x % TILE_DIM), 
+					pos.y - ((int)pos.y % TILE_DIM)};
+}
+
+
+void 
+Texture::set_upper_left_corner_to_tile_coord(const SDL_FPoint& pos) {
+	this->set_upper_left_corner(Texture::get_tile_coord(pos));
+}
+
+
 Texture::Texture(const Texture& other) : tileset_(other.tileset_) {}
 Texture::Texture(const std::string& tileset) : tileset_(tileset) {}
 

@@ -16,8 +16,7 @@ void BuilderMap::draw() {
 
 void BuilderMap::handle_event(SDL_Event* event) {
 	selector_->handle_event(event);
-	//selector_->redimension_frame(frame_);
-	
+	//selector_->redimension_frame(frame_);	
 	if (selector_->is_mouse_in()) {
 		switch(event->type) { //frame
 			case SDL_EVENT_MOUSE_BUTTON_DOWN: {
