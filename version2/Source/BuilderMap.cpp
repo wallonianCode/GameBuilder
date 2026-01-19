@@ -16,7 +16,7 @@ void BuilderMap::draw() {
 
 void BuilderMap::handle_event(SDL_Event* event) {
 	selector_->handle_event(event);
-	//selector_->redimension_frame(frame_);	
+	selector_->redimension_frame(frame_);	
 	if (selector_->is_mouse_in()) {
 		switch(event->type) { //frame
 			case SDL_EVENT_MOUSE_BUTTON_DOWN: {
@@ -34,7 +34,7 @@ void BuilderMap::handle_event(SDL_Event* event) {
 					this->set_out_of_selector(false);
 				}
 				frame_ -> follow_mouse_motion();
-				//selector_->adjust_frame_position(frame_);
+				selector_->adjust_frame_position(frame_);
 				break;
 			}
 			default:
@@ -52,13 +52,8 @@ void BuilderMap::handle_event(SDL_Event* event) {
 					case SDL_BUTTON_LEFT:
 					{
 					  Texture* tCopy = selector_->get_selected_texture(frame_);
-						std::cout << "BuilderMap::handle_event(): " <<
-						(tCopy == nullptr) << " " << 
-						tCopy->get_upper_left_corner().x << ":" <<
-						tCopy->get_upper_left_corner().y << std::endl;
-						if (selector_->get_selected_texture(frame_) != nullptr) {
-							Map::add_texture_at_mouse_pos(
-							selector_->get_selected_texture(frame_));	
+						if (tCopy != nullptr) {
+							Map::add_texture_at_mouse_pos(tCopy);	
 						}		
 						break;
 					}
@@ -69,9 +64,7 @@ void BuilderMap::handle_event(SDL_Event* event) {
 						break;
 				}	
 			default: 
-				break;
-		
-				
+				break;	
 		}
 	}
 }

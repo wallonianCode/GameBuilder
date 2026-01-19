@@ -22,12 +22,8 @@ void Map::add_texture_at_mouse_pos(Texture* texture) {
 	SDL_GetMouseState(&x, &y);
 
   texture->set_upper_left_corner_to_tile_coord({x, y});
-	// remove ev. texture at pos {x, y}
 	this->remove_texture(Texture::get_tile_coord({x, y}));
 	vTextures_.push_back(texture);
-	std::cout << "Map::add_texture_at_mouse_pos(): " <<
-	vTextures_.size() << " " << texture->get_upper_left_corner().x << 
-	":" << texture->get_upper_left_corner().y << std::endl;
 }
 
 

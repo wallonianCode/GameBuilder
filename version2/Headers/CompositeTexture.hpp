@@ -8,8 +8,7 @@
 #include "TextureCloneable.hpp"
 
 
-class CompositeTexture : 
-public TextureCloneable<Texture, CompositeTexture> {
+class CompositeTexture : public Texture {
 public:
 	CompositeTexture();
 	CompositeTexture(const std::string& tileset, 
@@ -23,6 +22,8 @@ public:
   void update() override;
 	
 	SDL_FPoint get_upper_left_corner() const override;
+	void set_upper_left_corner(const SDL_FPoint&) override;
+
 /*
 	float get_width() const override;
 	float get_height() const override;

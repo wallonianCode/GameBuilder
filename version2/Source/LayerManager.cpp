@@ -49,9 +49,8 @@ void LayerManager::operator--() {
 	LayerFactory::get_precedent_layer_type(currentLayerType_);
 }
 
-//TODO here is the bug
-Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) { 
-	Texture* ret =  
+
+Texture* LayerManager::get_texture_copy_at_coord(const SDL_FPoint& coord) {  Texture* ret =  
 	mLayers_[currentLayerType_]->get_texture_copy_at_coord(coord);
 	return ret;
 }

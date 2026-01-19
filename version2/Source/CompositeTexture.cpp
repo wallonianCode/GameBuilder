@@ -67,11 +67,17 @@ SDL_FPoint CompositeTexture::get_upper_left_corner() const {
 		 itSrcDest != vSrcDest_.end();
 		 ++itSrcDest) {
 		temp = itSrcDest->second;
-		if ((temp.x <= upperLeftCornerRect.x) && (temp.y <= upperLeftCornerRect.y)) {
+		if ((temp.x <= upperLeftCornerRect.x) && 
+		(temp.y <= upperLeftCornerRect.y)) {
 			upperLeftCornerRect = itSrcDest->second;
 		}
 	}
 	return {upperLeftCornerRect.x, upperLeftCornerRect.y};
+}
+
+
+void CompositeTexture::set_upper_left_corner(const SDL_FPoint& newPos) {
+	this->move(newPos);
 }
 
 
@@ -84,7 +90,8 @@ void CompositeTexture::move(const SDL_FPoint& newUpperLeftCorner) {
 							  vSrcDest_[0].second.y};	
 	xMove = newUpperLeftCorner.x - currentUpperLeftCorner.x;
 	yMove = newUpperLeftCorner.y - currentUpperLeftCorner.y;
-	for ( itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); itSrcDest++) {
+	for ( itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); 
+	itSrcDest++) {
 		itSrcDest->second.x += xMove;
 		itSrcDest->second.y += yMove;
 	}
