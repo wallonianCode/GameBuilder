@@ -15,5 +15,5 @@ void ExiterState::draw() {
 
 
 ExiterState::ExiterState() {
-	background_ = std::make_shared<Background>(Color::black);
+	background_ = std::make_shared<BlackBackground>();
 }

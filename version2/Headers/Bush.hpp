@@ -6,7 +6,7 @@
 
 class Bush : public TextureCloneable<SimpleTexture, Bush> {
 public:
-	Bush(const SDL_Point&);
+	Bush(const SDL_FPoint&);
 };
 
 #endif

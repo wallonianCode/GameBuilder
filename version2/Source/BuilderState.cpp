@@ -5,11 +5,11 @@ GameState* BuilderState::process_events(bool& running) {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
-			case SDL_QUIT:
+			case SDL_EVENT_QUIT:
 				running = false;
 				break;
-			case SDL_KEYDOWN:
-				switch (event.key.keysym.scancode) {
+			case SDL_EVENT_KEY_DOWN:
+				switch (event.key.scancode) {
 					case SDL_SCANCODE_ESCAPE:
 						running = false;
 						break;
@@ -31,7 +31,10 @@ void BuilderState::update() {
 
 
 void BuilderState::draw() {
+	Renderer* renderer;
+	renderer = Renderer::get_instance();
 	map_->draw();
+	SDL_RenderPresent(renderer->get_sdl_renderer());
 }
 
 

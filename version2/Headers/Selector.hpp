@@ -6,6 +6,7 @@
 #include "LayerManager.hpp"
 #include "Window.hpp"
 #include "Texture.hpp"
+#include "Frame.hpp"
 
 
 class Selector : public Drawable {
@@ -14,7 +15,6 @@ public:
 	void handle_event(SDL_Event& event);
 	bool is_mouse_in();
 	Texture* get_selected_texture();
-	Selector(const int width);
 	void switch_layer_forward();
 	void switch_layer_backward();
 	/**
@@ -22,8 +22,13 @@ public:
 		*				  the mouse is currently hovering over.
 		*/
 	void redimension_frame();
+
+	Selector(const int width);
+	~Selector();
 private:	
 	LayerManager* layerManager_;
+	Frame* frame_;
+	int width_;
 };
 
 #endif

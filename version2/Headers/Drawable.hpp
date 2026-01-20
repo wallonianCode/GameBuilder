@@ -1,6 +1,7 @@
 #ifndef DRAWABLE_H
 #define DRAWABLE_H
 
+#include <memory>
 #include "Renderer.hpp"
 #include "Color.hpp"
 
@@ -12,6 +13,7 @@ const int STD_HEIGHT = 4*S;
 class Drawable {
 public:
 	virtual void draw() = 0;
+	virtual ~Drawable();
 };
 
 

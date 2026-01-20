@@ -6,7 +6,7 @@
 
 class TallGrass : public TextureCloneable<SimpleTexture, TallGrass> {
 public:
-	TallGrass(const SDL_Point&);
+	TallGrass(const SDL_FPoint&);
 };
 
 

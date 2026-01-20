@@ -6,7 +6,7 @@
 
 class Flowers : public TextureCloneable<SimpleTexture, Flowers> {
 public:
-	Flowers(const SDL_Point&);
+	Flowers(const SDL_FPoint&);
 };
 
 #endif

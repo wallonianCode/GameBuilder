@@ -14,8 +14,8 @@ public:
 	void free();
 	
 	Frame();
-	Frame(const SDL_Rect& areaOnScreen, const SDL_Color& color);
-	Frame(const SDL_Point& posOnScreen, const int& width, 
+	Frame(const SDL_FRect& areaOnScreen, const SDL_Color& color);
+	Frame(const SDL_FPoint& posOnScreen, const int& width, 
 	const int& height, const SDL_Color& color);
 
 private:

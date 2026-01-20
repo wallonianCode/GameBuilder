@@ -1,50 +1,50 @@
 #include "../Headers/ShallowWater.hpp"
 
 
-ShallowWater::ShallowWater(const SDL_Point& pos,
+ShallowWater::ShallowWater(const SDL_FPoint& pos,
 						   const DeclinedTextureOrientation& orientation) : 
-						   SimpleTexture(pos) {
-	SDL_Rect tile;
+						   DeclinedTexture(pos) {
+	SDL_FRect tile;
 	switch (orientation) {
-		case DeclinedTextureOrientation::North {
+		case DeclinedTextureOrientation::North: {
 			tile = {11*S+2, 1, S-3, S-3}; 
 			break;
 		}
-		case DeclinedTextureOrientation::West {
+		case DeclinedTextureOrientation::West: {
 			tile = {10*S+1, S+2, S-3, S-3};
 			break;
 		}
-		case DeclinedTextureOrientation::East {
+		case DeclinedTextureOrientation::East: {
 			tile = {12*S+2, S+2, S-2, S-3};
 			break;
 		}
-		case DeclinedTextureOrientation::South {
+		case DeclinedTextureOrientation::South: {
 			tile = {11*S+2, 2*S+2, S-3, S-2};
 			break;
 		}
-		case DeclinedTextureOrientation::NorthWest {
+		case DeclinedTextureOrientation::NorthWest: {
 			tile = {10*S+1, 1, S-3, S-3};
 			break;
 		}
-		case DeclinedTextureOrientation::NorthEast {
+		case DeclinedTextureOrientation::NorthEast: {
 			tile = {12*S+2, 1, S-2, S-3};
 			break;
 		}
-		case DeclinedTextureOrientation::SouthWest {
+		case DeclinedTextureOrientation::SouthWest: {
 			tile = {10*S+1, 1, S-3, S-3};
 			break;
 		}
-		case DeclinedTextureOrientation::SouthEast {
+		case DeclinedTextureOrientation::SouthEast: {
 			tile = {12*S+2, 2*S+2, S-2, S-2};
 			break;
 		}
-		case DeclinedTextureOrientation::Center {
+		case DeclinedTextureOrientation::Center: {
 			tile = {11*S+2, S+2, S-3, S-3};
 			break;
 		}
 		default: 
 			break;
 	}
-	this->set_pos_on_tileset(tile.x, tile.y);
+	this->set_pos_on_tileset({tile.x, tile.y});
 	this->set_dim_on_tileset(tile.w, tile.h);
 }

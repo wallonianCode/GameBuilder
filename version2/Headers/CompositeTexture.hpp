@@ -2,29 +2,33 @@
 #define COMPOSED_TEXTURE
 
 #include <vector>
-#include <pair>
+#include <utility>
 
 #include "Texture.hpp"
+#include "TextureCloneable.hpp"
 
 
 class CompositeTexture : 
 public TextureCloneable<Texture, CompositeTexture> {
 public:
+	CompositeTexture();
 	CompositeTexture(const std::string& tileset, 
-  								 std::vector::iterator<SDL_Rect> itSrcBegin,
-									 std::vector::iterator<SDL_Rect> itSrcEnd,
-									 std::vector::iterator<SDL_Rect> itDestBegin,
-									 std::vector::iterator<SDL_Rect> itDestEnd);
+					 std::vector<SDL_FRect>::iterator itSrcBegin,
+					 std::vector<SDL_FRect>::iterator itSrcEnd,
+					 std::vector<SDL_FRect>::iterator itDestBegin,
+					 std::vector<SDL_FRect> ::iterator itDestEnd);
 
 	void draw() override;
   	void update() override;
-	void save() override;
 	
-	void save_dest(std::ostream&) const override;
-	SDL_Point get_upper_left_corner() const override;
-	void set_pos_on_screen(const SDL_Point&) const override;
+	SDL_FPoint get_upper_left_corner() const override;
+/*
+	float get_width() const override;
+	float get_height() const override;
+	*/
+	void move(const SDL_FPoint&);
 private:
-  	std::vector<std::pair<SDL_Rect, SDL_Rect>> vSrcDest_;
+  	std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;
 
 };
 

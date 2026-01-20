@@ -1,9 +1,9 @@
 #include "../Headers/SandRoad.hpp"
 
 
-SandRoad::SandRoad(const SDL_Point& pos, const DeclinedTextureOrientation& orientation) :
+SandRoad::SandRoad(const SDL_FPoint& pos, const DeclinedTextureOrientation& orientation) :
 DeclinedTexture(pos) {
-	SDL_Rect tile;
+	SDL_FRect tile;
 	switch (orientation) {
 		case DeclinedTextureOrientation::North: {
 			tile = {3*S+2, 2, S-3, S-3};
@@ -56,6 +56,6 @@ DeclinedTexture(pos) {
 		default:
 			break;
 	}
-	this->set_pos_on_tileset(tile.x, tile.y);
+	this->set_pos_on_tileset({tile.x, tile.y});
 	this->set_dim_on_tileset(tile.w, tile.h);
 }

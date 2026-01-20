@@ -6,7 +6,7 @@
 
 class SmallTree : public TextureCloneable<SimpleTexture, SmallTree> {
 public:
-	SmallTree(const SDL_Point&);
+	SmallTree(const SDL_FPoint&);
 };
 
 

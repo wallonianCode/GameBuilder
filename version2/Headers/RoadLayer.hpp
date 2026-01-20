@@ -5,7 +5,7 @@
 
 class RoadLayer : public Layer {
 public:
-   RoadLayer(const int, const SDL_Point&);
+   RoadLayer(const int, const SDL_FPoint&);
 
 };
 #endif

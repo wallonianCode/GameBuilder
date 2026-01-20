@@ -6,7 +6,7 @@
 
 class Moos : public TextureCloneable<SimpleTexture, Moos> {
 public:
-	Moos(const SDL_Point&);
+	Moos(const SDL_FPoint&);
 };
 
 #endif

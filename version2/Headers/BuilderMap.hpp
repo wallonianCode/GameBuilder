@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "Map.hpp"
-#include "GreenBackground.hpp"
+#include "GrassBackground.hpp"
 #include "Selector.hpp"
 #include "Separator.hpp"
 
@@ -24,7 +24,7 @@ private:
 	void handle_mouse_motion_events(SDL_Event& event);
 	std::shared_ptr<Selector> selector_;
 	std::shared_ptr<Separator> separator_;
-	std::shared_ptr<GreenBackground> greenBackground_;
+	std::shared_ptr<GrassBackground> grassBackground_;
 };
 
 #endif

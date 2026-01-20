@@ -8,11 +8,27 @@ GameManager* GameManager::get_instance() {
 	return instance_;
 }
 
+//TODO try out with a lower fps. Look if more textures are printed
+// then. That may be an efficiency problem.
 void GameManager::run() {
-	bool running = true;
-	GameStateMachine* stateMachine = GameStateMachine::get_instance();
+	bool running; 
+	uint64_t start, end;
+	float elapsedS, elapsedMS;
+	GameStateMachine* stateMachine; 
+	
+	running = true;
+	stateMachine = GameStateMachine::get_instance();
+
 	while (running) {
+		start = SDL_GetPerformanceCounter();
 		running = !(stateMachine->handle_frame());
+		end = SDL_GetPerformanceCounter();
+	
+	  elapsedS = (end - start)/(float)SDL_GetPerformanceFrequency();
+		elapsedMS = elapsedS*1000.0f;
+		if (elapsedMS < SCREEN_TICKS_PER_FRAME) {
+			SDL_Delay(std::floor(SCREEN_TICKS_PER_FRAME - elapsedMS));
+		}
 	}
 }
 

@@ -15,7 +15,7 @@ struct Color {
 	static const SDL_Color yellow;
 	static const SDL_Color white;
 	static const SDL_Color black;
-	static const SDL_Color green;
+	static const SDL_Color green1;
 	static const SDL_Color green2;
 	static const SDL_Color green3;
 

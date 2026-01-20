@@ -1,9 +1,10 @@
 #ifndef EXITERSTATE_H
 #define EXITERSTATE_H
+
 #include <memory>
 #include "GameState.hpp"
-#include "Background.hpp"
 #include "Color.hpp"
+#include "BlackBackground.hpp"
 
 
 class ExiterState : public GameState {
@@ -13,8 +14,7 @@ public:
 	void draw() override;
 	ExiterState();
 private:
-	std::shared_ptr<Background> background_;
-
+	std::shared_ptr<BlackBackground> background_;
 };
 
 #endif

@@ -4,8 +4,8 @@
 
 #include "Layer.hpp"
 
-class BorderLayer : public TextureCloneable<Layer, BorderLayer> {
+class BorderLayer : public Layer {
 public:
-    BorderLayer(const int, const SDL_Point&);
+    BorderLayer(const int, const SDL_FPoint&);
 };
 #endif

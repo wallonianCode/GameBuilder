@@ -1,14 +1,14 @@
 #ifndef TEXTUREFACTORY_H
 #define TEXTUREFACTORY_H
 
+#include <array>
 #include "Texture.hpp"
 
 #include "Oak.hpp"
-#include "Pine.hpp"
+#include "Pin.hpp"
 #include "Hornbeam.hpp"
 #include "Poplar.hpp"
 
-#include "Grass.hpp"
 #include "Sand.hpp"
 #include "Bush.hpp"
 #include "Flowers.hpp"
@@ -20,11 +20,16 @@
 #include "DeepWater.hpp"
 #include "ShallowWater.hpp"
 #include "GreenBorder.hpp"
-#include "GrayBorder.hpp"
+#include "GreyBorder.hpp"
 
 #include "MoosRoad.hpp"
 #include "RockRoad.hpp"
 #include "SandRoad.hpp"
+
+#include "GreenWhiteGreenGrass.hpp"
+#include "GreenWhiteGrass.hpp"
+#include "GreenGrass.hpp"
+#include "WhiteGrass.hpp"
 
 
 enum class SimpleTextureEnum {
@@ -63,39 +68,36 @@ enum class DeclinedTextureEnum {
 
 class TextureFactory {
 public:
-	static SimpleTexture* create_simple_texture(const SDL_Point&, 
+	static SimpleTexture* create_simple_texture(const SDL_FPoint&, 
 							 				  	const SimpleTextureEnum&);
 
 	static CompositeTexture* 
-	create_composite_texture(const SDL_Point& pos, 
-						   	 const CompositeTextureEnum& ;
+	create_composite_texture(const SDL_FPoint& pos, 
+						   	 const CompositeTextureEnum&) ;
 
 
 	static void 
-	create_road(const SDL_Point&, 
-			   const SDL_Point&,
-			   std::vector<DeclinedTexture*>,
-			   std::vector<DeclinedTexture*>,
-			   const DeclinedTextureEnum&);
+	create_road(const SDL_FPoint&, 
+			    const int width,
+			    std::array<DeclinedTexture*, 12>::iterator,
+			    std::array<DeclinedTexture*, 12>::iterator,
+			    const DeclinedTextureEnum&);
 
 	static void
-	create_border(const SDL_Point&,
-				 const SDL_Point&
-				 std::vector<DeclinedTexture*>,
-			     std::vector<DeclinedTexture*>,
+	create_border(const SDL_FPoint&,
+				 const int width,
+				 std::array<DeclinedTexture*, 10>::iterator,
+			     std::array<DeclinedTexture*, 10>::iterator,
 				 const DeclinedTextureEnum&);
 
 	static void
-	create_water(const SDL_Point&,
-			    std::vector<DeclinedTexture*>,
-			    std::vector<DeclinedTexture*>,
-				const DeclinedTextureEnum&);
+	create_water(const SDL_FPoint&,
+			     std::array<DeclinedTexture*, 9>::iterator,
+			     std::array<DeclinedTexture*, 9>::iterator,
+				 const DeclinedTextureEnum&);
 
-		
-
-private:
 	static DeclinedTexture*
-	create_declined_texture(const SDL_Point& pos,
+	create_declined_texture(const SDL_FPoint& pos,
 						    const DeclinedTextureEnum& declTextEnum,
 						  	const DeclinedTextureOrientation& orientation);	
 };

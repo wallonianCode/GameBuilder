@@ -7,7 +7,7 @@
 
 class MoosRoad : public TextureCloneable<DeclinedTexture, MoosRoad> {
 public:
-	MoosRoad(const SDL_Point&,
+	MoosRoad(const SDL_FPoint&,
 			 const DeclinedTextureOrientation& orientation);
 };
 #endif

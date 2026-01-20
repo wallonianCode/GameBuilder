@@ -2,41 +2,39 @@
 #define SIMPLETEXTURE_H
 
 #include "Texture.hpp"
+#include "TextureCloneable.hpp"
 
 
 class SimpleTexture : public Texture {
 public:
 	SimpleTexture();
-	//TODO implement
-	SimpleTexture(const SDL_Point& );
-	SimpleTexture(const std::string& tileset);
-	SimpleTexture(const std::string& tileset, const SDL_Point& posOnScreen);
+	SimpleTexture(const SDL_FPoint&);
+	SimpleTexture(const std::string&);
+	SimpleTexture(const std::string&, const SDL_FPoint&);
 	// to override in case of bigger tiles (iterate over the src vector)
-	virtual void draw(); 
+	virtual void draw() override; 
 	// to override in case of bigger tiles (the src may be a vector)
-	void set_pos_on_screen(const SDL_Point&) override;
-	SDL_Point get_upper_left_corner() const override;
-	void set_dimensions_on_screen(const int& width, const int& height);
+	void set_upper_left_corner(const SDL_FPoint&) override;
+	SDL_FPoint get_upper_left_corner() const override;
+	void set_dimensions_on_screen(const int&, const int&);
 	
 	virtual void update() override;	
-	virtual void save(std::ostream&) const override;
+	//virtual void save(std::ostream&) const override;
 
-	virtual void set_pos_on_tileset(const SDL_Point& pos);
+	virtual void set_pos_on_tileset(const SDL_FPoint&);
 	virtual void set_dim_on_tileset(const int, const int);
+
+	float get_width() const override; 
+	float get_height() const override;
+
+	static float get_standard_width();
+	static float get_standard_height();
 	
-	virtual void save_dest(std::ostream&) const;
-	friend std::ostream& operator<<(std::ostream&, const Texture&);
-	
-	virtual SimpleTexture* clone() const = 0;
 
 private:
 	std::string tileset_;		
-	SDL_Rect src_;
-	SDL_Rect dest_;
-
-
-
-
+	SDL_FRect src_;
+	SDL_FRect dest_;
 };
 
 

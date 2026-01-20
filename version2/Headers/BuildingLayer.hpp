@@ -3,9 +3,9 @@
 
 #include "Layer.hpp"
 
-class BuildingLayer : public TextureCloneable<Layer, BuildingLayer> {
+class BuildingLayer : public Layer {
 public:
-    BuildingLayer(const int, const SDL_Point&);
+    BuildingLayer(const int, const SDL_FPoint&);
 };
 
 #endif

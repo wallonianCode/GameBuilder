@@ -2,13 +2,20 @@
 
 
 void BuilderMap::draw() {
-	greenBackground_->draw();
+	Renderer *renderer;
+	renderer = Renderer::get_instance();
+	SDL_SetRenderDrawColor(renderer->get_sdl_renderer(), 0, 0, 0, 255);
+	SDL_RenderClear(renderer->get_sdl_renderer());
+	grassBackground_->draw();
+	/*
 	Map::draw(); //draw textures
+	
 	selector_->draw();
 	separator_->draw();
 	if (!separator_->is_mouse_in()) {
 		this->draw_frame();
 	}
+		*/
 }
 
 
@@ -23,23 +30,13 @@ void BuilderMap::handle_event(SDL_Event& event) {
 	else {
 		this->handle_mouse_motion_events(event);
 		switch(event.type) {
-			case SDL_MOUSEBUTTONDOWN:
+			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				switch (event.button.button) {	
 					case SDL_BUTTON_LEFT:
-						/*
 						if (selector_->get_selected_texture() != nullptr) {
 							Map::add_texture_at_mouse_pos(
 							selector_->get_selected_texture());	
-						}
-						*/
-						if (selector_->get_selected_textures().size() != 0) {
-							Map::add_textures_at_mouse_pos(
-							selector_->get_selected_textures());
-						}
-						else {
-							std::cout << "No selected texture as for now" << 
-							std::endl;
-						}
+						}		
 						break;
 					case SDL_BUTTON_RIGHT:
 						Map::remove_texture_at_mouse_pos();
@@ -47,11 +44,14 @@ void BuilderMap::handle_event(SDL_Event& event) {
 					default:
 						break;
 				}
-			case SDL_KEYDOWN:
-				switch (event.key.keysym.sym) {
-					case SDLK_l:
+			case SDL_EVENT_KEY_DOWN:
+				switch (event.key.scancode) {
+					case SDL_SCANCODE_L:
 						std::cout << "L case pressed" << std::endl;
-						selector_->switch_layer();
+						selector_->switch_layer_forward();
+						break;
+					case SDL_SCANCODE_K:
+						selector_->switch_layer_backward();
 						break;
 					default:
 						break;
@@ -66,11 +66,11 @@ void BuilderMap::handle_event(SDL_Event& event) {
 
 void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
 	switch(event.type) {
-	  case SDL_MOUSEMOTION: {
-			int x, y, xTile, yTile;
+	  case SDL_EVENT_MOUSE_MOTION: {
+			float x, y, xTile, yTile;
 			SDL_GetMouseState(&x, &y);
-			xTile = x - (x % TILE_DIM);
-			yTile = y - (y % TILE_DIM);
+			xTile = x - ((int)x % TILE_DIM);
+			yTile = y - ((int)y % TILE_DIM);
 			this->set_frame_pos({xTile, yTile});	
 			break;	
 		}
@@ -83,7 +83,10 @@ void BuilderMap::handle_mouse_motion_events(SDL_Event& event) {
 
 
 BuilderMap::BuilderMap() {
+	Window* window;
+
+	window = Window::get_instance();
 	selector_ = std::make_shared<Selector>(SELECTOR_WIDTH);
 	separator_ = std::make_shared<Separator>();
-	greenBackground_ = std::make_shared<GreenBackground>();
+	grassBackground_ = std::make_shared<GrassBackground>(window->get_width(), window->get_height());
 }

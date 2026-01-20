@@ -24,7 +24,7 @@ private:
 	ExitButton exitBtn_;
 
 	ThreeColumnsBackground background_ = 
-	ThreeColumnsBackground(Color::brown5, Color::brown1);
+	ThreeColumnsBackground(Color::brown5, Color::green1);
 };
 
 #endif

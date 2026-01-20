@@ -6,7 +6,7 @@
 
 class ShallowWater : public TextureCloneable<DeclinedTexture, ShallowWater> {
 public:
-	ShallowWater(const SDL_Point&, const DeclinedTextureOrientation&);
+	ShallowWater(const SDL_FPoint&, const DeclinedTextureOrientation&);
 
 };
 #endif

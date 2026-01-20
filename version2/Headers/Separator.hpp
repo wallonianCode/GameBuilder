@@ -13,8 +13,8 @@ public:
 	Separator();
 private:
 	std::vector<Texture*> vTextures;
-	const int xBegin_ = 5*TILE_DIM;
-	const int xEnd_ = 7*TILE_DIM;
+	const float xBegin_ = 5*TILE_DIM;
+	const float xEnd_ = 7*TILE_DIM;
 };
 
 

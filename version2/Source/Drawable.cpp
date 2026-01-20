@@ -2,3 +2,5 @@
 
 
 void Drawable::draw() {}
+
+Drawable::~Drawable() {}

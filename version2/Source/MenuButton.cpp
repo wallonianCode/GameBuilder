@@ -4,7 +4,7 @@
 GameState* MenuButton::handle_event(SDL_Event& event) {
 	GameState* nextState = nullptr;
 	switch(event.type) {
-		case SDL_MOUSEMOTION:
+		case SDL_EVENT_MOUSE_MOTION:
 			if (Collider::is_mouse_inside_frame(event.motion, outRect_)) {
 				activate();
 			}
@@ -12,12 +12,13 @@ GameState* MenuButton::handle_event(SDL_Event& event) {
 				deactivate();
 			}
 			break;
-		case SDL_MOUSEBUTTONDOWN:
+		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			if (Collider::is_click_inside_frame(event.button, outRect_)) {
 				std::cout << 
 				"MenuButton::handle_event(). Click is inside frame " << std::endl;
 				//nextState = Button::click();
 				nextState = this->get_next_state();
+				std::cout <<"MenuButton::handle_event " << (nextState == nullptr) << std::endl;
 			}
 			break;
 		default:
@@ -27,43 +28,43 @@ GameState* MenuButton::handle_event(SDL_Event& event) {
 }
 
 
-MenuButton::MenuButton(const SDL_Point& posOnScreen, const int& width, 
-const int& height, const int& frameThickness, 
-const SDL_Color& frameColor, const SDL_Color& fillColor, 
-const SDL_Color& clickedFillColor, const std::string& text) : 
+MenuButton::MenuButton( const SDL_FPoint& posOnScreen, const float& width, 
+						const float& height, const int& frameThickness, 
+						const SDL_Color& frameColor, const SDL_Color& fillColor, 
+						const SDL_Color& clickedFillColor, const std::string& text) : 
 TextButton(posOnScreen, width, height,
 frameThickness, frameColor, fillColor, clickedFillColor, text) {}
 
 
-MenuButton::MenuButton(const SDL_Point& posOnScreen, const int& width, 
-const int& height, const int& frameThickness, 
-const SDL_Color& frameColor, const SDL_Color& fillColor, 
-const SDL_Color& clickedFillColor, const std::string& text, 
-const SDL_Color& textColor) : 
+MenuButton::MenuButton(const SDL_FPoint& posOnScreen, const float& width, 
+					   const float& height, const int& frameThickness, 
+					   const SDL_Color& frameColor, const SDL_Color& fillColor, 
+					   const SDL_Color& clickedFillColor, const std::string& text, 
+					   const SDL_Color& textColor) : 
 TextButton(posOnScreen, width, height, frameThickness, frameColor, 
 fillColor, clickedFillColor, text, textColor) {}
 
 
 //------------------------- PROTECTED ------------------------------
 
-int MenuButton::DefaultSettings::x = 
+float MenuButton::DefaultSettings::x = 
 Window::get_instance()->get_width()/3 + 
 Window::get_instance()->get_width()/12;
 
 
-int MenuButton::DefaultSettings::yJump =
+float MenuButton::DefaultSettings::yJump =
 Window::get_instance()->get_height()/6;
 
 
-int MenuButton::DefaultSettings::w =
+float MenuButton::DefaultSettings::w =
 Window::get_instance()->get_width()/6;
 
 
-int MenuButton::DefaultSettings::h =
+float MenuButton::DefaultSettings::h =
 Window::get_instance()->get_height()/8;
 
 
-int MenuButton::DefaultSettings::frameThickness =
+float MenuButton::DefaultSettings::frameThickness =
 Window::get_instance()->get_width()/64;
 
 

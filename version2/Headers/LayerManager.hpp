@@ -1,18 +1,19 @@
 #ifndef LAYERMANAGER_H
 #define LAYERMANAGER_H
 
-#include "Layer.hpp"
+#include <map>
+#include "LayerFactory.hpp"
 
 
 class LayerManager : public Drawable {
 public:
-    LayerManager(const int, const SDL_Point&);
+    LayerManager(const int, const SDL_FPoint&);
     void add_layer(const LayerFactory::LayerType&);
     void operator++(int); //postfix
     void operator++();    //prefix
-    void operator--(int)  //postfix
+    void operator--(int);  //postfix
     void operator--();    //prefix
-    Texture* get_texture_copy_at_coord(const SDL_Point&);
+    Texture* get_texture_copy_at_coord(const SDL_FPoint&);
 		void draw() override;	
 
 private:
@@ -20,6 +21,7 @@ private:
     std::map<LayerFactory::LayerType, Layer*> mLayers_;
 		LayerFactory::LayerType currentLayerType_;
     int width_;
+    SDL_FPoint upperLeftCorner_;
 
 };
 #endif

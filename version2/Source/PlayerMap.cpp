@@ -3,7 +3,7 @@
 
 void PlayerMap::draw() {
 	Map::draw();
-	red_.draw();
+	//red_.draw();
 }
 
 
@@ -16,11 +16,10 @@ void PlayerMap::handle_event(SDL_Event& event) {
 PlayerMap::PlayerMap() : Map() {}
 
 
-PlayerMap::PlayerMap(std::vector<Texture*>::iterator itLandBegin,
-std::vector<Texture*>::iterator itLandEnd, 
-std::vector<Character*>::iterator itCharBegin, 
-std::vector<Character*>::iterator itCharEnd) : 
-Map(itLandBegin, itLandEnd, itCharBegin, itCharEnd) {}
+PlayerMap::PlayerMap(
+std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
+std::vector<std::shared_ptr<Texture>>::iterator itLandEnd) : 
+Map(itLandBegin, itLandEnd) {}
 
 
 PlayerMap::PlayerMap(const std::string& filename) : Map(filename) {}
