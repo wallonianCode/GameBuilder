@@ -12,11 +12,12 @@
 #include "Texture.hpp"
 #include "Frame.hpp"
 
+const SDL_FPoint MOUSE_STARTING_POSITION = {TILE_DIM/2.0f, TILE_DIM/2.0f};
 
 class Map : public Drawable {
 public:
 	virtual void draw() override;
-	virtual void handle_event(SDL_Event& event) = 0;
+	virtual void handle_event(SDL_Event* event) = 0;
 
 	// write textures and characters to a save file
 	//void save(const std::string& fileName);
@@ -40,20 +41,22 @@ public:
 	void set_frame_pos(const SDL_FPoint&);
 	void draw_frame();
 
+
+
 	//	------- CONSTRUCTORS -----------------------
 	
 	// create an empty map
 	Map();	
 	Map(const std::string& filename);
 
-	Map(std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
-		  std::vector<std::shared_ptr<Texture>>::iterator itLandEnd);
-	
+	Map(std::vector<Texture*>::iterator itLandBegin,
+		  std::vector<Texture*>::iterator itLandEnd);
+protected:
+	Frame* frame_;
 private:
 	std::vector<std::string> split(std::string, const std::string&);
-	std::vector<std::shared_ptr<Texture>> vTextures_;
+	std::vector<Texture*> vTextures_;
 	// shows the cursor, can be moved with keyboard keys
-	Frame frame_;	
 };
 
 #endif

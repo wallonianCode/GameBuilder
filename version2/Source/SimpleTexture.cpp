@@ -1,21 +1,35 @@
 #include "../Headers/SimpleTexture.hpp"
 
 
-SimpleTexture::SimpleTexture() : tileset_(leafGreenTextureFileName) {
+SimpleTexture::SimpleTexture() : Texture(leafGreenTextureFileName) {
 	// default to the middle of the screen
 	this->set_upper_left_corner({WINDOW_WIDTH/2, WINDOW_HEIGHT/2});
+	this->set_dimensions_on_screen(TILE_DIM, TILE_DIM);
 }
 
 
-SimpleTexture::SimpleTexture(const SDL_FPoint& pos) : tileset_(leafGreenTextureFileName) {
+//TODO build a simple example of this first without, and then with 
+// the CRTP
+SimpleTexture::SimpleTexture(const SDL_FPoint& pos) : 
+Texture(leafGreenTextureFileName) {
 	this->set_upper_left_corner(pos);
+	this->set_dimensions_on_screen(TILE_DIM, TILE_DIM);
 }
 
 
-
-SimpleTexture::SimpleTexture(const std::string& tileset, const SDL_FPoint& pos) : 
-tileset_(tileset) {
+SimpleTexture::SimpleTexture(const std::string& tileset, 
+const SDL_FPoint& pos) : 
+Texture(tileset) {
 	this->set_upper_left_corner(pos);
+	this->set_dimensions_on_screen(TILE_DIM, TILE_DIM);
+}
+
+
+SimpleTexture::SimpleTexture(const SimpleTexture& other) :
+Texture(other) {
+	src_ = other.src_;
+	dest_ = other.dest_;
+
 }
 
 
@@ -23,7 +37,7 @@ void SimpleTexture::draw() {
 	Renderer* renderer = Renderer::get_instance();
 	SDL_Texture* texture = 
 	TextureLoader::load_texture
-	(renderer->get_sdl_renderer(), tileset_);
+	(renderer->get_sdl_renderer(), this->get_tileset());
 	SDL_RenderTexture(renderer->get_sdl_renderer(), texture, &src_, &dest_);
 }
 
@@ -78,4 +92,8 @@ float SimpleTexture::get_standard_width() {
 
 float SimpleTexture::get_standard_height() {
 	return TILE_DIM;
+}
+
+bool SimpleTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
+	return (get_upper_left_corner().x == coord.x && get_upper_left_corner().y == coord.y);
 }

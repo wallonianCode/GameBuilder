@@ -15,13 +15,14 @@ Layer(width, upperLeftCorner) {
     i = 0;
     pos = upperLeftCorner;
     
-    for (i = 0; i <= 3; ++i) {
-        posGrass = {upperLeftCorner.x + i*SimpleTexture::get_standard_width(), upperLeftCorner.y};
+    while (i <= 3) {
+        posGrass = 
+        {upperLeftCorner.x + i*SimpleTexture::get_standard_width(),  upperLeftCorner.y};
         posPlant = {upperLeftCorner.x + i*SimpleTexture::get_standard_width(), 
                     upperLeftCorner.y + SimpleTexture::get_standard_height()};
         this->add_texture(TextureFactory::create_simple_texture({posGrass}, grassTypes[i]));
         this->add_texture(TextureFactory::create_simple_texture({posPlant}, plantTypes[i]));
-        i++;
+        ++i;
     }
 
 
@@ -33,7 +34,6 @@ Layer(width, upperLeftCorner) {
     this->add_texture(
         TextureFactory::create_simple_texture({
             upperLeftCorner.x + SimpleTexture::get_standard_width(), 
-            upperLeftCorner.y + 2*SimpleTexture::get_standard_height()}, SimpleTextureEnum::Rock));   
-
-
+            upperLeftCorner.y + 2*SimpleTexture::get_standard_height()}, 
+            SimpleTextureEnum::Rock));   
 }

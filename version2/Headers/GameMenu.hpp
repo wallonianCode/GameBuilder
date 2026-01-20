@@ -15,7 +15,7 @@ class GameMenu : public Drawable {
 public:
 	void draw() override;
 	void update();
-	GameState* handle_event(SDL_Event& event);
+	GameState* handle_event(SDL_Event* event);
 	GameMenu();
 private:
 	BuilderButton builderBtn_;

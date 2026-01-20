@@ -31,7 +31,7 @@ ShallowWater::ShallowWater(const SDL_FPoint& pos,
 			break;
 		}
 		case DeclinedTextureOrientation::SouthWest: {
-			tile = {10*S+1, 1, S-3, S-3};
+			tile = {10*S+1, 2*S+2, S-3, S-3};
 			break;
 		}
 		case DeclinedTextureOrientation::SouthEast: {

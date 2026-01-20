@@ -1,11 +1,11 @@
 #include "../Headers/MenuButton.hpp"
 
 
-GameState* MenuButton::handle_event(SDL_Event& event) {
+GameState* MenuButton::handle_event(SDL_Event* event) {
 	GameState* nextState = nullptr;
-	switch(event.type) {
+	switch(event->type) {
 		case SDL_EVENT_MOUSE_MOTION:
-			if (Collider::is_mouse_inside_frame(event.motion, outRect_)) {
+			if (Collider::is_mouse_inside_frame(event->motion, outRect_)) {
 				activate();
 			}
 			else {
@@ -13,12 +13,9 @@ GameState* MenuButton::handle_event(SDL_Event& event) {
 			}
 			break;
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
-			if (Collider::is_click_inside_frame(event.button, outRect_)) {
-				std::cout << 
-				"MenuButton::handle_event(). Click is inside frame " << std::endl;
+			if (Collider::is_click_inside_frame(event->button, outRect_)) {
 				//nextState = Button::click();
 				nextState = this->get_next_state();
-				std::cout <<"MenuButton::handle_event " << (nextState == nullptr) << std::endl;
 			}
 			break;
 		default:
@@ -28,10 +25,11 @@ GameState* MenuButton::handle_event(SDL_Event& event) {
 }
 
 
-MenuButton::MenuButton( const SDL_FPoint& posOnScreen, const float& width, 
-						const float& height, const int& frameThickness, 
-						const SDL_Color& frameColor, const SDL_Color& fillColor, 
-						const SDL_Color& clickedFillColor, const std::string& text) : 
+MenuButton::MenuButton( 
+const SDL_FPoint& posOnScreen, const float& width, 
+const float& height, const int& frameThickness, 
+const SDL_Color& frameColor, const SDL_Color& fillColor, 
+const SDL_Color& clickedFillColor, const std::string& text) : 
 TextButton(posOnScreen, width, height,
 frameThickness, frameColor, fillColor, clickedFillColor, text) {}
 

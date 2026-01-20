@@ -26,7 +26,12 @@ CompositeTexture::CompositeTexture(
 		itSrcBegin++;
 		itDestBegin++;
 	}
-	std::cout << "CompositeTexture::CompositeTexture end " << vSrcDest_.size() << std::endl;
+}
+
+
+CompositeTexture::CompositeTexture(const CompositeTexture& other) : 
+Texture(other) {
+	vSrcDest_ = other.vSrcDest_;
 }
 
 
@@ -36,7 +41,9 @@ void CompositeTexture::draw() {
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator itSrcDest;
 
 	renderer = Renderer::get_instance();
-    texture = TextureLoader::load_texture(renderer->get_sdl_renderer(), tileset_);
+  texture = 
+	TextureLoader::load_texture(renderer->get_sdl_renderer(), 
+	this->get_tileset());
 	for (itSrcDest = vSrcDest_.begin();
 			 itSrcDest != vSrcDest_.end(); itSrcDest++)
 	{
@@ -49,67 +56,29 @@ void CompositeTexture::draw() {
 void CompositeTexture::update() {}
 
 
-/* should be fixed once and for all in the constructors of derived classes
-void CompositeTexture::set_pos_on_tileset(
-std::vector::iterator<SDL_Point> itPosSrcBegin, 
-std::vector::iterator<SDL_Point> itPosSrcEnd)  {
-	int i = 0;
-	while (itPosSrcBegin != itPosSrcEnd)
-	{
-		vSrcDest_[i].first.x = itPosSrcBegin->x;
-		vSrcDest_[i].first.y = itPosSrcEnd->y;
-		i++;
-		itPosSrcBegin++;
-		itPosSrcEnd++;
-	}
-}
-*/
-
-
-/*	
-void CompositeTexture::save_dest(std::ostream& os) const {
-	for (std::vector<std::pair<SDL_Rect, SDL_Rect>>::iterator 
-			 itSrcDest = vSrcDest_.begin();
-			 itSrcDest != vSrcDest_.end();
-			 itSrcDest++) {
-		os << itSrcDest->second.x << "," << itSrcDest->second.y << ","
-			 << itSrcDest->second.w << "," << itSrcBegin->second.h << " ";
-	}
-}
-*/
-
-/*
-SDL_Point CompositeTexture::get_pos_on_screen() const {
-	return { vSrcDest_[0].second.x, vSrcDest_[0].second.y };
-}
-*/
-
 SDL_FPoint CompositeTexture::get_upper_left_corner() const {
+	SDL_FRect upperLeftCornerRect, temp;
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
-	SDL_FRect upperLeftCornerRect = vSrcDest_[0].second;
+	
+	itSrcDest = vSrcDest_.begin();
+	upperLeftCornerRect = itSrcDest->second;
 
 	for (itSrcDest = vSrcDest_.begin(); 
 		 itSrcDest != vSrcDest_.end();
 		 ++itSrcDest) {
-		if ((itSrcDest->first.x <= upperLeftCornerRect.x) &&	
-				(itSrcDest->first.y <= upperLeftCornerRect.y)) {
+		temp = itSrcDest->second;
+		if ((temp.x <= upperLeftCornerRect.x) && 
+		(temp.y <= upperLeftCornerRect.y)) {
 			upperLeftCornerRect = itSrcDest->second;
 		}
 	}
 	return {upperLeftCornerRect.x, upperLeftCornerRect.y};
 }
 
-/*
-float CompositeTexture::get_width() const {
-	std::cout << "CompositeTexture::get_width(): " << vSrcDest_[1].second.w << std::endl;
-	return vSrcDest_[1].second.w;
-}
 
-
-float CompositeTexture::get_height() const {
-	return vSrcDest_[1].second.h;
+void CompositeTexture::set_upper_left_corner(const SDL_FPoint& newPos) {
+	this->move(newPos);
 }
-	*/
 
 
 void CompositeTexture::move(const SDL_FPoint& newUpperLeftCorner) {
@@ -121,8 +90,26 @@ void CompositeTexture::move(const SDL_FPoint& newUpperLeftCorner) {
 							  vSrcDest_[0].second.y};	
 	xMove = newUpperLeftCorner.x - currentUpperLeftCorner.x;
 	yMove = newUpperLeftCorner.y - currentUpperLeftCorner.y;
-	for ( itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); itSrcDest++) {
+	for ( itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); 
+	itSrcDest++) {
 		itSrcDest->second.x += xMove;
 		itSrcDest->second.y += yMove;
 	}
+}
+
+
+bool CompositeTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
+	bool success;
+	SDL_FRect dest;
+	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
+
+	success = false;
+	for (itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); itSrcDest++) {
+		dest = itSrcDest->second;
+		if (dest.x == coord.x && dest.y == coord.y) {
+			success = true;
+			break;
+		}
+	}
+	return success;
 }

@@ -69,12 +69,6 @@ Rectangle::Rectangle(const SDL_Color& color) {
 }
 
 
-Rectangle::Rectangle(const SDL_Rect& area, const SDL_Color& color) {
-	areaOnScreen_ = new SDL_FRect({(float)area.x, (float)area.y, 
-								   (float)area.w, (float)area.h});
-}
-
-
 Rectangle::Rectangle(const SDL_FRect& areaOnScreen, 
 					 const SDL_Color& color) : color_(color) {
 	areaOnScreen_ = new SDL_FRect(areaOnScreen);

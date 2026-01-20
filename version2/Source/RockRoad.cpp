@@ -22,19 +22,19 @@ DeclinedTexture(pos) {
 			tile = {4*S+2, 6*S+2, S-3, S-3};
 			break;
 		}
-	  	case DeclinedTextureOrientation::NorthWest: {
+			case DeclinedTextureOrientation::NorthWest: {
 			tile = {3*S+2, 7*S+2, S-3, S-3};
 			break;
 		}
-	  	case DeclinedTextureOrientation::NorthEast: {
+			case DeclinedTextureOrientation::NorthEast: {
 			tile = {4*S+2, 7*S+2, S-3, S-3};
 			break;
 		}
-	  	case DeclinedTextureOrientation::SouthWest: {
+			case DeclinedTextureOrientation::SouthWest: {
 			tile = {S+2, 7*S+2, S-3, S-3};
 			break;
 		}
-	  	case DeclinedTextureOrientation::SouthEast: {
+			case DeclinedTextureOrientation::SouthEast: {
 			tile = {2*S+2, 7*S+2, S-3, S-3};
 			break;
 		}
@@ -54,9 +54,13 @@ DeclinedTexture(pos) {
 			tile = {4*S+2, 8*S+2, S-3, S-3};
 			break;
 		}
-	  	default:
+		default:
 			break;
-		this->set_pos_on_tileset({tile.x, tile.y});
-		this->set_dim_on_tileset(tile.w, tile.h);
 	}
+	this->set_pos_on_tileset({tile.x, tile.y});
+	this->set_dim_on_tileset(tile.w, tile.h);
+}
+
+
+RockRoad::RockRoad(const RockRoad& other) : DeclinedTexture(other) {
 }

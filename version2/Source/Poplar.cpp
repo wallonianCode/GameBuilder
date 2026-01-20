@@ -1,15 +1,19 @@
 #include "../Headers/Poplar.hpp"
 
 
-Poplar::Poplar(const SDL_FPoint& initPos) {
-	std::vector<SDL_FRect> vSrc, vDest; 
-	
-	for (int j = 0; j < 3; ++j) {
-		vSrc.push_back({(float)17*S+1, (float)(13+j)*S+2, S-1, S-3});
-		vDest.push_back({initPos.x, initPos.y + j*TILE_DIM, TILE_DIM, TILE_DIM});
-	}
+Poplar::Poplar(std::vector<SDL_FRect>::iterator itSrcBegin,
+		 	   std::vector<SDL_FRect>::iterator itSrcEnd,
+		 	   std::vector<SDL_FRect>::iterator itDestBegin,
+		 	   std::vector<SDL_FRect> ::iterator itDestEnd) : 
+			   CompositeTexture(leafGreenTextureFileName, itSrcBegin, 
+				itSrcEnd, itDestBegin, itDestEnd) {}
 
-	CompositeTexture(leafGreenTextureFileName, 
-									 vSrc.begin(), vSrc.end(),
-									 vDest.begin(), vDest.end());
+
+float Poplar::get_width() const {
+	return TILE_DIM;
+}
+
+
+float Poplar::get_height() const {
+	return 3*TILE_DIM;
 }

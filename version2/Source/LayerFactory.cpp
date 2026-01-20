@@ -7,8 +7,7 @@ Layer* LayerFactory::create_layer(const int width,
 	Layer* newLayer;
 	newLayer = nullptr;
 	switch (layerType) {
-			case LayerFactory::LayerType::Road: {
-				
+			case LayerFactory::LayerType::Road: {				
 				newLayer = new RoadLayer(width, upperLeftCorner);
 				break;
 			}
@@ -18,10 +17,6 @@ Layer* LayerFactory::create_layer(const int width,
 			}
 			case LayerFactory::LayerType::Soil: {
 				newLayer = new SoilLayer(width, upperLeftCorner);
-				break;
-			}
-			case LayerFactory::LayerType::Buildings: {
-				newLayer = new BuildingLayer(width, upperLeftCorner);
 				break;
 			}
 			case LayerFactory::LayerType::Water: {

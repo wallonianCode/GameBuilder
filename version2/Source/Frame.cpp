@@ -34,8 +34,7 @@ void Frame::free() {
 }
 
 
-Frame::Frame(): Rectangle(Color::red) {
-  	
+Frame::Frame(): Rectangle(Color::red), isImmobilized_(false) {
 }
 
 

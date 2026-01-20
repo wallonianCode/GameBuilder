@@ -9,7 +9,7 @@
 
 class ExiterState : public GameState {
 public:
-	GameState* process_events(bool& running) override;
+	GameState* process_event(bool& running, SDL_Event* event) override;
 	void update() override;
 	void draw() override;
 	ExiterState();

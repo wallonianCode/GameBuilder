@@ -26,7 +26,6 @@ public:
 
 	Rectangle();
 	Rectangle(const SDL_Color&);
-	Rectangle(const SDL_Rect&, const SDL_Color&);
 	Rectangle(const SDL_FRect&, const SDL_Color&);
 	Rectangle(const SDL_FPoint&, const float&, 
 			  const float&, const SDL_Color&);

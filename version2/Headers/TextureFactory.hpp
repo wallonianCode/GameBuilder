@@ -47,13 +47,6 @@ enum class SimpleTextureEnum {
 };
 
 
-enum class CompositeTextureEnum {
-	Oak,
-	Pine,
-	Hornbeam,
-	Poplar
-};
-
 
 enum class DeclinedTextureEnum {
 	DeepWater,
@@ -71,9 +64,11 @@ public:
 	static SimpleTexture* create_simple_texture(const SDL_FPoint&, 
 							 				  	const SimpleTextureEnum&);
 
-	static CompositeTexture* 
-	create_composite_texture(const SDL_FPoint& pos, 
-						   	 const CompositeTextureEnum&) ;
+	static Oak* create_oak(const SDL_FPoint& pos);
+	static Pin* create_pin(const SDL_FPoint& pos);
+	static Hornbeam* create_hornbeam(const SDL_FPoint& pos);
+	static Poplar* create_poplar(const SDL_FPoint& pos);
+	
 
 
 	static void 

@@ -9,7 +9,7 @@
 class Button : public Drawable {
 public:	
 	virtual void draw();
-	virtual GameState* handle_event(SDL_Event& event);
+	virtual GameState* handle_event(SDL_Event* event);
 
 	void activate();
 	void deactivate();

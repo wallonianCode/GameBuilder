@@ -6,14 +6,23 @@ std::unordered_map<std::string, SDL_Surface*> TextureLoader::_surfaces;
 SDL_Texture* TextureLoader::load_texture(SDL_Renderer* renderer, 
 const std::string& filename) {
 	SDL_Texture* texture;
+	SDL_Surface* image;
+	SDL_Color transparentColor;
+	char* imagePath;
+	
 
-	if (! renderer) throw std::runtime_error("TL::load_texture:\
-	renderer is null");
+  texture = nullptr;
+	image = nullptr;
+	imagePath = nullptr;
+
+	if (! renderer) {
+		std::cerr << SDL_GetError() << std::endl;
+		throw std::runtime_error("TL::load_texture: renderer is null");
+	}
 
 	if (filename.empty())	{
 		throw std::runtime_error("TL::load_texture: filename is empty");
 	}
-
 
 	std::unordered_map<std::string, SDL_Texture*>::iterator found = 
 	_textures.find(filename);
@@ -21,11 +30,20 @@ const std::string& filename) {
 		texture = found->second;
 	}
 	else {
-	  std::string filepath = filename + ".bmp";//tileSheetsPath + "/" + filename + ".png";
-	  
-		SDL_Surface* image = IMG_Load(filepath.c_str());
+//	  std::string filepath = filename + ".bmp";//tileSheetsPath + "/" + filename + ".png";
+		SDL_asprintf(&imagePath, "%spkmnLeafGreenTileset2.bmp",
+		SDL_GetBasePath());	  
+		image = IMG_Load(imagePath);
+		if (!image) {
+			std::cerr << "TextureLoader::load_texture(): "<< SDL_GetError() << 
+			std::endl;
+			throw(
+			std::runtime_error(
+			"SDL_Surface was not successfully loaded at path: " + 
+			std::string(imagePath)));
+		}
 		// make background transparent
-		SDL_Color transparentColor = filename == "npcLeafGreen" ?
+		transparentColor = filename == "npcLeafGreen" ?
 		get_pixel_color(image, 12, 43) : get_pixel_color(image, 0, 0);
 		std::cout << filename << std::endl;
     std::printf("Color: %d, %d, %d\n", transparentColor.r,
@@ -36,17 +54,16 @@ const std::string& filename) {
 		transparentColor.b)); 
    
 		//SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_BLEND);
-		if (! image) throw std::runtime_error("TL::load_texture:\
-		surface not loaded");
 		texture = SDL_CreateTextureFromSurface(renderer, image);
 		
 		//texture = IMG_LoadTexture(renderer, filepath.c_str());
-		std::cout << "TextureLoader::load_texture(): " << (texture == nullptr)  << 
-		filepath.c_str() << std::endl;
 		if (! texture) { 
+			std::cerr << "Texture could not be loaded" << std::endl;
 			throw std::runtime_error(SDL_GetError());
 		}
-		//SDL_FreeSurface(image);
+
+		SDL_free(imagePath);
+		SDL_DestroySurface(image);
 		//_surfaces[filename] = image;
 		_textures[filename] = texture;
 	}
@@ -55,18 +72,19 @@ const std::string& filename) {
 
 
 void TextureLoader::deallocate_textures() {
-	std::unordered_map<std::string, SDL_Texture*>::iterator texturesIt = 
-	_textures.begin();
-	while (texturesIt != _textures.end()) {
-		SDL_DestroyTexture(texturesIt->second);
-		texturesIt = _textures.erase(texturesIt);
+	std::unordered_map<std::string, SDL_Texture*>::iterator textureIt;
+  std::unordered_map<std::string, SDL_Surface*>::iterator surfaceIt;
+
+	textureIt = _textures.begin();
+	while (textureIt != _textures.end()) {
+		SDL_DestroyTexture(textureIt->second);
+		textureIt = _textures.erase(textureIt);
 	}
 
-	std::unordered_map<std::string, SDL_Surface*>::iterator surfacesIt = 
-	_surfaces.begin();
-	while (surfacesIt != _surfaces.end()) {
-		SDL_DestroySurface(surfacesIt->second);
-		surfacesIt = _surfaces.erase(surfacesIt);
+	surfaceIt = _surfaces.begin();
+	while (surfaceIt != _surfaces.end()) {
+		SDL_DestroySurface(surfaceIt->second);
+		surfaceIt = _surfaces.erase(surfaceIt);
 	}
 }
 

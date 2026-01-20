@@ -10,7 +10,7 @@ void Separator::draw() {
 
 
 //nothing to select, and nothing to move 
-void Separator::handle_event(SDL_Event& event) {}
+void Separator::handle_event(SDL_Event* event) {}
 
 
 bool Separator::is_mouse_in() {

@@ -1,20 +1,17 @@
 #include "../Headers/Layer.hpp"
 
 
-
 Layer::Layer(const int width, const SDL_FPoint& upperLeftCorner) : 
 width_(width), upperLeftCorner_(upperLeftCorner) {}
 
 
 Texture* Layer::get_texture_copy_at_coord(const SDL_FPoint& coord) {
-	std::vector<Texture*>::iterator itTextureCopyAtCoord; 
+	std::vector<Texture*>::iterator itTextureCopyAtCoord, itTest;
 	Texture* textureAtCoord;
-
 	itTextureCopyAtCoord = 
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
 				[coord](Texture* texture){
-				return texture->get_upper_left_corner().x == coord.x && 
-				texture->get_upper_left_corner().y == coord.y;});
+				return texture->is_coord_in_texture(coord);});
 	textureAtCoord = itTextureCopyAtCoord == vTextures_.end() ?
 	nullptr : (*itTextureCopyAtCoord)->clone();	
 	return textureAtCoord;
@@ -36,13 +33,6 @@ void Layer::draw() {
 }
 
 
-
 SDL_FPoint Layer::get_upper_left_corner() const {
 	return upperLeftCorner_;
 }
-
-/*
-int Layer::get_width() const {
-	return width_;
-}
-	*/

@@ -23,9 +23,17 @@ public:
 	virtual Texture* clone() const ;
 	virtual float get_width() const;
 	virtual float get_height() const;
+	virtual	bool is_coord_in_texture(const SDL_FPoint&) const override;
+	// Get tile coordinates (upper left corner for textures) out of pos
+	static SDL_FPoint get_tile_coord(const SDL_FPoint&);
+	// Set texture position to tile coord corresponding to pos
+	void set_upper_left_corner_to_tile_coord(const SDL_FPoint&);
+	Texture(const Texture&);
 	Texture(const std::string&);
 	Texture();
 protected:
+	std::string get_tileset();
+private:
 	std::string tileset_;		
 };
 	

@@ -6,7 +6,10 @@
 
 class Oak : public TextureCloneable<CompositeTexture, Oak> {
 public:
-	Oak (const SDL_FPoint&);
+	Oak (std::vector<SDL_FRect>::iterator itSrcBegin,
+		 std::vector<SDL_FRect>::iterator itSrcEnd,
+		 std::vector<SDL_FRect>::iterator itDestBegin,
+		 std::vector<SDL_FRect> ::iterator itDestEnd);
 	float get_width() const override;
 	float get_height() const override;
 };

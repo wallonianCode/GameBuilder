@@ -9,8 +9,9 @@ class SimpleTexture : public Texture {
 public:
 	SimpleTexture();
 	SimpleTexture(const SDL_FPoint&);
-	SimpleTexture(const std::string&);
+//	SimpleTexture(const std::string&);
 	SimpleTexture(const std::string&, const SDL_FPoint&);
+	SimpleTexture(const SimpleTexture&);
 	// to override in case of bigger tiles (iterate over the src vector)
 	virtual void draw() override; 
 	// to override in case of bigger tiles (the src may be a vector)
@@ -26,13 +27,13 @@ public:
 
 	float get_width() const override; 
 	float get_height() const override;
+	bool is_coord_in_texture(const SDL_FPoint& coord) const override;
 
 	static float get_standard_width();
 	static float get_standard_height();
 	
 
 private:
-	std::string tileset_;		
 	SDL_FRect src_;
 	SDL_FRect dest_;
 };

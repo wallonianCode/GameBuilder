@@ -1,20 +1,17 @@
 #include "../Headers/Pin.hpp"
 
 
-Pin::Pin(const SDL_FPoint& initPos) {
-	std::cout << "Pin::Pin" << std::endl;
-	std::vector<SDL_FRect> vSrc, vDest;  
+Pin::Pin(std::vector<SDL_FRect>::iterator itSrcBegin,
+		std::vector<SDL_FRect>::iterator itSrcEnd,
+		std::vector<SDL_FRect>::iterator itDestBegin,
+		std::vector<SDL_FRect> ::iterator itDestEnd) :
+		CompositeTexture(leafGreenTextureFileName, itSrcBegin, itSrcEnd, itDestBegin, itDestEnd) {}
 
-	for (int i = 0; i < 2; ++i) {
-		for (int j = 0; j < 3; ++j) {
-			vSrc.push_back({(float)(14+i)*S+2, (float)(15+j)*S, S-3, S-3});
-			vDest.push_back({initPos.x + i*TILE_DIM, initPos.y + j*TILE_DIM,
-											TILE_DIM, TILE_DIM});
-		}
-	}
-	
-	CompositeTexture(leafGreenTextureFileName, 
-					 vSrc.begin(), vSrc.end(),
-					 vDest.begin(), vDest.end());
-	std::cout << "Pin::Pin end" << std::endl;
+
+float Pin::get_width() const {
+	return 2*TILE_DIM; 
+}
+
+float Pin::get_height() const {
+	return 3*TILE_DIM;
 }

@@ -2,7 +2,7 @@
 
 
 void Map::draw() {
-	std::vector<std::shared_ptr<Texture>>::iterator itTexture; 
+	std::vector<Texture*>::iterator itTexture; 
 	for (itTexture = vTextures_.begin() ;
 			 itTexture != vTextures_.end(); 
 			 itTexture++) {
@@ -12,27 +12,26 @@ void Map::draw() {
 
 
 void Map::add_texture(Texture* texture) {
-	vTextures_.push_back(std::make_shared<Texture>(*texture));
+	vTextures_.push_back(texture);
 }
 
 
 void Map::add_texture_at_mouse_pos(Texture* texture) {	
 	float x, y;
-	std::shared_ptr<Texture> tCopy = 
-	std::make_shared<Texture>(*texture->clone());
 
 	SDL_GetMouseState(&x, &y);
-  tCopy->set_upper_left_corner({x-((int)x % TILE_DIM), 
-	y-((int)y % TILE_DIM)});	
 
-	vTextures_.push_back(tCopy);
+  texture->set_upper_left_corner_to_tile_coord({x, y});
+	this->remove_texture(Texture::get_tile_coord({x, y}));
+	vTextures_.push_back(texture);
 }
 
 
 void Map::remove_texture(const SDL_FPoint& pos) {
-	std::vector<std::shared_ptr<Texture>>::iterator found =
+	std::vector<Texture*>::iterator found =
 	std::find_if(vTextures_.begin(), vTextures_.end(), 
-	[pos](std::shared_ptr<Texture> texture){return texture->get_upper_left_corner().x == pos.x &&
+	[pos](Texture* texture)
+	{return texture->get_upper_left_corner().x == pos.x &&
 	texture->get_upper_left_corner().y == pos.y;});
 	if (found != vTextures_.end()) 
 		vTextures_.erase(found);	
@@ -42,7 +41,7 @@ void Map::remove_texture(const SDL_FPoint& pos) {
 void Map::remove_texture_at_mouse_pos() {
 	float x, y;
 	SDL_GetMouseState(&x, &y);
-	this->remove_texture({x, y});
+	this->remove_texture(Texture::get_tile_coord({x, y}));
 }
 
 
@@ -50,16 +49,18 @@ void Map::update() {}
 
 
 void Map::set_frame_pos(const SDL_FPoint& newPos) {
-	frame_.set_upper_left_corner(newPos);
+	frame_->set_upper_left_corner(newPos);
 }
 
 
 void Map::draw_frame() {
-	frame_.draw();
+	frame_->draw();
 }
 
 
-Map::Map() {}
+Map::Map() {
+	frame_ = new Frame({0.0f, 0.0f}, TILE_DIM, TILE_DIM, Color::red);
+}
 
 
 Map::Map(const std::string& filename) {
@@ -67,9 +68,9 @@ Map::Map(const std::string& filename) {
 }
 
 
-Map::Map(std::vector<std::shared_ptr<Texture>>::iterator itLandBegin,
-				 std::vector<std::shared_ptr<Texture>>::iterator itLandEnd) {
-	vTextures_ = std::vector<std::shared_ptr<Texture>>(itLandBegin, itLandEnd);
+Map::Map(std::vector<Texture*>::iterator itLandBegin,
+				 std::vector<Texture*>::iterator itLandEnd) {
+	vTextures_ = std::vector<Texture*>(itLandBegin, itLandEnd);
 }
 
 

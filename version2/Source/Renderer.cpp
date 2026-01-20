@@ -32,4 +32,6 @@ Renderer::Renderer() {
 		throw std::runtime_error(std::string(__FUNCTION__) + 
 		std::string(": failed renderer init"));
 	}
+	SDL_SetRenderLogicalPresentation(renderer_, window->get_width(),
+	window->get_height(), SDL_LOGICAL_PRESENTATION_LETTERBOX);
 }

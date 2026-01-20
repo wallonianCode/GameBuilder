@@ -1,7 +1,7 @@
 #include "../Headers/ExiterState.hpp"
 
 
-GameState* ExiterState::process_events(bool& running) {
+GameState* ExiterState::process_event(bool& running, SDL_Event* event) {
 	return nullptr;
 }
 

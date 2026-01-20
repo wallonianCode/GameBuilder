@@ -21,10 +21,11 @@ enum class DeclinedTextureOrientation {
 };
 
 
-class DeclinedTexture : public TextureCloneable<SimpleTexture, DeclinedTexture> {
+class DeclinedTexture : public SimpleTexture {
 public:
 	DeclinedTexture();
 	DeclinedTexture(const SDL_FPoint&);
+	DeclinedTexture(const DeclinedTexture&);
 };
 
 #endif

@@ -4,17 +4,19 @@
 void ThreeColumnsBackground::draw() {
 	Window* window;
 	Renderer* renderer;
-	SDL_Rect leftSDLRect, centralSDLRect, rightSDLRect;
+	SDL_FRect leftSDLRect, centralSDLRect, rightSDLRect;
 	Rectangle leftRect, centralRect, rightRect;
 	
 	window = Window::get_instance();
 	renderer = Renderer::get_instance();
 
-	leftSDLRect = {0, 0, window->get_width()/3, window->get_height()};
- 	centralSDLRect = {window->get_width()/3, 0, 
-										window->get_width()/3, window->get_height()};
-	rightSDLRect = {2*window->get_width()/3, 0,
-									window->get_width()/3, window->get_height()};
+	leftSDLRect = {0.0f, 0.0f, 
+	window->get_width()/3.0f, (float)window->get_height()};
+ 	centralSDLRect = {window->get_width()/3.0f, 0.0f, 
+										window->get_width()/3.0f, 
+										(float)window->get_height()};
+	rightSDLRect = {2*window->get_width()/3.0f, 0.0f,
+									window->get_width()/3.0f, (float)window->get_height()};
 
 	leftRect = Rectangle(leftSDLRect, backgroundColor_);
   centralRect =  Rectangle(centralSDLRect, foregroundColor_);

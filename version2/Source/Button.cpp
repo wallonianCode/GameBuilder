@@ -7,11 +7,11 @@ void Button::draw() {
 }
 
 
-GameState* Button::handle_event(SDL_Event& event) {
+GameState* Button::handle_event(SDL_Event* event) {
 	GameState* retour = nullptr;
-	switch(event.type) {
+	switch(event->type) {
 		case SDL_EVENT_MOUSE_MOTION:
-			if (Collider::is_mouse_inside_frame(event.motion, outRect_)) {
+			if (Collider::is_mouse_inside_frame(event->motion, outRect_)) {
 				activate();
 			}
 			else {
@@ -19,7 +19,7 @@ GameState* Button::handle_event(SDL_Event& event) {
 			}
 			break;
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
-			if (Collider::is_click_inside_frame(event.button, outRect_)) {
+			if (Collider::is_click_inside_frame(event->button, outRect_)) {
 				retour = click();
 			}
 			break;

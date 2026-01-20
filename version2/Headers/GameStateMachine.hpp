@@ -12,7 +12,11 @@ public:
 	static GameStateMachine* get_instance();
 	
 	// returns true if there is still a state running
-	bool handle_frame();
+//	bool handle_frame();
+ 	bool process_event(SDL_Event* event);
+	void update();
+	void draw();
+
 	
 	GameStateMachine& operator=(const GameStateMachine&) = delete;
 	GameStateMachine(const GameStateMachine&) = delete;

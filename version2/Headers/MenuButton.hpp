@@ -9,7 +9,7 @@ class GameState;
 
 class MenuButton : public TextButton {
 public:
-	GameState* handle_event(SDL_Event& event) override;	
+	GameState* handle_event(SDL_Event* event) override;	
 
 	
 	MenuButton(const SDL_FPoint& posOnScreen, const float& width, 
@@ -22,6 +22,8 @@ public:
 			   const SDL_Color& frameColor, const SDL_Color& fillColor, 
 			   const SDL_Color& clickedFillColor, const std::string& text, 
 			   const SDL_Color& textColor);
+
+	
 
 protected:
 	virtual GameState* get_next_state() = 0;
