@@ -28,6 +28,7 @@ public:
 	static SDL_FPoint get_tile_coord(const SDL_FPoint&);
 	// Set texture position to tile coord corresponding to pos
 	void set_upper_left_corner_to_tile_coord(const SDL_FPoint&);
+	virtual TextureTableEntry get_entry() const override;
 	Texture(const Texture&);
 	Texture(const std::string&);
 	Texture();

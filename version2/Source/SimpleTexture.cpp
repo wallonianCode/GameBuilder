@@ -85,6 +85,11 @@ float SimpleTexture::get_height() const {
 }
 
 
+bool SimpleTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
+	return (get_upper_left_corner().x == coord.x && get_upper_left_corner().y == coord.y);
+}
+
+
 float SimpleTexture::get_standard_width() {
 	return TILE_DIM;
 }
@@ -94,6 +99,8 @@ float SimpleTexture::get_standard_height() {
 	return TILE_DIM;
 }
 
-bool SimpleTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
-	return (get_upper_left_corner().x == coord.x && get_upper_left_corner().y == coord.y);
+
+TextureTableEntry SimpleTexture::get_entry() const {
+	TextureTableEntry entry;
+	return entry;
 }

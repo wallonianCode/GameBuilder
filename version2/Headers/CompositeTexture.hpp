@@ -30,6 +30,9 @@ public:
 	*/
 	void move(const SDL_FPoint&);
 	virtual bool is_coord_in_texture(const SDL_FPoint&) const override;
+	std::vector<TextureTableEntry> get_entries(
+	std::vector<TextureTableEntry>::iterator itEntriesBegin,
+	std::vector<TextureTableEntry>::iterator itEntriesEnd) const;
 private:
   std::vector<std::pair<SDL_FRect, SDL_FRect>> vSrcDest_;
 

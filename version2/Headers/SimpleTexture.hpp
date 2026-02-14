@@ -32,7 +32,7 @@ public:
 	static float get_standard_width();
 	static float get_standard_height();
 	
-
+	TextureTableEntry get_entry() const override;
 private:
 	SDL_FRect src_;
 	SDL_FRect dest_;

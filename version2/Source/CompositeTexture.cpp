@@ -1,4 +1,4 @@
-#include "../Headers/CompositeTexture.hpp"
+Rinclude "../Headers/CompositeTexture.hpp"
 
 CompositeTexture::CompositeTexture() : Texture() {}
 
@@ -113,3 +113,8 @@ bool CompositeTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
 	}
 	return success;
 }
+
+
+void CompositeTexture::get_entries(
+std::vector<TextureTableEntry>::iterator itEntriesBegin,
+std::vector<TextureTableEntry>::iterator itEntriesEnd) const {}

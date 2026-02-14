@@ -62,6 +62,12 @@ Texture::set_upper_left_corner_to_tile_coord(const SDL_FPoint& pos) {
 }
 
 
+TextureTableEntry Texture::get_entry() const {
+	TextureTableEntry entry;
+	return entry;
+}
+
+
 Texture::Texture(const Texture& other) : tileset_(other.tileset_) {}
 Texture::Texture(const std::string& tileset) : tileset_(tileset) {}
 

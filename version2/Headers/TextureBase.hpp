@@ -3,23 +3,13 @@
 
 #include <string>
 #include "Drawable.hpp"
+#include "TextureAccessor.hpp"
 
 //TODO solve the problem with texture cloneable that demands non pure virtual class
 const std::string leafGreenTextureFileName = "pkmnLeafGreenTileset2";
 const int TILE_WIDTH = TILE_DIM;
 const int TILE_HEIGHT = TILE_DIM;
 
-/*
-class Texture;
-
-// normally not necessary to overload
-struct TexturePosComparator {
-	bool operator()(const Texture& texture);
-	bool operator()(Texture*);
-	TexturePosComparator(const SDL_Point& pos);
-	SDL_Point posOnScreen_;
-};
-*/
 
 
 class TextureBase : public Drawable {
@@ -34,6 +24,7 @@ public:
 	virtual float get_width() const = 0;
 	virtual float get_height() const = 0;
 	virtual bool is_coord_in_texture(const SDL_FPoint&) const = 0;
+	virtual TextureTableEntry get_entry() const = 0;
 };
 
 #endif
