@@ -51,8 +51,8 @@ public:
 	//reads the entire table
 	void	
 	read_table(const std::string& tableName,
-						 std::vector<TextureAccessor*>::iterator,
-						 std::vector<TextureAccessor*>::iterator);
+						 std::vector<TextureTableEntry*>::iterator,
+						 std::vector<TextureTableEntry*>::iterator);
 
   //prints the contents of an entire table
 	void print_table(const std::string& sTableName);
