@@ -1,7 +1,7 @@
 OBJS = Source/Window.cpp Source/Renderer.cpp Source/GameState.cpp Source/GameStateMachine.cpp Source/Drawable.cpp Source/Texture.cpp Source/TextureFactory.cpp Source/SimpleTexture.cpp Source/DeclinedTexture.cpp Source/CompositeTexture.cpp Source/Oak.cpp Source/Hornbeam.cpp Source/Pin.cpp Source/Poplar.cpp Source/GreenBorder.cpp Source/GreyBorder.cpp Source/Bush.cpp Source/TextureLoader.cpp Source/BlackBackground.cpp Source/GrassBackground.cpp Source/Layer.cpp Source/LayerFactory.cpp Source/LayerManager.cpp Source/RoadLayer.cpp Source/TreeLayer.cpp Source/BuildingLayer.cpp Source/SoilLayer.cpp Source/BorderLayer.cpp Source/WaterLayer.cpp Source/Map.cpp Source/BuilderButton.cpp Source/BuilderMap.cpp Source/BuilderState.cpp Source/Button.cpp Source/Collider.cpp Source/Color.cpp Source/ShallowWater.cpp Source/DeepWater.cpp Source/ExitButton.cpp Source/ExiterState.cpp Source/FontLoader.cpp Source/Frame.cpp Source/GameMenu.cpp Source/GameMenuState.cpp Source/MenuButton.cpp Source/MoosRoad.cpp Source/Moos.cpp Source/PlayerButton.cpp Source/Player.cpp Source/PlayerMap.cpp Source/PlayerState.cpp Source/Rectangle.cpp Source/RockRoad.cpp Source/Rock.cpp Source/Sand.cpp Source/SandRoad.cpp Source/SaveButton.cpp Source/Selector.cpp Source/Separator.cpp Source/TextButton.cpp Source/Text.cpp Source/ThreeColumnsBackground.cpp Source/TallGrass.cpp Source/SmallTree.cpp Source/Flowers.cpp Source/GreenWhiteGreenGrass.cpp Source/GreenWhiteGrass.cpp Source/GreenGrass.cpp Source/WhiteGrass.cpp Source/TextureCloneable.cpp Source/main.cpp 
 CC = g++
 COMPILER_FLAGS = -Wall -std=c++11
-LINKER_FLAGS = -lSDL3 -lSDL3_image -lSDL3_ttf
+LINKER_FLAGS = -lSDL3 -lSDL3_image -lSDL3_ttf -l sqlite3
 INCLUDE = -I/usr/local/include
 SDL3_LIB = -L/usr/local/lib
 OBJ_NAME = exe
