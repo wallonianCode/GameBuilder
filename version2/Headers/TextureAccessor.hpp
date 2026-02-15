@@ -49,10 +49,13 @@ public:
 	void delete_line(const std::string& tableName, const int id);
 
 	//reads the entire table
-	std::vector<TextureTableEntry*> read_table(const std::string& tableName);
+	void	
+	read_table(const std::string& tableName,
+						 std::vector<TextureAccessor*>::iterator,
+						 std::vector<TextureAccessor*>::iterator);
 
   //prints the contents of an entire table
-	void print_table(const std::string& tableName);
+	void print_table(const std::string& sTableName);
 
 	// check db existence, check if already open. If not, open it.
 	TextureAccessor(sqlite3* db);
