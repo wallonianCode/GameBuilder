@@ -30,7 +30,8 @@ public:
 	*/
 	void move(const SDL_FPoint&);
 	virtual bool is_coord_in_texture(const SDL_FPoint&) const override;
-	std::vector<TextureTableEntry> get_entries(
+	// get all table entries for a composite texture diplayed on the map.
+	void get_entries(
 	std::vector<TextureTableEntry>::iterator itEntriesBegin,
 	std::vector<TextureTableEntry>::iterator itEntriesEnd) const;
 private:

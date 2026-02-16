@@ -117,4 +117,6 @@ bool CompositeTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
 
 void CompositeTexture::get_entries(
 std::vector<TextureTableEntry>::iterator itEntriesBegin,
-std::vector<TextureTableEntry>::iterator itEntriesEnd) const {}
+std::vector<TextureTableEntry>::iterator itEntriesEnd) const {
+	
+}
