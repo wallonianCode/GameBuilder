@@ -8,7 +8,7 @@ struct TextureTable {
 public:
 	std::string name; //name of the table
 
-	std::string Tileset, //columns
+	std::string tileset, //columns
  							widthOnTileset;
  							heightOnTileset,
  							xOnTileset,
