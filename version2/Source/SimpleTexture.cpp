@@ -102,5 +102,14 @@ float SimpleTexture::get_standard_height() {
 
 TextureTableEntry SimpleTexture::get_entry() const {
 	TextureTableEntry entry;
+	entry.tileset = this.get_tileset();
+	entry.widthOnTileset = this.src_.w;
+	entry.heightOnTileset = this.src_.h;
+	entry.xOnTileset = this.src_.x;
+	entry.yOnTileset = this.src_.y;
+	entry.widthOnMap = this.dest_.w;
+	entry.heightOnMap = this.dest_.h;
+	entry.xOnMap = this.dest_.x;
+	entry.yOnMap = this.dest_.y;	
 	return entry;
 }
