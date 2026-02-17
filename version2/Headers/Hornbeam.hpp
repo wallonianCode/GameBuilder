@@ -9,8 +9,8 @@ public:
 			 std::vector<SDL_FRect>::iterator itSrcEnd,
 			 std::vector<SDL_FRect>::iterator itDestBegin,
 			 std::vector<SDL_FRect> ::iterator itDestEnd);
-	float get_width() const override;
-	float get_height() const override;
+	static float get_width();
+	static float get_height();
 };
 
 #endif
