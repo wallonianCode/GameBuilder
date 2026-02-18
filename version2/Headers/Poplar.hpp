@@ -10,6 +10,7 @@ public:
 		   std::vector<SDL_FRect>::iterator itDestBegin,
 		   std::vector<SDL_FRect> ::iterator itDestEnd);
 	
+
 	static float get_width();
 	static float get_height();
 };

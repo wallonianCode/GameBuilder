@@ -21,8 +21,6 @@ public:
 	virtual void set_upper_left_corner(const SDL_FPoint&) = 0;
 	virtual void set_pos_on_tileset(const SDL_FPoint&) = 0;
 	virtual void set_dim_on_tileset(const int, const int) = 0;
-	virtual float get_width() const = 0;
-	virtual float get_height() const = 0;
 	virtual bool is_coord_in_texture(const SDL_FPoint&) const = 0;
 	virtual TextureTableEntry get_entry() const = 0;
 };

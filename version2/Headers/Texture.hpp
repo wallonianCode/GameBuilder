@@ -21,8 +21,8 @@ public:
 	virtual void set_pos_on_tileset(const SDL_FPoint&) override;
 	virtual void set_dim_on_tileset(const int, const int) override;
 	virtual Texture* clone() const ;
-	virtual float get_width() const;
-	virtual float get_height() const;
+	static float get_width();
+	static float get_height();
 	virtual	bool is_coord_in_texture(const SDL_FPoint&) const override;
 	// Get tile coordinates (upper left corner for textures) out of pos
 	static SDL_FPoint get_tile_coord(const SDL_FPoint&);

@@ -25,12 +25,12 @@ public:
 	virtual void set_pos_on_tileset(const SDL_FPoint&);
 	virtual void set_dim_on_tileset(const int, const int);
 
-	float get_width() const override; 
-	float get_height() const override;
+	//virtual float get_width() const override; 
+	//virtual float get_height() const override;
 	bool is_coord_in_texture(const SDL_FPoint& coord) const override;
 
-	static float get_standard_width();
-	static float get_standard_height();
+	static float get_width();
+	static float get_height();
 	
 	TextureTableEntry get_entry() const override;
 private:

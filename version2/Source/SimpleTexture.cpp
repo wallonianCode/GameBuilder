@@ -75,7 +75,7 @@ void SimpleTexture::set_pos_on_tileset(const SDL_FPoint& pos) {
 	src_.y = pos.y;	
 }
 
-
+/*
 float SimpleTexture::get_width() const {
 	return dest_.w;
 }
@@ -83,6 +83,7 @@ float SimpleTexture::get_width() const {
 float SimpleTexture::get_height() const {
 	return dest_.h;
 }
+*/
 
 
 bool SimpleTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
@@ -90,12 +91,12 @@ bool SimpleTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
 }
 
 
-float SimpleTexture::get_standard_width() {
+float SimpleTexture::get_width() {
 	return TILE_DIM;
 }
 
 
-float SimpleTexture::get_standard_height() {
+float SimpleTexture::get_height() {
 	return TILE_DIM;
 }
 
