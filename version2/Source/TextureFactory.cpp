@@ -62,8 +62,8 @@ TextureFactory::create_simple_texture(const SDL_FPoint& pos,
 Oak* 
 TextureFactory::create_oak(const SDL_FPoint& pos) {
 	std::vector<SDL_FRect> vSrc, vDest;
-	for (int i = 0; i <= Oak::get_width(); ++i) {
-		for (int j = 0; j <= Oak::get_height(); ++j) {
+	for (int i = 0; i < Oak::get_width()/Texture::get_width(); ++i) {
+		for (int j = 0; j < Oak::get_height()/Texture::get_height(); ++j) {
 			vSrc.push_back({(float)(14+i)*S+2, (float)j*S+1, S-3, S-2});
 			vDest.push_back({pos.x + i*TILE_DIM, pos.y + j*TILE_DIM, 
 					TILE_DIM, TILE_DIM});
@@ -78,8 +78,8 @@ Pin*
 TextureFactory::create_pin(const SDL_FPoint& pos) {
 	std::vector<SDL_FRect> vSrc, vDest;  
 
-	for (int i = 0; i < Pin::get_width(); ++i) {
-		for (int j = 0; j < Pin::get_height(); ++j) {
+	for (int i = 0; i < Pin::get_width()/Texture::get_width(); ++i) {
+		for (int j = 0; j < Pin::get_height()/Texture::get_height(); ++j) {
 			vSrc.push_back({(float)(14+i)*S+2, (float)(17+j)*S, S-3, S-2});
 			vDest.push_back({pos.x + i*TILE_DIM, pos.y + j*TILE_DIM, 
 					TILE_DIM, TILE_DIM});
@@ -94,8 +94,9 @@ TextureFactory::create_pin(const SDL_FPoint& pos) {
 Hornbeam*
 TextureFactory::create_hornbeam(const SDL_FPoint& pos) {
 	std::vector<SDL_FRect> vSrc, vDest; 
-	for (int i = 0; i < Hornbeam::get_width(); ++i) {
-		for (int j = 0; j < Hornbeam::get_height(); ++j) {
+	for (int i = 0; i < Hornbeam::get_width()/Texture::get_width(); ++i) {
+		for (int j = 0; 
+				 j < Hornbeam::get_height()/Texture::get_height(); ++j) {
 			vSrc.push_back({(float)2+i*S, (float)(34+j)*S+2, S-3, S-2});
 			vDest.push_back({pos.x + i*TILE_DIM, pos.y + j*TILE_DIM,
 					TILE_DIM, TILE_DIM});
@@ -111,7 +112,7 @@ Poplar*
 TextureFactory::create_poplar(const SDL_FPoint& pos) {
 	std::vector<SDL_FRect> vSrc, vDest; 
 
-	for (int j = 0; j < Poplar::get_height(); ++j) {
+	for (int j = 0; j < Poplar::get_height()/Texture::get_height(); ++j) {
 		vSrc.push_back({(float)17*S+1, (float)(13+j)*S+2, S-1, S-3});
 		vDest.push_back({pos.x, pos.y + j*TILE_DIM, TILE_DIM, TILE_DIM});
 	}
@@ -121,10 +122,6 @@ TextureFactory::create_poplar(const SDL_FPoint& pos) {
 }
 
 
-
-//TODO the declined textures creation always ever call the 
-//     default constructor of SimpleTexture(). Not the composite 
-//	   ones. Why?
 void 
 TextureFactory::create_road(const SDL_FPoint& posBegin, 
 		const int width,
