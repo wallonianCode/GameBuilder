@@ -7,3 +7,4 @@ Still later on, characters will be introduced etc.
 The makefile needs to be restructured.
 A database connection is at the time of writing this README (21.02.26) in the process of being
 created.
+Some workflows (CI/CD pipelines, most notably) will be integrated to the project.
