@@ -2,7 +2,31 @@
 
 void 
 TextureAccessor::write(const std::string& sTableName,
-											 const TextureTableEntry& entry) {}
+											 const TextureTableEntry& entry) {
+	int rc;
+	const char* sqlStatement;
+	char* zErrMsg;
+
+  zErrMsg = 0;
+	sqlStatement = 
+	"INSERT INTO " + sTableName + 
+	" (TILESET,W_ON_TILESET,H_ON_TILESET,X_ON_TILESET,Y_ON_TILESET,\\
+	W_ON_MAP,H_ON_MAP,X_ON_MAP,Y_ON_MAP)"\
+	"VALUES ("+entry.tileset+", "+entry.widthOnTileset+", "+ \\
+	entry.heightOnTileset+", "+entry.xOnTileset+", "+entry.yOnTileset+
+	", "+entry.widthOnMap+", "+entry.heightOnMap+", "+entry.xOnMap+", "+
+	entry.yOnMap+")";
+	
+	rc = sqlite3_exec(this.db, sqlStatement, 0, 0, &zErrMsg);
+	if ( rc != SQLITE_OK ) {
+		std::fprintf(stderr, "Misuse. SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	} 
+	else {
+		std::fprintf(stdout, "Records created successfully\n");
+	}
+
+}
 	
 	
 TextureTableEntry* 
