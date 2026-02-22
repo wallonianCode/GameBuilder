@@ -76,6 +76,9 @@ SDL_FPoint CompositeTexture::get_upper_left_corner() const {
 }
 
 
+
+
+
 void CompositeTexture::set_upper_left_corner(const SDL_FPoint& newPos) {
 	this->move(newPos);
 }
@@ -104,7 +107,8 @@ bool CompositeTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
 	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
 
 	success = false;
-	for (itSrcDest = vSrcDest_.begin(); itSrcDest != vSrcDest_.end(); itSrcDest++) {
+	for (itSrcDest = vSrcDest_.begin(); 
+	itSrcDest != vSrcDest_.end(); itSrcDest++) {
 		dest = itSrcDest->second;
 		if (dest.x == coord.x && dest.y == coord.y) {
 			success = true;
@@ -115,8 +119,51 @@ bool CompositeTexture::is_coord_in_texture(const SDL_FPoint& coord) const {
 }
 
 
-void CompositeTexture::get_entries(
-std::vector<TextureTableEntry>::iterator itEntriesBegin,
-std::vector<TextureTableEntry>::iterator itEntriesEnd) const {
-	
+virtual TextureTableEntry* CompositeTexture::get_entry() const {
+	TextureTableEntry* entry;	
+	SDL_FRect upperLeftCornerRect, temp;
+	std::vector<std::pair<SDL_FRect, SDL_FRect>>::const_iterator itSrcDest;
+
+  upperLeftCornerRect = this.get_upper_left_corner();
+	itSrcDest = vSrcDest_.begin();
+	upperLeftCornerRect = itSrcDest->second;
+
+	for (itSrcDest = vSrcDest_.begin(); 
+		 itSrcDest != vSrcDest_.end();
+		 ++itSrcDest) {
+		temp = itSrcDest->second;
+		if ((temp.x == upperLeftCornerRect.x) && 
+		(temp.y == upperLeftCornerRect.y)) {
+			break; //found	
+		}
+	}
+
+	entry = new TextureTableEntry();
+
+	entry->widthOnTileset = itSrcDest->first.w;
+	entry->heightOnTileset = itSrcDest->first.h;
+	entry->xOnTileset = itSrcDest->first.x;
+	entry->yOnTileset = itSrcDest->first.y;
+	entry->widthOnMap = itSrcDest->second.w;
+	entry->heightOnMap = itSrcDest->second.h;
+	entry->xOnMap = itSrcDest->second.x;
+	entry->yOnMap = itSrcDest->second.y;
+
+	return entry;
 }
+
+
+
+  
+
+/*
+	std::vector<TextureTableEntry> vRet;
+ 	SDL_FRect src, dest;	
+	std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator itSrcDest;
+  for (itSrcDest = vSrcDest_.begin(); 
+	  	 itSrcDest != vSrcDest_.end(); ++itSrcDest) {
+		src = (*itSrcDest).first;
+		dest = (*itSrcDest).second;
+			
+	}
+	*/
