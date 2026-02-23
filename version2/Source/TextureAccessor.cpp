@@ -25,13 +25,53 @@ TextureAccessor::write(const std::string& sTableName,
 	else {
 		std::fprintf(stdout, "Records created successfully\n");
 	}
-
 }
 	
-	
+
+int TextureAccessor::store_tiles(void* userData, int argc, char** argv, 
+char** azColName) {
+	int i;
+	TextureTableEntry* entry;
+
+	i = 0;
+	while (i < argc) {
+		//fill the entry	
+
+
+	  ++i;
+	}
+	//store the entry in dedicated vector.
+	return 0;
+}
+
+
 TextureTableEntry* 
 TextureAccessor::read_line(const std::string& sTableName, 
-													 const int id) {}
+											     const int id) {
+	int rc;	
+	const char* selectStatement; 
+	char* zErrMsg;
+	const char* data = "Callback function called";
+
+	selectStatement = 
+	"SELECT * FROM " + sTableName + " WHERE ID = " + id;
+	rc = sqlite3_exec(db, selectStatement, store_tiles, 
+	(void*)data, &zErrMsg); 
+
+	if (rc == SQLITE_MISUSE) {
+	  std::fprintf(stderr, "Sqlite misuse!\n");
+		sqlite3_free(zErrMsg);
+	}
+	else if (rc != SQLITE_OK) {
+		std::fprintf(stderr, "%d, SQL error: %s\n", rc, zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	else {
+		std::fprintf(stdout, "Selected all records successfully\n");
+	}
+	sqlite3_close(db);
+
+}
 
 
 void 
