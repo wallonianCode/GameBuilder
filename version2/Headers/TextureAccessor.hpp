@@ -53,7 +53,10 @@ public:
   //prints the contents of an entire table
 	void print_table(const std::string& sTableName);
 
-	//write the entries last fetched by last call to read_table into 
+	//get the entry last fetched by read_line() call
+	TextureTableEntry* get_entry();
+
+	//write the entries last fetched by last read_table call into 
 	//user-defined vector.
 	void 
 	get_entries(

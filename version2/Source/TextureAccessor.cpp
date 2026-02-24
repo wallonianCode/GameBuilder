@@ -102,6 +102,9 @@ void
 TextureAccessor::print_table(const std::string& sTableName) {}
 
 
+TextureTableEntry* get_entry() {}
+
+
 void 
 get_entries(
 std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator,
