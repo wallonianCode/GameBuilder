@@ -48,15 +48,12 @@ public:
 	void delete_line(const std::string& tableName, const int id);
 
 	//reads the entire table
-	void	
-	read_table(const std::string& tableName,
-						 std::vector<TextureTableEntry*>::iterator,
-						 std::vector<TextureTableEntry*>::iterator);
+	void read_table(const std::string& tableName);
 
   //prints the contents of an entire table
 	void print_table(const std::string& sTableName);
 
-	//write the entries last fetched by last call to read_line into 
+	//write the entries last fetched by last call to read_table into 
 	//user-defined vector.
 	void 
 	get_entries(

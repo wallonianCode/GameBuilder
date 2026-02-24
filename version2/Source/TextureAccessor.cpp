@@ -96,11 +96,7 @@ TextureAccessor::delete_line(const std::string& sTableName,
 }
 
 void	
-TextureAccessor::read_table(
-const std::string& sTableName,
-std::vector<TextureTableEntry*>::iterator itEntryBegin, 
-std::vector<TextureTableEntry*>::iterator itEntryEnd) {}
-
+TextureAccessor::read_table(const std::string& sTableName) {}
 
 void 
 TextureAccessor::print_table(const std::string& sTableName) {}
