@@ -96,7 +96,29 @@ TextureAccessor::delete_line(const std::string& sTableName,
 }
 
 void	
-TextureAccessor::read_table(const std::string& sTableName) {}
+TextureAccessor::read_table(const std::string& sTableName) {
+	int rc;	
+	const char* selectStatement; 
+	char* zErrMsg;
+	const char* data = "Callback function called";
+
+	selectStatement = "SELECT * FROM " + sTableName;
+	rc = sqlite3_exec(db, selectStatement, store_tiles, 
+	(void*)data, &zErrMsg); 
+
+	if (rc == SQLITE_MISUSE) {
+	  std::fprintf(stderr, "Sqlite misuse!\n");
+	}
+	else if (rc != SQLITE_OK) {
+		std::fprintf(stderr, "%d, SQL error: %s\n", rc, zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	else {
+		std::fprintf(stdout, "Selected all records successfully\n");
+	}
+	sqlite3_close(db);
+}
+
 
 void 
 TextureAccessor::print_table(const std::string& sTableName) {}
