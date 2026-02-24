@@ -47,14 +47,14 @@ char** azColName) {
 
 TextureTableEntry* 
 TextureAccessor::read_line(const std::string& sTableName, 
-											     const int id) {
+											     const int xOnMap) {
 	int rc;	
 	const char* selectStatement; 
 	char* zErrMsg;
 	const char* data = "Callback function called";
 
 	selectStatement = 
-	"SELECT * FROM " + sTableName + " WHERE ID = " + id;
+	"SELECT * FROM " + sTableName + " WHERE X_ON_MAP = " + xOnMap;
 	rc = sqlite3_exec(db, selectStatement, store_tiles, 
 	(void*)data, &zErrMsg); 
 
@@ -76,7 +76,24 @@ TextureAccessor::read_line(const std::string& sTableName,
 
 void 
 TextureAccessor::delete_line(const std::string& sTableName, 
-														 const int id) {}
+														 const int xOnMap) {
+	int rc;
+	char* zErrMsg;
+	const char* sqlStatement;
+
+	sqlStatement = 
+	"DELETE FROM " + sTableName + " WHERE X_ON_MAP="xOnMap+"; ";
+	rc = sqlite3_exec(db, sqlStatement, 0, 0, &zErrMsg);
+
+	if (rc != SQLITE_OK) {
+		std::fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	else {
+		std::fprintf(stdout, "Line successfully deleted\n");
+	}
+
+}
 
 void	
 TextureAccessor::read_table(
