@@ -69,6 +69,7 @@ public:
 	~TextureAccessor();
 
 private:
+  TextureTableEntry* entry;
 	std::vector<std::pair<SDL_FRect, SDL_FRect>> vEntries;
 	bool table_exists(const std::string& tableName);
 	//callbacks
