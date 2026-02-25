@@ -10,9 +10,12 @@ TextureAccessor::write(const std::string& sTableName,
   zErrMsg = 0;
 	sqlStatement = 
 	"INSERT INTO " + sTableName + 
-	" (TILESET,W_ON_TILESET,H_ON_TILESET,X_ON_TILESET,Y_ON_TILESET,\\
-	W_ON_MAP,H_ON_MAP,X_ON_MAP,Y_ON_MAP)"\
-	"VALUES ("+entry.tileset+", "+entry.widthOnTileset+", "+ \\
+	" ("+ TextureTable::TILESET+","+TableTable::W_ON_TILESET+","+ 
+	TextureTable::H_ON_TILESET + "," + TextureTable::X_ON_TILESET + "," +
+	TextureTable::Y_ON_TILESET + "," + TextureTable::W_ON_MAP + ","+
+	TextureTable::W_ON_MAP + "," + TextureTable::H_ON_MAP + "," +
+	TextureTable::X_ON_MAP + "," + TextureTable::Y_ON_MAP + ")"\
+	"VALUES ("+entry.tileset+", "+entry.widthOnTileset+", "+ 
 	entry.heightOnTileset+", "+entry.xOnTileset+", "+entry.yOnTileset+
 	", "+entry.widthOnMap+", "+entry.heightOnMap+", "+entry.xOnMap+", "+
 	entry.yOnMap+")";
@@ -35,7 +38,9 @@ char** azColName) {
 
 	i = 0;
 	while (i < argc) {
-		//fill the entry	
+		//fill the entry
+		//if (azColName[i] = 
+		//entry->widthOnTileset = argv[i];
 
 
 	  ++i;
@@ -43,6 +48,21 @@ char** azColName) {
 	//store the entry in dedicated vector.
 	return 0;
 }
+
+
+int print_results(void* userData, int argc, char** argv, 
+char** azColName) {
+	int i;
+	i = 0;
+	while (i < argc) {
+		std::fprintf(stdout, "%s = %s\n", 
+		azColName[i], argv[i] ? argv[i] : NULL);
+		++i;
+	}
+	std::printf("\n");
+	return 0;
+}
+
 
 
 TextureTableEntry* 
@@ -54,7 +74,8 @@ TextureAccessor::read_line(const std::string& sTableName,
 	const char* data = "Callback function called";
 
 	selectStatement = 
-	"SELECT * FROM " + sTableName + " WHERE X_ON_MAP = " + xOnMap;
+	"SELECT * FROM " + sTableName + " WHERE " + 
+	TextureTable::X_ON_MAP + " = " + xOnMap;
 	rc = sqlite3_exec(db, selectStatement, store_tiles, 
 	(void*)data, &zErrMsg); 
 
@@ -82,7 +103,8 @@ TextureAccessor::delete_line(const std::string& sTableName,
 	const char* sqlStatement;
 
 	sqlStatement = 
-	"DELETE FROM " + sTableName + " WHERE X_ON_MAP="xOnMap+"; ";
+	"DELETE FROM " + sTableName + " WHERE "+
+	TextureTable::X_ON_MAP+"="xOnMap+"; ";
 	rc = sqlite3_exec(db, sqlStatement, 0, 0, &zErrMsg);
 
 	if (rc != SQLITE_OK) {
@@ -121,7 +143,30 @@ TextureAccessor::read_table(const std::string& sTableName) {
 
 
 void 
-TextureAccessor::print_table(const std::string& sTableName) {}
+TextureAccessor::print_table(const std::string& sTableName) {
+	int rc;	
+	const char* selectStatement; 
+	char* zErrMsg;
+	const char* data = "Callback function called";
+
+	selectStatement = "SELECT * FROM "+sTableName;
+	rc = sqlite3_exec(db, selectStatement, print_results, 
+	(void*)data, &zErrMsg); 
+
+	if (rc == SQLITE_MISUSE) {
+	  std::fprintf(stderr, "Sqlite misuse!\n");
+	}
+	else if (rc != SQLITE_OK) {
+		std::fprintf(stderr, "%d, SQL error: %s\n", rc, zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	else {
+		std::fprintf(stdout, "Selected all records successfully\n");
+	}
+	sqlite3_close(db);
+
+
+}
 
 
 TextureTableEntry* get_entry() {}

@@ -22,16 +22,15 @@ public:
 // values of the independent values in each column
 struct TextureTable {
 public:
-  std::string name; //name of the table
-	std::string TILESET,
-	       			W_ON_TILESET,
-				 			H_ON_TILESET,
- 				 			X_ON_TILESET,
- 			   			Y_ON_TILESET,	
-				 			W_ON_MAP,
-				 			H_ON_MAP,
-				 			X_ON_MAP,
-				 			Y_ON_MAP;
+	static const std::string TILESET = "TILESET";
+													 W_ON_TILESET = "W_ON_TILESET";
+													 H_ON_TILESET = "H_ON_TILESET";
+													 X_ON_TILESET = "X_ON_TILESET";
+													 Y_ON_TILESET = "Y_ON_TILESET";
+													 W_ON_MAP = "W_ON_MAP";
+													 H_ON_MAP = "H_ON_MAP";
+													 X_ON_MAP = "X_ON_MAP";
+													 Y_ON_MAP = "Y_ON_MAP";
 };
 
 
@@ -72,6 +71,11 @@ public:
 private:
 	std::vector<std::pair<SDL_FRect, SDL_FRect>> vEntries;
 	bool table_exists(const std::string& tableName);
+	//callbacks
+	int store_tiles(void* userData, int argc, 
+									char** argv, char** azColName);
+	int print_results(void* userData, int argc,
+										char** argv, char** azColName);
 	sqlite3* db;
 };
 
