@@ -169,13 +169,14 @@ TextureAccessor::print_table(const std::string& sTableName) {
 }
 
 
-TextureTableEntry* get_entry() {}
+TextureTableEntry* get_entry() {
+	return this->entry;
+}
 
 
-void 
-get_entries(
-std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator,
-std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator) {}
+const std::vector<std::pair<SDL_FRect, SDL_FRect>>& get_entries() {
+	//TODO test this
+}
 
 
 TextureAccessor::TextureAccessor(sqlite3* db) {}

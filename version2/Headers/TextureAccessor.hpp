@@ -57,10 +57,7 @@ public:
 
 	//write the entries last fetched by last read_table call into 
 	//user-defined vector.
-	void 
-	get_entries(
-	std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator,
-	std::vector<std::pair<SDL_FRect, SDL_FRect>>::iterator);
+	const std::vector<std::pair<SDL_FRect, SDL_FRect>>& get_entries();
 
 	// check db existence, check if already open. If not, open it.
 	TextureAccessor(sqlite3* db);
