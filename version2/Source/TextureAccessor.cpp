@@ -39,8 +39,9 @@ char** azColName) {
 	i = 0;
 	while (i < argc) {
 		//fill the entry
-		//if (azColName[i] = 
-		//entry->widthOnTileset = argv[i];
+		if (azColName[i] == TextureTable::W_ON_TILESET) {
+			entry->widthOnTileset = argv[i];
+		}
 
 
 	  ++i;
@@ -174,8 +175,8 @@ TextureTableEntry* get_entry() {
 }
 
 
-const std::vector<std::pair<SDL_FRect, SDL_FRect>>& get_entries() {
-	//TODO test this
+const std::vector<std::pair<sdl_frect, sdl_frect>>& get_entries() {
+	return this.vEntries;
 }
 
 
