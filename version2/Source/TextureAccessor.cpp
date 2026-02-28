@@ -39,14 +39,37 @@ char** azColName) {
 	i = 0;
 	while (i < argc) {
 		//fill the entry
-		if (azColName[i] == TextureTable::W_ON_TILESET) {
+		if (azColName[i] == TextureTable::TILESET) {
+			entry->tileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::W_ON_TILESET) {
 			entry->widthOnTileset = argv[i];
 		}
-
-
+		else if (azColName[i] == TextureTable::H_ON_TILESET) {
+			entry->heightOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::X_ON_TILESET) {
+			entry->xOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::Y_ON_TILESET) {
+			entry->yOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::W_ON_MAP) {
+			entry->widthOnMap = argv[i];
+		}
+		else if (azColName[i] == TextureTable::H_ON_MAP) {
+			entry->heightOnMap = argv[i];
+		}
+		else if (azColName[i] == TextureTable::X_ON_MAP) {
+			entry->xOnMap = argv[i];
+		}
+		else if (azColName[i] == TextureTable::Y_ON_MAP) {
+			entry->yOnMap = argv[i];
+		}
 	  ++i;
 	}
 	//store the entry in dedicated vector.
+	this->entries.push_back(entry);	
 	return 0;
 }
 
