@@ -34,9 +34,14 @@ public:
 };
 
 
-//insert/delete texture related information from db
+/**
+	* class for creating, reading, writing and modifying texture tables.
+	* //TODO class for opening, closing and erasing databases
+	*/
 class TextureAccessor {
 public:
+	//create table
+	void create_table(const std::string& sTableName);
 	//append entry to table
 	void write(const std::string& tableName,
 	const TextureTableEntry&);
@@ -51,6 +56,8 @@ public:
 
   //prints the contents of an entire table
 	void print_table(const std::string& sTableName);
+
+	
 
 	//get the entry last fetched by read_line() call
 	TextureTableEntry* get_entry();

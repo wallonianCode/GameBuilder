@@ -1,5 +1,35 @@
 #include  "../Headers/TextureAccessor.hpp"
 
+void create_table(const std::string& sTableName) {
+	int rc;
+	const char *createStatement;
+	char* zErrMsg;
+  void* data;
+
+  zErrMsg = 0;
+	data = 0;
+  createStatement = "CREATE TABLE "+sTableName+"(" \
+						TextureTable::X_ON_MAP +" FLOAT PRIMARY KEY     NOT NULL," \
+						TextureTable::TILESET +" TEXT    NOT NULL," \
+						TextureTable::W_ON_TILESET + " FLOAT		  NOT NULL," \
+						TextureTable::H_ON_TILESET + " FLOAT      NOT NULL," \
+						TextureTable::X_ON_TILESET + " FLOAT      NOT NULL," \
+						TextureTable::Y_ON_TILESET + " FLOAT	    NOT NULL," \
+						TextureTable::W_ON_MAP +     " FLOAT   		NOT NULL," \
+						TextureTable::H_ON_MAP +     " FLOAT			NOT NULL," \
+						TextureTable::Y_ON_MAP +     " FLOAT      NOT NULL);";
+
+	rc = sqlite3_exec(db, createStatement, 0, data, &zErrMsg);
+	if (rc != SQLITE_OK) {
+		std::fprintf(stderr, 
+		"Create table statement unsuccessful: SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	else {
+		std::fprintf(stdout, "Table created successfully\n");
+	}
+}
+
 void 
 TextureAccessor::write(const std::string& sTableName,
 											 const TextureTableEntry& entry) {
@@ -30,62 +60,6 @@ TextureAccessor::write(const std::string& sTableName,
 	}
 }
 	
-
-int TextureAccessor::store_tiles(void* userData, int argc, char** argv, 
-char** azColName) {
-	int i;
-	TextureTableEntry* entry;
-
-	i = 0;
-	while (i < argc) {
-		//fill the entry
-		if (azColName[i] == TextureTable::TILESET) {
-			entry->tileset = argv[i];
-		}
-		else if (azColName[i] == TextureTable::W_ON_TILESET) {
-			entry->widthOnTileset = argv[i];
-		}
-		else if (azColName[i] == TextureTable::H_ON_TILESET) {
-			entry->heightOnTileset = argv[i];
-		}
-		else if (azColName[i] == TextureTable::X_ON_TILESET) {
-			entry->xOnTileset = argv[i];
-		}
-		else if (azColName[i] == TextureTable::Y_ON_TILESET) {
-			entry->yOnTileset = argv[i];
-		}
-		else if (azColName[i] == TextureTable::W_ON_MAP) {
-			entry->widthOnMap = argv[i];
-		}
-		else if (azColName[i] == TextureTable::H_ON_MAP) {
-			entry->heightOnMap = argv[i];
-		}
-		else if (azColName[i] == TextureTable::X_ON_MAP) {
-			entry->xOnMap = argv[i];
-		}
-		else if (azColName[i] == TextureTable::Y_ON_MAP) {
-			entry->yOnMap = argv[i];
-		}
-	  ++i;
-	}
-	//store the entry in dedicated vector.
-	this->entries.push_back(entry);	
-	return 0;
-}
-
-
-int print_results(void* userData, int argc, char** argv, 
-char** azColName) {
-	int i;
-	i = 0;
-	while (i < argc) {
-		std::fprintf(stdout, "%s = %s\n", 
-		azColName[i], argv[i] ? argv[i] : NULL);
-		++i;
-	}
-	std::printf("\n");
-	return 0;
-}
 
 
 
@@ -209,6 +183,61 @@ TextureAccessor::TextureAccessor(sqlite3* db) {}
 ~TextureAccessor::TextureAccessor() {}
 
 
+int TextureAccessor::store_tiles(void* userData, int argc, char** argv, 
+char** azColName) {
+	int i;
+	TextureTableEntry* entry;
+
+	i = 0;
+	while (i < argc) {
+		//fill the entry
+		if (azColName[i] == TextureTable::TILESET) {
+			entry->tileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::W_ON_TILESET) {
+			entry->widthOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::H_ON_TILESET) {
+			entry->heightOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::X_ON_TILESET) {
+			entry->xOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::Y_ON_TILESET) {
+			entry->yOnTileset = argv[i];
+		}
+		else if (azColName[i] == TextureTable::W_ON_MAP) {
+			entry->widthOnMap = argv[i];
+		}
+		else if (azColName[i] == TextureTable::H_ON_MAP) {
+			entry->heightOnMap = argv[i];
+		}
+		else if (azColName[i] == TextureTable::X_ON_MAP) {
+			entry->xOnMap = argv[i];
+		}
+		else if (azColName[i] == TextureTable::Y_ON_MAP) {
+			entry->yOnMap = argv[i];
+		}
+	  ++i;
+	}
+	//store the entry in dedicated vector.
+	this->entries.push_back(entry);	
+	return 0;
+}
+
+
+int print_results(void* userData, int argc, char** argv, 
+char** azColName) {
+	int i;
+	i = 0;
+	while (i < argc) {
+		std::fprintf(stdout, "%s = %s\n", 
+		azColName[i], argv[i] ? argv[i] : NULL);
+		++i;
+	}
+	std::printf("\n");
+	return 0;
+}
 
 /*
 bool bTableExists = false;
