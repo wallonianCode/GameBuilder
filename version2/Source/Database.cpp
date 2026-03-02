@@ -23,3 +23,20 @@ void Database::close() {
 sqlite3* Database::get_db() {
 	return db;
 }
+
+
+bool Database::is_open() {
+	return this->db != nullptr;
+}
+
+
+Database::Database() {
+	this->db = nullptr;
+}
+
+
+~Database::Database() {
+	if (this->is_open()) {
+		this->close();
+	}
+}
